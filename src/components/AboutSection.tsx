@@ -28,17 +28,17 @@ export function AboutSection() {
               aria-hidden
               className="hidden w-px self-stretch bg-[#0a0a0a] lg:block"
             />
-            <div className="lg:pl-8">
-              <figure className="border border-[#0a0a0a]">
-                <div className="relative aspect-[4/3] w-full max-w-md overflow-hidden bg-[#d4cfc5]">
+            <div className="min-w-0 lg:pl-8">
+              <figure className="w-full border border-[#0a0a0a]">
+                <div className="relative aspect-[4/3] min-h-[220px] w-full overflow-hidden bg-[#d4cfc5] sm:min-h-[280px] lg:aspect-[16/10] lg:min-h-[320px]">
                   <img
-                    src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=640&h=480&fit=crop&auto=format&q=70"
+                    src="/donapano.jpg"
                     alt=""
-                    width={640}
-                    height={480}
+                    width={1200}
+                    height={750}
                     loading="lazy"
                     decoding="async"
-                    className="h-full w-full object-cover grayscale"
+                    className="h-full w-full object-cover object-center grayscale"
                   />
                 </div>
                 <figcaption className="font-meta border-t border-[#0a0a0a] px-3 py-2 text-[0.7rem] tracking-[0.12em] text-[#1a1a1a]">

@@ -4,26 +4,26 @@ import { InViewBlock } from "@/components/InViewBlock";
 const boxes = [
   {
     label: "Professional inquiries",
-    handle: "linkedin.com/in/daphina",
-    href: "https://www.linkedin.com/",
+    handle: "linkedin.com/in/edona-mulaj",
+    href: "https://www.linkedin.com/in/edona-mulaj/",
     pitch: "For commissions, collaborations, and introductions with context.",
   },
   {
     label: "Code & experiments",
-    handle: "github.com/daphina",
-    href: "https://github.com/",
+    handle: "github.com/edonamulaj0",
+    href: "https://github.com/edonamulaj0",
     pitch: "Issues welcome when they include repro steps and kindness.",
   },
   {
     label: "Community wire",
-    handle: "discord — @daphina",
-    href: "https://discord.com/",
+    handle: "discord.gg/3Fd56dHc",
+    href: "https://discord.gg/3Fd56dHc",
     pitch: "Fastest for H4ck&Stack and studio alumni threads.",
   },
   {
     label: "Private line",
-    handle: "hello@cyphera.dev",
-    href: "mailto:hello@cyphera.dev",
+    handle: "edona@cyphera.tech",
+    href: "mailto:edona@cyphera.tech",
     pitch: "Longer briefs with attachments; expect a thoughtful reply.",
   },
 ] as const;
@@ -52,8 +52,9 @@ export function ContactSection() {
                 <p className="font-meta text-sm tracking-tight text-[#0a0a0a]">
                   <a
                     href={b.href}
-                    target="_blank"
-                    rel="noreferrer noopener"
+                    {...(b.href.startsWith("mailto:")
+                      ? {}
+                      : { target: "_blank", rel: "noreferrer noopener" })}
                     className="newspaper-link break-all"
                   >
                     {b.handle}

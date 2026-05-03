@@ -15,6 +15,7 @@ export function MobileNavToggle({ open, onToggle }: Props) {
       onClick={onToggle}
       className="font-meta fixed bottom-5 right-4 z-[var(--z-mobile-toggle)] border-2 border-[#0a0a0a] bg-[#d4cfc5] px-4 py-3 text-xs font-bold uppercase tracking-[0.18em] text-[#0a0a0a] shadow-[inset_0_0_0_1px_#f5f0e8] lg:hidden"
       style={{
+        isolation: "isolate",
         clipPath:
           "polygon(0 0,100% 0,100% 72%,88% 100%,0 88%,0 0)",
       }}

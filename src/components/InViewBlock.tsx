@@ -12,8 +12,8 @@ export function InViewBlock({ children, className = "" }: Props) {
   return (
     <motion.div
       className={className}
-      initial={reduce ? false : { opacity: 0, y: 18, scale: 0.98 }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0, scale: 1 }}
+      initial={reduce ? false : { opacity: 0, y: 18 }}
+      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10% 0px -10% 0px", amount: 0.2 }}
       transition={{ type: "spring", stiffness: 220, damping: 28 }}
     >

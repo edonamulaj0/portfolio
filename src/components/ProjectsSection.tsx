@@ -51,7 +51,7 @@ export function ProjectsSection() {
                       {p.headline}
                     </h3>
                     <p className="font-meta mt-2 text-[0.7rem] tracking-[0.16em] text-[#1a1a1a]">
-                      By Daphina · {p.year}
+                      By Edona Mulaj · {p.year}
                     </p>
                     <p className="font-body mt-4 text-[1.05rem] leading-relaxed text-[#1a1a1a]">{p.lede}</p>
                   </motion.button>

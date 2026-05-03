@@ -1,29 +1,28 @@
 import { motion } from "framer-motion";
 
 type Props = {
-  introInk: boolean;
-  scanActive: boolean;
+  ready: boolean;
 };
 
-export function MastheadSection({ introInk, scanActive }: Props) {
-  const edge = introInk ? "border-[#0a0a0a]" : "border-[#d4cfc5]";
-  const bodyTone = introInk ? "text-[#1a1a1a]" : "text-[#d4cfc5]";
-  const displayTone = introInk ? "text-[#0a0a0a]" : "text-[#f5f0e8]";
-  const vRule = introInk ? "bg-[#0a0a0a]" : "bg-[#d4cfc5]";
+export function MastheadSection({ ready }: Props) {
+  const edge = ready ? "border-[#0a0a0a]" : "border-[#d4cfc5]";
+  const bodyTone = ready ? "text-[#1a1a1a]" : "text-[#d4cfc5]";
+  const displayTone = ready ? "text-[#0a0a0a]" : "text-[#f5f0e8]";
+  const vRule = ready ? "bg-[#0a0a0a]" : "bg-[#d4cfc5]";
 
   return (
     <section
       id="masthead"
       aria-labelledby="masthead-title"
-      className={`relative z-[90] border-b pb-12 pt-8 transition-[background-color] duration-500 ease-out ${edge} ${
-        introInk ? "bg-[#f5f0e8]" : "bg-[#0a0a0a]"
+      className={`relative z-[81] border-b pb-12 pt-8 transition-[background-color] duration-500 ease-out ${edge} ${
+        ready ? "bg-[#f5f0e8]" : "bg-[#0a0a0a]"
       }`}
     >
       <div className="mx-auto max-w-[1200px] px-4 lg:px-8">
         <div className={`border-t-4 ${edge}`} />
         <p
           className={`font-meta mt-4 text-center text-[0.7rem] tracking-[0.24em] transition-colors duration-500 sm:text-xs ${
-            introInk ? "text-[#1a1a1a]" : "text-[#d4cfc5]"
+            ready ? "text-[#1a1a1a]" : "text-[#d4cfc5]"
           }`}
         >
           THE CYPHERA CHRONICLE · Est. 2024 · Prishtina, Kosovo
@@ -35,18 +34,18 @@ export function MastheadSection({ introInk, scanActive }: Props) {
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className={`font-masthead text-center text-[clamp(3.5rem,12vw,7.5rem)] leading-[0.92] transition-colors duration-500 ${
-            introInk ? "text-[#0a0a0a]" : "text-[#f5f0e8]"
+          className={`font-masthead text-center text-[clamp(2.75rem,9vw,6rem)] leading-[0.92] transition-colors duration-500 ${
+            ready ? "text-[#0a0a0a]" : "text-[#f5f0e8]"
           }`}
-          style={{ textShadow: introInk ? "none" : "0 1px 0 rgba(0,0,0,0.35)" }}
+          style={{ textShadow: ready ? "none" : "0 1px 0 rgba(0,0,0,0.35)" }}
         >
-          Daphina
+          Edona Mulaj
         </motion.h1>
 
         <div className={`mt-2 border-t ${edge}`} />
         <p
           className={`font-subhead mx-auto mt-3 max-w-2xl text-center text-sm font-bold italic small-caps transition-colors duration-500 sm:text-base ${
-            introInk ? "text-[#1a1a1a]" : "text-[#f5f0e8]"
+            ready ? "text-[#1a1a1a]" : "text-[#f5f0e8]"
           }`}
         >
           Engineer · Founder · Chronicler of useful systems
@@ -69,13 +68,9 @@ export function MastheadSection({ introInk, scanActive }: Props) {
             </p>
           </motion.article>
 
-          <motion.div
+          <div
             aria-hidden
-            className={`hidden w-px justify-self-stretch lg:block ${vRule}`}
-            initial={{ scaleY: 0 }}
-            animate={{ scaleY: scanActive ? 1 : 0 }}
-            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            style={{ transformOrigin: "top" }}
+            className={`hidden w-px justify-self-stretch transition-opacity duration-500 lg:block ${vRule} ${ready ? "opacity-100" : "opacity-0"}`}
           />
 
           <motion.article
@@ -95,13 +90,9 @@ export function MastheadSection({ introInk, scanActive }: Props) {
             </p>
           </motion.article>
 
-          <motion.div
+          <div
             aria-hidden
-            className={`hidden w-px justify-self-stretch lg:block ${vRule}`}
-            initial={{ scaleY: 0 }}
-            animate={{ scaleY: scanActive ? 1 : 0 }}
-            transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            style={{ transformOrigin: "top" }}
+            className={`hidden w-px justify-self-stretch transition-opacity duration-500 lg:block ${vRule} ${ready ? "opacity-100" : "opacity-0"}`}
           />
 
           <motion.aside

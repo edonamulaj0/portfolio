@@ -26,7 +26,7 @@ export const projects: Project[] = [
       "Capacity is finite; saying no preserves quality and timelines.",
     status: "Active engagements · Prishtina & remote",
     datelines: ["PRISHTINA", "KOS.", "React", "TypeScript", "Vite"],
-    href: "https://cyphera.dev",
+    href: "https://cyphera.tech",
   },
   {
     id: "atheneum",

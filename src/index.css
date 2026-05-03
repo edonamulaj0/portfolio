@@ -15,12 +15,12 @@
 :root {
   --z-base: 0;
   --z-content: 1;
-  --z-bookmarks: 40;
-  --z-mobile-toggle: 50;
-  --z-drawer-backdrop: 60;
-  --z-drawer: 70;
+  --z-bookmarks: 92;
+  --z-mobile-toggle: 92;
+  --z-drawer-backdrop: 85;
+  --z-drawer: 88;
   --z-load: 80;
-  --z-skip: 90;
+  --z-skip: 100;
   --z-grain: 9999;
 }
 
