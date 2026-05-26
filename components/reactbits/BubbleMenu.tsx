@@ -1,7 +1,7 @@
 "use client";
 
 import type { CSSProperties, ReactNode } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 
 type MenuItem = {
@@ -104,11 +104,22 @@ export default function BubbleMenu({
     .filter(Boolean)
     .join(' ');
 
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen((open) => {
+      if (open) onMenuClick?.(false);
+      return false;
+    });
+  }, [onMenuClick]);
+
   const handleToggle = () => {
     const nextState = !isMenuOpen;
     if (nextState) setShowOverlay(true);
     setIsMenuOpen(nextState);
     onMenuClick?.(nextState);
+  };
+
+  const handleItemClick = () => {
+    closeMenu();
   };
 
   useEffect(() => {
@@ -182,6 +193,17 @@ export default function BubbleMenu({
     return () => window.removeEventListener('resize', handleResize);
   }, [isMenuOpen, menuItems]);
 
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isMenuOpen, closeMenu]);
+
   return (
     <>
       {/* Workaround for silly Tailwind capabilities */}
@@ -193,7 +215,10 @@ export default function BubbleMenu({
         .bubble-menu-items .pill-list .pill-col:nth-child(4):nth-last-child(2) {
           margin-left: calc(100% / 6);
         }
-        .bubble-menu-items .pill-list .pill-col:nth-child(4):last-child {
+        .bubble-menu-items .pill-list .pill-col:nth-child(5):last-child {
+          margin-left: calc(100% / 3);
+        }
+        .bubble-menu-items .pill-list .pill-col:nth-child(4):last-child:not(:nth-child(5)) {
           margin-left: calc(100% / 3);
         }
         @media (min-width: 900px) {
@@ -357,6 +382,7 @@ export default function BubbleMenu({
                   role="menuitem"
                   href={item.href}
                   aria-label={item.ariaLabel || item.label}
+                  onClick={handleItemClick}
                   className={[
                     'pill-link',
                     'w-full',

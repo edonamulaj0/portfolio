@@ -22,6 +22,27 @@ const navLinks = [
   { label: "contact", href: "/contact", ariaLabel: "Contact", rotation: -5 },
 ] as const;
 
+function StaticNavFallback() {
+  return (
+    <header className="site-header fixed inset-x-0 top-0 z-50">
+      <nav className="site-container flex items-center justify-between py-5">
+        <Link href="/" className="site-logo shrink-0">
+          dona.
+        </Link>
+        <ul className="flex flex-wrap items-center justify-end gap-x-3 gap-y-1 font-mono text-[10px] text-muted sm:text-xs md:gap-4 md:text-sm">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href} className="nav-link">
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
+  );
+}
+
 export function BubbleNavbar() {
   const mounted = useMounted();
   const prefersReducedMotion = useReducedMotion();
@@ -33,24 +54,7 @@ export function BubbleNavbar() {
   }
 
   if (prefersReducedMotion) {
-    return (
-      <header className="site-header fixed inset-x-0 top-0 z-50">
-        <nav className="site-container flex items-center justify-between py-5">
-          <Link href="/" className="site-logo shrink-0">
-            dona.
-          </Link>
-          <ul className="flex flex-wrap items-center justify-end gap-x-3 gap-y-1 font-mono text-[10px] text-muted sm:text-xs md:gap-4 md:text-sm">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="nav-link">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </header>
-    );
+    return <StaticNavFallback />;
   }
 
   return (
