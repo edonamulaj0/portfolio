@@ -1,4 +1,5 @@
 import { GalleryGrid } from "./GalleryGrid";
+import { GalleryShowcase } from "./GalleryShowcase";
 import { FadeIn } from "./FadeIn";
 import { PageIntro } from "./PageIntro";
 import { SeeMoreLink } from "./SeeMoreLink";
@@ -30,17 +31,25 @@ export function Misc({ mode = "preview" }: MiscProps) {
               ))}
             </ul>
           </FadeIn>
+        </SiteContainer>
 
-          <FadeIn delay={0.14}>
-            <div className="mt-14 border-t border-divider pt-10 md:mt-16 md:pt-12">
-              <p className="font-mono text-xs text-muted md:text-sm">gallery</p>
-              <p className="mt-3 max-w-xl text-sm text-muted/80">
-                drawings, paintings, and moments with friends.
-              </p>
-            </div>
-          </FadeIn>
+        <div className="mt-14 md:mt-20" data-scroll-theme="#1f1042">
+          <GalleryShowcase
+            intro={
+              <FadeIn delay={0.14} blur={false}>
+                <div>
+                  <p className="font-mono text-xs text-muted md:text-sm">gallery</p>
+                  <p className="mt-3 max-w-xl text-sm text-muted/80">
+                    drawings, paintings, and moments with friends.
+                  </p>
+                </div>
+              </FadeIn>
+            }
+          />
+        </div>
 
-          <div className="mt-8 md:mt-10">
+        <SiteContainer>
+          <div className="relative z-20 -mt-6 md:-mt-10">
             <GalleryGrid />
           </div>
         </SiteContainer>
@@ -50,23 +59,24 @@ export function Misc({ mode = "preview" }: MiscProps) {
 
   return (
     <section id="misc" className="section-shell scroll-mt-20">
-      <SiteContainer>
-        <FadeIn>
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="font-mono text-sm text-accent md:text-base">(05) misc</p>
-              <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-                art, music, languages, and friends — a small glimpse into life outside work.
-              </p>
-            </div>
-            <SeeMoreLink href="/misc" label="see full gallery" />
-          </div>
-        </FadeIn>
-
-        <div className="mt-10 md:mt-12">
-          <GalleryGrid limit={6} />
-        </div>
-      </SiteContainer>
+      <div data-scroll-theme="#1f1042">
+        <GalleryShowcase
+          limit={8}
+          intro={
+            <FadeIn blur={false}>
+              <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <p className="font-mono text-sm text-accent md:text-base">(05) misc</p>
+                  <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
+                    art, music, languages, and friends — a small glimpse into life outside work.
+                  </p>
+                </div>
+                <SeeMoreLink href="/misc" label="see full gallery" />
+              </div>
+            </FadeIn>
+          }
+        />
+      </div>
     </section>
   );
 }

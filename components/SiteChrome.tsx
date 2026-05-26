@@ -1,5 +1,5 @@
 import { CustomCursor } from "./CustomCursor";
-import { GradientBackground } from "./GradientBackground";
+import { IridescentFluidBackground } from "./IridescentFluidBackground";
 import { Navbar } from "./Navbar";
 import { ScrollProgress } from "./ScrollProgress";
 import { SmoothScroll } from "./SmoothScroll";
@@ -7,11 +7,11 @@ import { SmoothScroll } from "./SmoothScroll";
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   return (
     <SmoothScroll>
-      <GradientBackground />
+      <IridescentFluidBackground />
       <ScrollProgress />
       <CustomCursor />
       <Navbar />
-      {children}
+      <div className="relative z-[1]">{children}</div>
     </SmoothScroll>
   );
 }

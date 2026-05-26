@@ -21,15 +21,8 @@ export function About({ mode = "preview" }: AboutProps) {
             description="Software developer, founder, and student — based in Prishtina, Kosovo."
           />
 
-          <div className="mt-14 grid gap-12 md:mt-16 md:grid-cols-[minmax(0,320px)_1fr] md:gap-16 lg:gap-24">
-            <FadeIn delay={0.08}>
-              <Portrait
-                className="aspect-[3/4] w-full max-w-sm"
-                sizes="(max-width: 768px) 60vw, 320px"
-              />
-            </FadeIn>
-
-            <div className="space-y-8 md:space-y-10">
+          <div className="mt-14 grid gap-10 md:mt-16 md:grid-cols-[minmax(0,1fr)_minmax(0,300px)] md:items-end md:gap-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)] lg:gap-24">
+            <div className="order-2 space-y-8 md:order-1 md:space-y-10">
               {[...aboutParagraphs, ...aboutExtended].map((paragraph, index) => (
                 <FadeIn key={index} delay={0.1 + index * 0.06}>
                   <p
@@ -48,6 +41,14 @@ export function About({ mode = "preview" }: AboutProps) {
                 </p>
               </FadeIn>
             </div>
+
+            <FadeIn delay={0.08} className="order-1 shrink-0 md:order-2 md:justify-self-end">
+              <Portrait
+                className="aspect-[4/5] w-full max-w-[260px] sm:max-w-[280px] md:max-w-[320px]"
+                sizes="(max-width: 768px) 65vw, 320px"
+                priority
+              />
+            </FadeIn>
           </div>
 
           <div id="background" className="mt-20 scroll-mt-28 border-t border-divider pt-16 md:mt-28 md:pt-20">
@@ -85,15 +86,12 @@ export function About({ mode = "preview" }: AboutProps) {
   return (
     <section id="about" className="section-shell scroll-mt-20">
       <SiteContainer className="flex min-h-[calc(100dvh-10rem)] flex-col justify-center">
-        <div className="grid gap-10 md:grid-cols-[minmax(0,0.35fr)_minmax(0,1fr)] md:gap-16 lg:gap-24">
-          <FadeIn>
-            <div className="space-y-8">
-              <p className="font-mono text-sm text-accent md:text-base">(01) about</p>
-              <Portrait className="aspect-[4/5] w-full max-w-[220px] md:max-w-none" />
-            </div>
-          </FadeIn>
+        <FadeIn blur={false}>
+          <p className="font-mono text-sm text-accent md:text-base">(01) about</p>
+        </FadeIn>
 
-          <div className="space-y-8">
+        <div className="mt-8 flex flex-col gap-10 md:mt-10 md:flex-row md:items-end md:justify-between md:gap-16 lg:gap-24">
+          <div className="min-w-0 flex-1 space-y-8">
             <FadeIn delay={0.08}>
               <p className="max-w-2xl text-lg leading-relaxed text-text md:text-xl">
                 {aboutParagraphs[0]}
@@ -104,6 +102,14 @@ export function About({ mode = "preview" }: AboutProps) {
               <SeeMoreLink href="/about" label="read full about" />
             </FadeIn>
           </div>
+
+          <FadeIn delay={0.1} className="shrink-0 md:ml-6 md:pl-4 lg:ml-10">
+            <Portrait
+              className="aspect-[4/5] w-full max-w-[220px] sm:max-w-[260px] md:max-w-[300px]"
+              sizes="(max-width: 768px) 70vw, 300px"
+              priority
+            />
+          </FadeIn>
         </div>
       </SiteContainer>
     </section>

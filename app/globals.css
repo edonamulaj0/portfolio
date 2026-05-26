@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #07050e;
+  --color-bg: #050507;
   --color-text: #ebe7f0;
   --color-muted: #8b8498;
   --color-accent: #c4b5fd;
@@ -16,6 +16,8 @@
 
 html {
   scroll-behavior: auto;
+  overflow-x: hidden;
+  background-color: #050507;
 }
 
 html.lenis,
@@ -36,11 +38,12 @@ html.lenis body {
 }
 
 body {
-  background-color: var(--color-bg);
+  background-color: transparent;
   color: var(--color-text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body.cursor-none,
@@ -346,6 +349,60 @@ body.cursor-none * {
     rgba(49, 46, 129, 0.2) 48%,
     transparent 70%
   );
+}
+
+/* Kozowood-style gallery showcase */
+.gallery-showcase {
+  background: radial-gradient(
+    ellipse 80% 50% at 50% 0%,
+    rgba(76, 29, 149, 0.12) 0%,
+    transparent 55%
+  );
+}
+
+.gallery-showcase__intro {
+  transform: translateZ(0);
+}
+
+.gallery-marquee {
+  isolation: isolate;
+}
+
+.gallery-marquee__stage {
+  width: 100%;
+}
+
+.gallery-marquee__perspective {
+  transform-style: preserve-3d;
+}
+
+.gallery-marquee__track {
+  overflow: hidden;
+  width: 100%;
+}
+
+.gallery-marquee__row {
+  flex-wrap: nowrap;
+  backface-visibility: hidden;
+}
+
+.gallery-marquee--static .gallery-marquee__track {
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+.gallery-card {
+  transform-style: preserve-3d;
+}
+
+.gallery-card__frame {
+  transform-origin: center center;
+  backface-visibility: hidden;
 }
 
 .gallery-mosaic {

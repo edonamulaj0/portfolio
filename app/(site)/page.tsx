@@ -9,13 +9,27 @@ import { Work } from "@/components/Work";
 export default function Home() {
   return (
     <main>
-      <Hero />
-      <About />
-      <Work />
-      <Background />
-      <Articles />
-      <Misc />
-      <Contact />
+      <div data-scroll-theme="#07050e">
+        <Hero />
+      </div>
+      <div data-scroll-theme="#0a0614">
+        <About />
+      </div>
+      <div data-scroll-theme="#0e0820">
+        <Work />
+      </div>
+      <div data-scroll-theme="#120a2a">
+        <Background />
+      </div>
+      <div data-scroll-theme="#160e34">
+        <Articles />
+      </div>
+      <div data-scroll-theme="#1a0e3a">
+        <Misc />
+      </div>
+      <div data-scroll-theme="#0d0818">
+        <Contact />
+      </div>
     </main>
   );
 }

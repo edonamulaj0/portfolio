@@ -13,8 +13,7 @@ export function Portrait({
 }: PortraitProps) {
   return (
     <ParallaxMedia
-      className={`relative ${className}`}
-      frameClassName="absolute inset-0"
+      className={className}
       imageProps={{
         src: "/dona.png",
         alt: "Edona Mulaj",

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, useSpring } from "framer-motion";
+import { useMounted } from "@/lib/useMounted";
 import { type ReactNode, useRef } from "react";
 
 type MagneticProps = {
@@ -15,12 +16,13 @@ export function Magnetic({
   strength = 0.32,
 }: MagneticProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const mounted = useMounted();
   const prefersReducedMotion = useReducedMotion();
 
   const x = useSpring(0, { stiffness: 280, damping: 22, mass: 0.3 });
   const y = useSpring(0, { stiffness: 280, damping: 22, mass: 0.3 });
 
-  if (prefersReducedMotion) {
+  if (!mounted || prefersReducedMotion) {
     return <div className={className}>{children}</div>;
   }
 

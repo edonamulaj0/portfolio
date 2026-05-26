@@ -2,17 +2,20 @@
 
 import { ReactLenis } from "lenis/react";
 import { useReducedMotion } from "framer-motion";
+import { useMounted } from "@/lib/useMounted";
 import { type ReactNode } from "react";
+import { GsapLenisBridge } from "./GsapLenisBridge";
 
 type SmoothScrollProps = {
   children: ReactNode;
 };
 
 export function SmoothScroll({ children }: SmoothScrollProps) {
+  const mounted = useMounted();
   const prefersReducedMotion = useReducedMotion();
 
-  if (prefersReducedMotion) {
-    return children;
+  if (!mounted || prefersReducedMotion) {
+    return <>{children}</>;
   }
 
   return (
@@ -28,6 +31,7 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
         infinite: false,
       }}
     >
+      <GsapLenisBridge />
       {children}
     </ReactLenis>
   );
