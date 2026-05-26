@@ -86,7 +86,7 @@ export function About({ mode = "preview", theme = "dark" }: AboutProps) {
   }
 
   return (
-    <HomeSection id="about" theme={theme}>
+    <HomeSection id="about" theme={theme} curveDivider={theme === "dark"}>
       <SiteContainer>
         <div className="section-layout">
           <aside className="section-layout__aside">

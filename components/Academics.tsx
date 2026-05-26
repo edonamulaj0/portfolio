@@ -11,7 +11,7 @@ type AcademicsProps = {
 
 export function Academics({ theme = "dark" }: AcademicsProps) {
   return (
-    <HomeSection id="academics" theme={theme}>
+    <HomeSection id="academics" theme={theme} curveDivider={theme === "dark"}>
       <SiteContainer>
         <div className="section-layout section-layout--stacked">
           <SectionTag index="03" label="academics" />

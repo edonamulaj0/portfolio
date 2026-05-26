@@ -35,20 +35,44 @@ export function Work({ mode = "preview", theme = "dark" }: WorkProps) {
               <StaggerItem
                 as="li"
                 key={project.name}
-                className="premium-row border-b border-divider py-8 md:py-10"
+                className="border-b border-divider py-8 md:py-10"
               >
-                <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between">
-                  <h2 className="project-name font-normal">{project.name}</h2>
-                  <span className="shrink-0 font-mono text-xs text-muted md:text-sm">
-                    {project.period}
-                  </span>
-                </div>
-                <p className="mt-5 max-w-3xl text-sm leading-relaxed text-muted md:text-base">
-                  {project.description}
-                </p>
-                {project.stack ? (
-                  <p className="mt-4 font-mono text-xs text-muted">{project.stack}</p>
-                ) : null}
+                {project.link ? (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-row--link block"
+                  >
+                    <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between">
+                      <h2 className="project-name font-normal">{project.name}</h2>
+                      <span className="shrink-0 font-mono text-xs text-muted md:text-sm">
+                        {project.period}
+                      </span>
+                    </div>
+                    <p className="mt-5 max-w-3xl text-sm leading-relaxed text-muted md:text-base">
+                      {project.description}
+                    </p>
+                    {project.stack ? (
+                      <p className="mt-4 font-mono text-xs text-muted">{project.stack}</p>
+                    ) : null}
+                  </a>
+                ) : (
+                  <>
+                    <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between">
+                      <h2 className="project-name font-normal">{project.name}</h2>
+                      <span className="shrink-0 font-mono text-xs text-muted md:text-sm">
+                        {project.period}
+                      </span>
+                    </div>
+                    <p className="mt-5 max-w-3xl text-sm leading-relaxed text-muted md:text-base">
+                      {project.description}
+                    </p>
+                    {project.stack ? (
+                      <p className="mt-4 font-mono text-xs text-muted">{project.stack}</p>
+                    ) : null}
+                  </>
+                )}
               </StaggerItem>
             ))}
           </StaggerGroup>

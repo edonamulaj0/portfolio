@@ -19,8 +19,8 @@ export const projects: Project[] = [
       "Full-stack study platform featuring a custom Pomodoro tracker, interactive scheduler, Kanban organization layout, and an AI-powered Study Vault driving automated material summaries and quiz generation. Hosted on Cloudflare native serverless infrastructure.",
     stack:
       "Remix · TypeScript · Cloudflare Workers · Workers AI · Tailwind CSS · Cloudflare D1/R2/KV",
-    link: "https://atheneum.app",
-    linkLabel: "atheneum.app",
+    link: "https://www.cyphera.tech/projects/atheneum",
+    linkLabel: "cyphera.tech/projects/atheneum",
   },
   {
     name: "Literas Learning Management System",
