@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FadeIn } from "./FadeIn";
-import { RevealText } from "./RevealText";
+import { PressureHeading } from "./PressureHeading";
 
 type PageIntroProps = {
   label: string;
@@ -22,12 +22,11 @@ export function PageIntro({ label, title, description }: PageIntroProps) {
         <p className="mt-10 font-mono text-sm text-accent md:text-base">{label}</p>
       </FadeIn>
 
-      <RevealText
+      <PressureHeading
         as="h1"
         text={title}
+        variant="page"
         className="contact-headline mt-6 font-normal tracking-tight"
-        delay={0.08}
-        gradient
       />
 
       {description ? (

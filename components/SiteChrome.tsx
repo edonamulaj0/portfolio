@@ -1,16 +1,16 @@
+import { BubbleNavbar } from "./BubbleNavbar";
 import { CustomCursor } from "./CustomCursor";
-import { IridescentFluidBackground } from "./IridescentFluidBackground";
-import { Navbar } from "./Navbar";
+import { LiquidEtherBackground } from "./LiquidEtherBackground";
 import { ScrollProgress } from "./ScrollProgress";
 import { SmoothScroll } from "./SmoothScroll";
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   return (
     <SmoothScroll>
-      <IridescentFluidBackground />
+      <LiquidEtherBackground />
       <ScrollProgress />
       <CustomCursor />
-      <Navbar />
+      <BubbleNavbar />
       <div className="relative z-[1]">{children}</div>
     </SmoothScroll>
   );

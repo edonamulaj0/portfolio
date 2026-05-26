@@ -1,48 +1,54 @@
 "use client";
 
 import { easePremium } from "@/lib/motion";
+import { useMounted } from "@/lib/useMounted";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FadeIn } from "./FadeIn";
-import { RevealText } from "./RevealText";
+import { PressureHeading } from "./PressureHeading";
 import { SiteContainer } from "./SiteContainer";
 
-function HeroBackground() {
-  const [mounted, setMounted] = useState(false);
-  const prefersReducedMotion = useReducedMotion();
+const heroImage = (
+  <Image
+    src="/donahero.jpg"
+    alt=""
+    fill
+    priority
+    sizes="100vw"
+    className="object-cover object-center transition-opacity duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]"
+    aria-hidden="true"
+  />
+);
+
+function HeroBackgroundStatic() {
+  return <div className="absolute inset-0">{heroImage}</div>;
+}
+
+function HeroBackgroundMotion() {
   const { scrollY } = useScroll();
   const imageY = useTransform(scrollY, [0, 800], [0, 140]);
   const imageScale = useTransform(scrollY, [0, 800], [1, 1.1]);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const image = (
-    <Image
-      src="/donahero.jpg"
-      alt=""
-      fill
-      priority
-      sizes="100vw"
-      className="object-cover object-center transition-opacity duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]"
-      aria-hidden="true"
-    />
-  );
-
-  if (!mounted || prefersReducedMotion) {
-    return <div className="absolute inset-0">{image}</div>;
-  }
 
   return (
     <motion.div
       className="absolute inset-[-4%] will-change-transform"
       style={{ y: imageY, scale: imageScale }}
     >
-      {image}
+      {heroImage}
     </motion.div>
   );
+}
+
+function HeroBackground() {
+  const mounted = useMounted();
+  const prefersReducedMotion = useReducedMotion();
+
+  if (!mounted || prefersReducedMotion) {
+    return <HeroBackgroundStatic />;
+  }
+
+  return <HeroBackgroundMotion />;
 }
 
 export function Hero() {
@@ -85,12 +91,11 @@ export function Hero() {
 
       <SiteContainer className="relative z-10 flex flex-col justify-end">
         <div className="max-w-5xl">
-          <RevealText
+          <PressureHeading
             as="h1"
             text="dona."
-            className="hero-headline font-normal tracking-tight"
-            immediate
-            gradient
+            variant="hero"
+            className="hero-headline max-w-5xl font-normal tracking-tight"
           />
           <FadeIn immediate delay={0.2} blur={false}>
             <p className="mt-6 max-w-xl font-mono text-xs text-muted md:text-sm">

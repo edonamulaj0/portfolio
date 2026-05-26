@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useMounted } from "@/lib/useMounted";
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { galleryItems } from "@/lib/gallery";
@@ -43,19 +38,16 @@ function StaticMarquee({
   );
 }
 
-export function GalleryMarquee({ limit }: GalleryMarqueeProps) {
+function GalleryMarqueeAnimated({
+  rowOne,
+  rowTwo,
+}: {
+  rowOne: ReturnType<typeof buildMarqueeRows>["rowOne"];
+  rowTwo: ReturnType<typeof buildMarqueeRows>["rowTwo"];
+}) {
   const sectionRef = useRef<HTMLElement>(null);
   const row1Ref = useRef<HTMLDivElement>(null);
-  const mounted = useMounted();
-  const prefersReducedMotion = useReducedMotion();
   const [travel, setTravel] = useState(720);
-
-  const { rowOne, rowTwo } = useMemo(
-    () => buildMarqueeRows(galleryItems, limit),
-    [limit],
-  );
-
-  const enableMotion = mounted && !prefersReducedMotion;
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -66,8 +58,6 @@ export function GalleryMarquee({ limit }: GalleryMarqueeProps) {
   const row2X = useTransform(scrollYProgress, [0, 1], [-travel * 0.12, travel]);
 
   useLayoutEffect(() => {
-    if (!enableMotion) return;
-
     const measure = () => {
       const row = row1Ref.current;
       if (!row) return;
@@ -78,11 +68,7 @@ export function GalleryMarquee({ limit }: GalleryMarqueeProps) {
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
-  }, [enableMotion, rowOne, rowTwo]);
-
-  if (!mounted || prefersReducedMotion) {
-    return <StaticMarquee rowOne={rowOne} rowTwo={rowTwo} />;
-  }
+  }, [rowOne, rowTwo]);
 
   return (
     <section
@@ -129,4 +115,20 @@ export function GalleryMarquee({ limit }: GalleryMarqueeProps) {
       </div>
     </section>
   );
+}
+
+export function GalleryMarquee({ limit }: GalleryMarqueeProps) {
+  const mounted = useMounted();
+  const prefersReducedMotion = useReducedMotion();
+
+  const { rowOne, rowTwo } = useMemo(
+    () => buildMarqueeRows(galleryItems, limit),
+    [limit],
+  );
+
+  if (!mounted || prefersReducedMotion) {
+    return <StaticMarquee rowOne={rowOne} rowTwo={rowTwo} />;
+  }
+
+  return <GalleryMarqueeAnimated rowOne={rowOne} rowTwo={rowTwo} />;
 }

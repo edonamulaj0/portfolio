@@ -3,6 +3,7 @@ import { Articles } from "@/components/Articles";
 import { Background } from "@/components/Background";
 import { Contact } from "@/components/Contact";
 import { Hero } from "@/components/Hero";
+import { HomeCircularGallery } from "@/components/HomeCircularGallery";
 import { Misc } from "@/components/Misc";
 import { Work } from "@/components/Work";
 
@@ -11,6 +12,7 @@ export default function Home() {
     <main>
       <div data-scroll-theme="#07050e">
         <Hero />
+        <HomeCircularGallery />
       </div>
       <div data-scroll-theme="#0a0614">
         <About />

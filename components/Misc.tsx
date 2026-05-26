@@ -1,5 +1,4 @@
-import { GalleryGrid } from "./GalleryGrid";
-import { GalleryShowcase } from "./GalleryShowcase";
+import { GalleryMasonry } from "./GalleryMasonry";
 import { FadeIn } from "./FadeIn";
 import { PageIntro } from "./PageIntro";
 import { SeeMoreLink } from "./SeeMoreLink";
@@ -34,25 +33,21 @@ export function Misc({ mode = "preview" }: MiscProps) {
         </SiteContainer>
 
         <div className="mt-14 md:mt-20" data-scroll-theme="#1f1042">
-          <GalleryShowcase
-            intro={
-              <FadeIn delay={0.14} blur={false}>
-                <div>
-                  <p className="font-mono text-xs text-muted md:text-sm">gallery</p>
-                  <p className="mt-3 max-w-xl text-sm text-muted/80">
-                    drawings, paintings, and moments with friends.
-                  </p>
-                </div>
-              </FadeIn>
-            }
-          />
-        </div>
+          <SiteContainer>
+            <FadeIn delay={0.14} blur={false}>
+              <div>
+                <p className="font-mono text-xs text-muted md:text-sm">gallery</p>
+                <p className="mt-3 max-w-xl text-sm text-muted/80">
+                  drawings, paintings, and moments with friends.
+                </p>
+              </div>
+            </FadeIn>
+          </SiteContainer>
 
-        <SiteContainer>
-          <div className="relative z-20 -mt-6 md:-mt-10">
-            <GalleryGrid />
+          <div className="relative z-20 mt-10 md:mt-14">
+            <GalleryMasonry />
           </div>
-        </SiteContainer>
+        </div>
       </section>
     );
   }
@@ -60,22 +55,23 @@ export function Misc({ mode = "preview" }: MiscProps) {
   return (
     <section id="misc" className="section-shell scroll-mt-20">
       <div data-scroll-theme="#1f1042">
-        <GalleryShowcase
-          limit={8}
-          intro={
-            <FadeIn blur={false}>
-              <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-                <div>
-                  <p className="font-mono text-sm text-accent md:text-base">(05) misc</p>
-                  <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-                    art, music, languages, and friends — a small glimpse into life outside work.
-                  </p>
-                </div>
-                <SeeMoreLink href="/misc" label="see full gallery" />
+        <SiteContainer>
+          <FadeIn blur={false}>
+            <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="font-mono text-sm text-accent md:text-base">(05) misc</p>
+                <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
+                  art, music, languages, and friends — a small glimpse into life outside work.
+                </p>
               </div>
-            </FadeIn>
-          }
-        />
+              <SeeMoreLink href="/misc" label="see full gallery" />
+            </div>
+          </FadeIn>
+        </SiteContainer>
+
+        <div className="relative z-20 mt-12 md:mt-16">
+          <GalleryMasonry limit={8} />
+        </div>
       </div>
     </section>
   );
