@@ -7,6 +7,7 @@ import { PageIntro } from "./PageIntro";
 import { SectionTag } from "./SectionTag";
 import { SiteContainer } from "./SiteContainer";
 import { skills, timeline } from "@/lib/background";
+import { SkillBars } from "./SkillBars";
 
 type AboutProps = {
   mode?: "preview" | "full";
@@ -75,14 +76,7 @@ export function About({ mode = "preview", theme = "dark" }: AboutProps) {
             </ul>
 
             <FadeIn delay={0.2}>
-              <dl className="mt-16 grid gap-6 border-t border-divider pt-10 font-mono text-xs md:mt-20 md:grid-cols-2 md:gap-x-16 md:gap-y-5 md:pt-12 md:text-sm">
-                {skills.map((group) => (
-                  <div key={group.label} className="grid gap-2 md:grid-cols-[8.5rem_1fr] md:gap-6">
-                    <dt className="text-muted">{group.label}</dt>
-                    <dd className="text-text">{group.items}</dd>
-                  </div>
-                ))}
-              </dl>
+              <SkillBars groups={skills} />
             </FadeIn>
           </SiteContainer>
         </HomeSection>

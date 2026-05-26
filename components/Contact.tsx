@@ -1,6 +1,7 @@
 import { contactExtended, contactIntro, contactLinks } from "@/lib/contact";
 import { CircleArrowLink } from "./CircleArrowLink";
 import { FadeIn, StaggerGroup, StaggerItem } from "./FadeIn";
+import { MagneticContactLink } from "./MagneticContactLink";
 import { HomeSection, type HomeSectionTheme } from "./HomeSection";
 import { PageIntro } from "./PageIntro";
 import { SectionTag } from "./SectionTag";
@@ -33,15 +34,7 @@ export function Contact({ mode = "preview", theme = "dark" }: ContactProps) {
             >
               {contactLinks.map((link) => (
                 <StaggerItem as="li" key={link.href}>
-                  <a
-                    href={link.href}
-                    className="link-slide inline-flex items-center gap-4 font-mono text-base text-text md:text-xl"
-                    target={link.external ? "_blank" : undefined}
-                    rel={link.external ? "noopener noreferrer" : undefined}
-                  >
-                    <span>{link.label}</span>
-                    <span className="text-accent">→</span>
-                  </a>
+                  <MagneticContactLink link={link} />
                 </StaggerItem>
               ))}
             </StaggerGroup>

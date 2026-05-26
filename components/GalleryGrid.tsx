@@ -1,5 +1,9 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
 import { galleryItems } from "@/lib/gallery";
+import { GalleryImage } from "./GalleryImage";
+import { Lightbox } from "./Lightbox";
 
 type GalleryGridProps = {
   limit?: number;
@@ -8,22 +12,28 @@ type GalleryGridProps = {
 
 export function GalleryGrid({ limit, className = "" }: GalleryGridProps) {
   const items = limit ? galleryItems.slice(0, limit) : galleryItems;
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   return (
-    <ul className={`gallery-grid ${className}`.trim()}>
-      {items.map((item) => (
-        <li key={item.src} className="gallery-grid__item">
-          <div className="gallery-grid__frame image-frame">
-            <Image
-              src={item.src}
-              alt={item.alt}
-              fill
-              sizes="(max-width: 639px) 100vw, 33vw"
-              className="object-cover"
+    <>
+      <ul className={`gallery-grid ${className}`.trim()}>
+        {items.map((item, index) => (
+          <li key={item.src} className="gallery-grid__item">
+            <GalleryImage
+              item={item}
+              layoutId={`gallery-${item.src}`}
+              onOpen={() => setLightboxIndex(index)}
             />
-          </div>
-        </li>
-      ))}
-    </ul>
+          </li>
+        ))}
+      </ul>
+
+      <Lightbox
+        items={items}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onNavigate={setLightboxIndex}
+      />
+    </>
   );
 }

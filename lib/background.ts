@@ -6,6 +6,7 @@ export type TimelineItem = {
 export type SkillGroup = {
   label: string;
   items: string;
+  level: number;
 };
 
 export const timeline: TimelineItem[] = [
@@ -25,9 +26,13 @@ export const timeline: TimelineItem[] = [
 ];
 
 export const skills: SkillGroup[] = [
-  { label: "Languages", items: "TypeScript · Python · JavaScript · SQL" },
-  { label: "Frontend", items: "Next.js · Remix · React · Tailwind CSS" },
-  { label: "Backend", items: "Cloudflare Workers · Node.js · Prisma" },
-  { label: "Infrastructure", items: "Cloudflare D1 · R2 · KV · Pages · Workers AI" },
-  { label: "Security", items: "Network security · Pen testing · Red teaming" },
+  { label: "Languages", items: "TypeScript · Python · JavaScript · SQL", level: 88 },
+  { label: "Frontend", items: "Next.js · Remix · React · Tailwind CSS", level: 92 },
+  { label: "Backend", items: "Cloudflare Workers · Node.js · Prisma", level: 85 },
+  {
+    label: "Infrastructure",
+    items: "Cloudflare D1 · R2 · KV · Pages · Workers AI",
+    level: 80,
+  },
+  { label: "Security", items: "Network security · Pen testing · Red teaming", level: 72 },
 ];

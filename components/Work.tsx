@@ -1,33 +1,11 @@
-import { projects, type Project } from "@/lib/projects";
+import { projects } from "@/lib/projects";
 import { CircleArrowLink } from "./CircleArrowLink";
 import { FadeIn, StaggerGroup, StaggerItem } from "./FadeIn";
 import { HomeSection, type HomeSectionTheme } from "./HomeSection";
-import { IridescentThumb } from "./IridescentThumb";
 import { PageIntro } from "./PageIntro";
 import { SectionTag } from "./SectionTag";
 import { SiteContainer } from "./SiteContainer";
-
-function ProjectLink({ project }: { project: Project }) {
-  if (project.link) {
-    return (
-      <a
-        href={project.link}
-        className="project-row__arrow"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Visit ${project.name}`}
-      >
-        →
-      </a>
-    );
-  }
-
-  return (
-    <span className="project-row__arrow project-row__arrow--muted" aria-hidden="true">
-      →
-    </span>
-  );
-}
+import { WorkPreviewRow } from "./WorkPreviewRow";
 
 type WorkProps = {
   mode?: "preview" | "full";
@@ -91,23 +69,12 @@ export function Work({ mode = "preview", theme = "dark" }: WorkProps) {
 
           <ul className="project-list mt-10 md:mt-14">
             {visibleProjects.map((project, index) => (
-              <FadeIn key={project.name} delay={index * 0.06} blur={false}>
-                <li className="project-row">
-                  <div className="project-row__main">
-                    <div className="project-row__heading">
-                      <h3 className="project-row__title">{project.name}</h3>
-                      <span className="project-row__category">{project.category}</span>
-                    </div>
-                    <p className="project-row__description">{project.description}</p>
-                  </div>
-
-                  <div className="project-row__meta">
-                    <span className="project-row__year">{project.year}</span>
-                    <IridescentThumb className="project-row__thumb" variant={index} />
-                    <ProjectLink project={project} />
-                  </div>
-                </li>
-              </FadeIn>
+              <WorkPreviewRow
+                key={project.name}
+                project={project}
+                variant={index}
+                delay={index * 0.06}
+              />
             ))}
           </ul>
         </div>
