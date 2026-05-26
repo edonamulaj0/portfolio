@@ -126,12 +126,6 @@ export function Hero() {
 
       <SiteContainer className="relative z-10 flex flex-col justify-end">
         <div className="max-w-5xl">
-          <p className="hero-eyebrow mb-4 font-mono text-xs text-muted md:text-sm">
-            <span className="hero-eyebrow__star" aria-hidden="true">
-              ✦
-            </span>
-            {NAME}
-          </p>
           <div className="relative inline-block">
             <h1 className="hero-headline relative z-[1] max-w-5xl font-normal tracking-tight">
               {HEADLINE.split("").map((char, i) => (
@@ -149,6 +143,13 @@ export function Hero() {
             </h1>
             <div className="hero-headline-glow" aria-hidden="true" />
           </div>
+
+          <p className="hero-eyebrow mt-3 font-mono text-xs text-muted md:mt-4 md:text-sm">
+            <span className="hero-eyebrow__star" aria-hidden="true">
+              ✦
+            </span>
+            {NAME}
+          </p>
 
           <p className="mt-6 max-w-xl font-mono text-xs text-muted md:text-sm">
             <span className="sr-only">{SUBTITLE}</span>

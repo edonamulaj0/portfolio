@@ -93,24 +93,28 @@ export function About({ mode = "preview", theme = "dark" }: AboutProps) {
             <SectionTag index="01" label="about" />
           </aside>
 
-          <div className="section-layout__content flex flex-col gap-10">
-            <FadeIn delay={0.06} blur={false} className="shrink-0">
-              <Portrait
-                className="aspect-[4/5] w-full max-w-[220px] sm:max-w-[260px] md:mx-0 md:ml-auto md:max-w-[300px]"
-                sizes="(max-width: 768px) 70vw, 300px"
-                priority
-              />
-            </FadeIn>
+          <div className="section-layout__content">
+            <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between md:gap-12 lg:gap-16">
+              <div className="order-2 flex min-w-0 flex-1 flex-col gap-8 md:order-1 md:max-w-2xl">
+                <FadeIn blur={false}>
+                  <p className="text-lg leading-relaxed md:text-xl">
+                    {aboutParagraphs[0]}
+                  </p>
+                </FadeIn>
 
-            <FadeIn blur={false}>
-              <p className="max-w-2xl text-lg leading-relaxed md:text-xl">
-                {aboutParagraphs[0]}
-              </p>
-            </FadeIn>
+                <SectionFooter className="!mt-0 !border-t-0 !pt-0">
+                  <CircleArrowLink href="/about" label="more about me" />
+                </SectionFooter>
+              </div>
 
-            <SectionFooter className="!mt-0 !border-t-0 !pt-0 md:!mt-2">
-              <CircleArrowLink href="/about" label="more about me" />
-            </SectionFooter>
+              <FadeIn delay={0.06} blur={false} className="order-1 shrink-0 md:order-2">
+                <Portrait
+                  className="aspect-[4/5] w-full max-w-[220px] sm:max-w-[260px] md:max-w-[300px]"
+                  sizes="(max-width: 768px) 70vw, 300px"
+                  priority
+                />
+              </FadeIn>
+            </div>
           </div>
         </div>
       </SiteContainer>
