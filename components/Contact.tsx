@@ -1,7 +1,5 @@
-import { contactExtended, contactIntro } from "@/lib/contact";
-import { FadeIn } from "./FadeIn";
-import { ContactFlowingMenu } from "./ContactFlowingMenu";
-import { PressureHeading } from "./PressureHeading";
+import { contactExtended, contactIntro, contactLinks } from "@/lib/contact";
+import { FadeIn, StaggerGroup, StaggerItem } from "./FadeIn";
 import { PageIntro } from "./PageIntro";
 import { SeeMoreLink } from "./SeeMoreLink";
 import { SiteContainer } from "./SiteContainer";
@@ -24,9 +22,25 @@ export function Contact({ mode = "preview" }: ContactProps) {
               </p>
             </FadeIn>
 
-            <FadeIn delay={0.18}>
-              <ContactFlowingMenu className="mt-12 md:mt-16" />
-            </FadeIn>
+            <StaggerGroup
+              as="ul"
+              className="mt-12 list-none space-y-5 p-0 md:mt-16 md:space-y-6"
+              stagger={0.06}
+            >
+              {contactLinks.map((link) => (
+                <StaggerItem as="li" key={link.href}>
+                  <a
+                    href={link.href}
+                    className="link-slide inline-flex items-center gap-4 font-mono text-base text-text md:text-xl"
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
+                  >
+                    <span>{link.label}</span>
+                    <span className="text-accent">→</span>
+                  </a>
+                </StaggerItem>
+              ))}
+            </StaggerGroup>
           </div>
 
           <FadeIn delay={0.28}>
@@ -41,17 +55,14 @@ export function Contact({ mode = "preview" }: ContactProps) {
 
   return (
     <section id="contact" className="section-shell scroll-mt-20">
-      <SiteContainer>
+      <SiteContainer className="flex min-h-[50dvh] flex-col justify-center">
         <FadeIn blur={false}>
           <p className="font-mono text-sm text-accent md:text-base">(06) contact</p>
         </FadeIn>
 
-        <PressureHeading
-          as="h2"
-          text="let's talk."
-          variant="page"
-          className="contact-headline mt-10 font-normal tracking-tight md:mt-12"
-        />
+        <h2 className="contact-headline mt-10 font-normal tracking-tight md:mt-12">
+          let&apos;s talk.
+        </h2>
 
         <FadeIn delay={0.16}>
           <p className="mt-8 max-w-xl text-base leading-relaxed text-muted md:mt-10 md:text-lg">
@@ -59,12 +70,8 @@ export function Contact({ mode = "preview" }: ContactProps) {
           </p>
         </FadeIn>
 
-        <FadeIn delay={0.22}>
-          <ContactFlowingMenu className="mt-10 md:mt-12" />
-        </FadeIn>
-
-        <FadeIn delay={0.3}>
-          <div className="mt-8">
+        <FadeIn delay={0.24}>
+          <div className="mt-10">
             <SeeMoreLink href="/contact" label="get in touch" />
           </div>
         </FadeIn>

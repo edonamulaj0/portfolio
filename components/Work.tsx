@@ -1,6 +1,5 @@
 import { projects, type Project } from "@/lib/projects";
 import { FadeIn, StaggerGroup, StaggerItem } from "./FadeIn";
-import { Magnetic } from "./Magnetic";
 import { PageIntro } from "./PageIntro";
 import { SeeMoreLink } from "./SeeMoreLink";
 import { SiteContainer } from "./SiteContainer";
@@ -8,17 +7,15 @@ import { SiteContainer } from "./SiteContainer";
 function ProjectLink({ project }: { project: Project }) {
   if (project.link) {
     return (
-      <Magnetic strength={0.2} className="inline-block">
-        <a
-          href={project.link}
-          className="link-slide inline-flex items-center gap-2 font-mono text-xs text-accent md:text-sm"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span>→</span>
-          <span>{project.linkLabel}</span>
-        </a>
-      </Magnetic>
+      <a
+        href={project.link}
+        className="link-slide inline-flex items-center gap-2 font-mono text-xs text-accent md:text-sm"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>→</span>
+        <span>{project.linkLabel}</span>
+      </a>
     );
   }
 

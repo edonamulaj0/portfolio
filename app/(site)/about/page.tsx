@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main>
+    <main data-ether-theme="about">
       <About mode="full" />
     </main>
   );

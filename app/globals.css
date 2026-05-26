@@ -1,54 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #050507;
-  --color-text: #ebe7f0;
-  --color-muted: #8b8498;
-  --color-accent: #c4b5fd;
-  --color-purple: #a78bfa;
-  --color-purple-neon: #c084fc;
-  --color-violet-deep: #6d28d9;
-  --color-divider: #2a2438;
+  --color-bg: #000000;
+  --color-text: #f4f2ef;
+  --color-muted: #9a9590;
+  --color-accent: #ddd6fe;
+  --color-purple: #e9d5ff;
+  --color-purple-neon: #bae6fd;
+  --color-violet-deep: #fbcfe8;
+  --color-divider: #1a1a1a;
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --ease-premium: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
   overflow-x: hidden;
-  background-color: #050507;
-}
-
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
+  background-color: #000000;
 }
 
 body {
-  background-color: transparent;
+  background-color: #000000;
   color: var(--color-text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-}
-
-body.cursor-none,
-body.cursor-none * {
-  cursor: none;
 }
 
 ::selection {

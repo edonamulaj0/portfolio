@@ -14,7 +14,7 @@ export default function ArticlesPage() {
   const articles = getAllArticles();
 
   return (
-    <main className="section-shell pt-28 md:pt-32">
+    <main className="section-shell pt-28 md:pt-32" data-ether-theme="articles">
       <SiteContainer>
         <PageIntro
           label="(04) writing"
@@ -29,10 +29,9 @@ export default function ArticlesPage() {
                 <Link
                   href={`/articles/${article.slug}`}
                   className="group block"
-                  data-cursor-hover
                 >
                   <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between">
-                    <h2 className="text-2xl font-normal tracking-tight transition-colors group-hover:text-purple-200 md:text-3xl">
+                    <h2 className="text-2xl font-normal tracking-tight transition-colors group-hover:text-accent md:text-3xl">
                       {article.title}
                     </h2>
                     <time

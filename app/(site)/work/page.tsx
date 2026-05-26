@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <main>
+    <main data-ether-theme="work">
       <Work mode="full" />
     </main>
   );

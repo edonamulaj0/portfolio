@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main>
+    <main data-ether-theme="contact">
       <Contact mode="full" />
     </main>
   );

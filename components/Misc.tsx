@@ -32,7 +32,7 @@ export function Misc({ mode = "preview" }: MiscProps) {
           </FadeIn>
         </SiteContainer>
 
-        <div className="mt-14 md:mt-20" data-scroll-theme="#1f1042">
+        <div className="mt-14 md:mt-20" data-ether-theme="misc">
           <SiteContainer>
             <FadeIn delay={0.14} blur={false}>
               <div>
@@ -54,7 +54,7 @@ export function Misc({ mode = "preview" }: MiscProps) {
 
   return (
     <section id="misc" className="section-shell scroll-mt-20">
-      <div data-scroll-theme="#1f1042">
+      <div data-ether-theme="misc">
         <SiteContainer>
           <FadeIn blur={false}>
             <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">

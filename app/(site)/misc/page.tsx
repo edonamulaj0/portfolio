@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function MiscPage() {
   return (
-    <main>
+    <main data-ether-theme="misc">
       <Misc mode="full" />
     </main>
   );

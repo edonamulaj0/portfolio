@@ -6,11 +6,9 @@ import { useMounted } from "@/lib/useMounted";
 import { useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import {
+  BUBBLE_HOVER_STYLES,
   BUBBLE_MENU_BG,
   BUBBLE_MENU_FG,
-  RB_ACCENT,
-  RB_PURPLE,
-  RB_VIOLET,
 } from "@/lib/reactbitsTheme";
 
 const BubbleMenu = dynamic(() => import("@/components/reactbits/BubbleMenu"), {
@@ -25,19 +23,11 @@ const navLinks = [
   { label: "contact", href: "/contact", ariaLabel: "Contact", rotation: -5 },
 ] as const;
 
-const hoverStyles = [
-  { bgColor: RB_PURPLE, textColor: "#ffffff" },
-  { bgColor: RB_VIOLET, textColor: "#ffffff" },
-  { bgColor: "#5b21b6", textColor: "#ffffff" },
-  { bgColor: "#4c1d95", textColor: "#ffffff" },
-  { bgColor: RB_ACCENT, textColor: "#0a0614" },
-];
-
 function StaticNavbar() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-purple-500/20 glass-panel">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 glass-panel">
       <nav className="site-container flex items-center justify-between py-5">
         <Link href="/" className="link-slide font-mono text-sm tracking-wide">
           dona.
@@ -58,7 +48,7 @@ function StaticNavbar() {
                 )}
                 <Link
                   href={link.href}
-                  className={`link-slide ${active ? "text-purple-200" : "hover:text-text"}`}
+                  className={`link-slide ${active ? "text-accent" : "hover:text-text"}`}
                 >
                   {link.label}
                 </Link>
@@ -98,7 +88,7 @@ export function BubbleNavbar() {
         href: link.href,
         ariaLabel: link.ariaLabel,
         rotation: link.rotation,
-        hoverStyles: hoverStyles[i % hoverStyles.length],
+        hoverStyles: BUBBLE_HOVER_STYLES[i % BUBBLE_HOVER_STYLES.length],
       }))}
       className="!top-5"
     />

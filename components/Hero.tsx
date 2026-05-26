@@ -1,70 +1,17 @@
 "use client";
 
-import { easePremium } from "@/lib/motion";
-import { useMounted } from "@/lib/useMounted";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FadeIn } from "./FadeIn";
-import { PressureHeading } from "./PressureHeading";
 import { SiteContainer } from "./SiteContainer";
-
-const heroImage = (
-  <Image
-    src="/donahero.jpg"
-    alt=""
-    fill
-    priority
-    sizes="100vw"
-    className="object-cover object-center transition-opacity duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]"
-    aria-hidden="true"
-  />
-);
-
-function HeroBackgroundStatic() {
-  return <div className="absolute inset-0">{heroImage}</div>;
-}
-
-function HeroBackgroundMotion() {
-  const { scrollY } = useScroll();
-  const imageY = useTransform(scrollY, [0, 800], [0, 140]);
-  const imageScale = useTransform(scrollY, [0, 800], [1, 1.1]);
-
-  return (
-    <motion.div
-      className="absolute inset-[-4%] will-change-transform"
-      style={{ y: imageY, scale: imageScale }}
-    >
-      {heroImage}
-    </motion.div>
-  );
-}
-
-function HeroBackground() {
-  const mounted = useMounted();
-  const prefersReducedMotion = useReducedMotion();
-
-  if (!mounted || prefersReducedMotion) {
-    return <HeroBackgroundStatic />;
-  }
-
-  return <HeroBackgroundMotion />;
-}
 
 export function Hero() {
   const [scrolled, setScrolled] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
-    setMounted(true);
-
     const onScroll = () => {
-      if (window.scrollY > 24) {
-        setScrolled(true);
-      }
+      if (window.scrollY > 24) setScrolled(true);
     };
-
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -72,15 +19,23 @@ export function Hero() {
   return (
     <section className="relative flex h-[100dvh] flex-col justify-end overflow-hidden pb-10 md:pb-16">
       <div className="absolute inset-0 overflow-hidden">
-        <HeroBackground />
+        <Image
+          src="/donahero.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+          aria-hidden="true"
+        />
       </div>
 
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_80%,rgba(109,40,217,0.22)_0%,transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_80%,rgba(233,213,255,0.14)_0%,transparent_55%)]"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_90%_20%,rgba(192,132,252,0.12)_0%,transparent_40%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_90%_20%,rgba(186,230,253,0.1)_0%,transparent_40%)]"
         aria-hidden="true"
       />
 
@@ -91,12 +46,7 @@ export function Hero() {
 
       <SiteContainer className="relative z-10 flex flex-col justify-end">
         <div className="max-w-5xl">
-          <PressureHeading
-            as="h1"
-            text="dona."
-            variant="hero"
-            className="hero-headline max-w-5xl font-normal tracking-tight"
-          />
+          <h1 className="hero-headline max-w-5xl font-normal tracking-tight">dona.</h1>
           <FadeIn immediate delay={0.2} blur={false}>
             <p className="mt-6 max-w-xl font-mono text-xs text-muted md:text-sm">
               software developer · founder · prishtina, kosovo
@@ -105,24 +55,14 @@ export function Hero() {
         </div>
       </SiteContainer>
 
-      {mounted && !prefersReducedMotion ? (
-        <motion.div
-          initial={false}
-          animate={{ opacity: scrolled ? 0 : 1, y: scrolled ? 10 : 0 }}
-          transition={{ duration: 0.55, ease: easePremium }}
-          className="pointer-events-none absolute inset-x-0 bottom-8 z-10 flex justify-center"
-          aria-hidden={scrolled}
-        >
-          <span className="scroll-indicator font-mono text-xs">↓ scroll</span>
-        </motion.div>
-      ) : (
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-8 z-10 flex justify-center"
-          aria-hidden={scrolled}
-        >
-          <span className="scroll-indicator font-mono text-xs">↓ scroll</span>
-        </div>
-      )}
+      <div
+        className={`pointer-events-none absolute inset-x-0 bottom-8 z-10 flex justify-center transition-opacity duration-500 ${
+          scrolled ? "opacity-0" : "opacity-100"
+        }`}
+        aria-hidden={scrolled}
+      >
+        <span className="scroll-indicator font-mono text-xs">↓ scroll</span>
+      </div>
     </section>
   );
 }
