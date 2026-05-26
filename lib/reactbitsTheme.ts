@@ -27,8 +27,13 @@ export const ETHER_PALETTES: Record<EtherSection, string[]> = {
   default: ["#e9d5ff", "#bae6fd", "#fbcfe8", "#ddd6fe"],
 };
 
-export const BUBBLE_MENU_BG = "rgba(0, 0, 0, 0.88)";
-export const BUBBLE_MENU_FG = RB_TEXT;
+/** Logo + hamburger bubbles */
+export const BUBBLE_MENU_BG = "rgba(244, 242, 239, 0.96)";
+export const BUBBLE_MENU_FG = "#000000";
+/** Full-screen overlay pills */
+export const BUBBLE_PILL_BG = "#ffffff";
+export const BUBBLE_PILL_FG = "#000000";
+export const BUBBLE_OVERLAY_BG = "#000000";
 
 export const BUBBLE_HOVER_STYLES = [
   { bgColor: "#e9d5ff", textColor: BLACK },

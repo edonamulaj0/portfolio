@@ -2,6 +2,7 @@ import { academics } from "@/lib/academics";
 import { CircleArrowLink } from "./CircleArrowLink";
 import { FadeIn } from "./FadeIn";
 import { HomeSection, type HomeSectionTheme } from "./HomeSection";
+import { SectionFooter } from "./SectionFooter";
 import { SectionTag } from "./SectionTag";
 import { SiteContainer } from "./SiteContainer";
 
@@ -34,9 +35,9 @@ export function Academics({ theme = "dark" }: AcademicsProps) {
             ))}
           </ul>
 
-          <FadeIn delay={0.2} blur={false} className="mt-10 flex justify-end md:mt-12">
+          <SectionFooter>
             <CircleArrowLink href="/about#background" label="view full background" />
-          </FadeIn>
+          </SectionFooter>
         </div>
       </SiteContainer>
     </HomeSection>

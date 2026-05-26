@@ -1,7 +1,7 @@
 /** Inverted curve mask — black fill above the arc; transparent scoop reveals the hologram section below. */
 export function SectionCurveDivider() {
   return (
-    <div className="section-curve-divider relative w-full overflow-visible" aria-hidden="true">
+    <div className="section-curve-divider relative w-full overflow-hidden" aria-hidden="true">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
@@ -10,7 +10,7 @@ export function SectionCurveDivider() {
       >
         <path
           fill="#000000"
-          d="M0,160L60,149.3C120,139,240,117,360,133.3C480,149,600,203,720,213.3C840,224,960,192,1080,170.7C1200,149,1320,139,1380,133.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+          d="M0,160L80,186.7C160,213,320,267,480,277.3C640,288,800,256,960,250.7C1120,245,1280,267,1360,277.3L1440,288L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
         />
       </svg>
     </div>

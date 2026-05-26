@@ -3,11 +3,13 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useMounted } from "@/lib/useMounted";
-import { useReducedMotion } from "framer-motion";
 import {
   BUBBLE_HOVER_STYLES,
   BUBBLE_MENU_BG,
   BUBBLE_MENU_FG,
+  BUBBLE_OVERLAY_BG,
+  BUBBLE_PILL_BG,
+  BUBBLE_PILL_FG,
 } from "@/lib/reactbitsTheme";
 
 const BubbleMenu = dynamic(() => import("@/components/reactbits/BubbleMenu"), {
@@ -15,46 +17,20 @@ const BubbleMenu = dynamic(() => import("@/components/reactbits/BubbleMenu"), {
 });
 
 const navLinks = [
-  { label: "about", href: "/about", ariaLabel: "About", rotation: -6 },
-  { label: "work", href: "/work", ariaLabel: "Work", rotation: 5 },
-  { label: "gallery", href: "/gallery", ariaLabel: "Gallery", rotation: -4 },
-  { label: "misc", href: "/misc", ariaLabel: "Misc", rotation: 6 },
-  { label: "contact", href: "/contact", ariaLabel: "Contact", rotation: -5 },
+  { label: "about", href: "/about", ariaLabel: "About", rotation: -8 },
+  { label: "work", href: "/work", ariaLabel: "Work", rotation: 6 },
+  { label: "gallery", href: "/gallery", ariaLabel: "Gallery", rotation: -5 },
+  { label: "misc", href: "/misc", ariaLabel: "Misc", rotation: 7 },
+  { label: "contact", href: "/contact", ariaLabel: "Contact", rotation: -6 },
 ] as const;
-
-function StaticNavFallback() {
-  return (
-    <header className="site-header fixed inset-x-0 top-0 z-50">
-      <nav className="site-container flex items-center justify-between py-5">
-        <Link href="/" className="site-logo shrink-0">
-          dona.
-        </Link>
-        <ul className="flex flex-wrap items-center justify-end gap-x-3 gap-y-1 font-mono text-[10px] text-muted sm:text-xs md:gap-4 md:text-sm">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link href={link.href} className="nav-link">
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </header>
-  );
-}
 
 export function BubbleNavbar() {
   const mounted = useMounted();
-  const prefersReducedMotion = useReducedMotion();
 
   if (!mounted) {
     return (
-      <header className="site-header pointer-events-none fixed inset-x-0 top-0 z-50 h-20 opacity-0" />
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-[1001] h-20 opacity-0" />
     );
-  }
-
-  if (prefersReducedMotion) {
-    return <StaticNavFallback />;
   }
 
   return (
@@ -63,7 +39,7 @@ export function BubbleNavbar() {
       logo={
         <Link
           href="/"
-          className="font-mono text-sm tracking-wide text-text"
+          className="font-mono text-sm tracking-wide text-black"
           onClick={(e) => e.stopPropagation()}
         >
           dona.
@@ -71,6 +47,9 @@ export function BubbleNavbar() {
       }
       menuBg={BUBBLE_MENU_BG}
       menuContentColor={BUBBLE_MENU_FG}
+      pillBg={BUBBLE_PILL_BG}
+      pillColor={BUBBLE_PILL_FG}
+      overlayBg={BUBBLE_OVERLAY_BG}
       items={navLinks.map((link, i) => ({
         label: link.label,
         href: link.href,

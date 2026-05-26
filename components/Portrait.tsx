@@ -62,13 +62,13 @@ export function Portrait({
   return (
     <motion.div
       ref={ref}
-      className={`image-frame group/frame relative overflow-hidden ${className}`}
+      className={`image-frame group/frame relative w-full overflow-hidden ${className}`}
       style={{ perspective: 800 }}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
     >
       <motion.div
-        className="relative h-full min-h-[12rem] w-full"
+        className="absolute inset-0"
         style={{
           rotateX: transformRotateX,
           rotateY: transformRotateY,

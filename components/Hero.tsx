@@ -126,30 +126,32 @@ export function Hero() {
 
       <SiteContainer className="relative z-10 flex flex-col justify-end">
         <div className="max-w-5xl">
-          <div className="relative inline-block">
-            <h1 className="hero-headline relative z-[1] max-w-5xl font-normal tracking-tight">
-              {HEADLINE.split("").map((char, i) => (
-                <motion.span
-                  key={`${char}-${i}`}
-                  className="inline-block"
-                  custom={i}
-                  initial={prefersReducedMotion ? false : "hidden"}
-                  animate={prefersReducedMotion ? undefined : "visible"}
-                  variants={letterVariants}
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </h1>
-            <div className="hero-headline-glow" aria-hidden="true" />
-          </div>
+          <div className="flex flex-col items-start">
+            <div className="relative inline-block">
+              <h1 className="hero-headline relative z-[1] max-w-5xl font-normal tracking-tight">
+                {HEADLINE.split("").map((char, i) => (
+                  <motion.span
+                    key={`${char}-${i}`}
+                    className="inline-block"
+                    custom={i}
+                    initial={prefersReducedMotion ? false : "hidden"}
+                    animate={prefersReducedMotion ? undefined : "visible"}
+                    variants={letterVariants}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </h1>
+              <div className="hero-headline-glow" aria-hidden="true" />
+            </div>
 
-          <p className="hero-eyebrow mt-3 font-mono text-xs text-muted md:mt-4 md:text-sm">
-            <span className="hero-eyebrow__star" aria-hidden="true">
-              ✦
-            </span>
-            {NAME}
-          </p>
+            <p className="hero-eyebrow mt-3 font-mono text-xs text-muted md:mt-4 md:text-sm">
+              <span className="hero-eyebrow__star" aria-hidden="true">
+                ✦
+              </span>
+              {NAME}
+            </p>
+          </div>
 
           <p className="mt-6 max-w-xl font-mono text-xs text-muted md:text-sm">
             <span className="sr-only">{SUBTITLE}</span>

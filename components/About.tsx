@@ -102,14 +102,18 @@ export function About({ mode = "preview", theme = "dark" }: AboutProps) {
                   </p>
                 </FadeIn>
 
-                <SectionFooter className="!mt-0 !border-t-0 !pt-0">
+                <SectionFooter>
                   <CircleArrowLink href="/about" label="more about me" />
                 </SectionFooter>
               </div>
 
-              <FadeIn delay={0.06} blur={false} className="order-1 shrink-0 md:order-2">
+              <FadeIn
+                delay={0.06}
+                blur={false}
+                className="order-1 w-full max-w-[220px] shrink-0 sm:max-w-[260px] md:order-2 md:max-w-[300px]"
+              >
                 <Portrait
-                  className="aspect-[4/5] w-full max-w-[220px] sm:max-w-[260px] md:max-w-[300px]"
+                  className="aspect-[4/5] w-full"
                   sizes="(max-width: 768px) 70vw, 300px"
                   priority
                 />
