@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { MiscArticleView } from "@/components/MiscArticleView";
 import { getMiscArticle, getMiscArticleSlugs } from "@/lib/misc";
 
-type ArticlePageProps = {
+type MiscPostPageProps = {
   params: Promise<{ slug: string }>;
 };
 
@@ -13,7 +13,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: ArticlePageProps): Promise<Metadata> {
+}: MiscPostPageProps): Promise<Metadata> {
   const { slug } = await params;
   const article = getMiscArticle(slug);
 
@@ -24,11 +24,16 @@ export async function generateMetadata({
   return {
     title: article.title,
     description: article.excerpt,
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      type: "article",
+      publishedTime: article.date,
+    },
   };
 }
 
-/** Legacy /articles/:slug — renders same article as /misc/:slug */
-export default async function ArticlePage({ params }: ArticlePageProps) {
+export default async function MiscPostPage({ params }: MiscPostPageProps) {
   const { slug } = await params;
   const article = getMiscArticle(slug);
 

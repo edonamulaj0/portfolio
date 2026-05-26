@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Work } from "@/components/Work";
 
 export const metadata: Metadata = {
-  title: "work — dona",
-  description: "Selected projects by Edona Mulaj — Atheneum, H4ck&Stack, E-Studenti, and Cyphera.",
+  title: "work",
+  description:
+    "Selected projects by Edona S. Mulaj — Atheneum, Literas, and E-Studenti.",
 };
 
 export default function WorkPage() {

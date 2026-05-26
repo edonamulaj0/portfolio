@@ -4,6 +4,7 @@ import { CircleArrowLink } from "./CircleArrowLink";
 import { FadeIn } from "./FadeIn";
 import { HomeSection, type HomeSectionTheme } from "./HomeSection";
 import { PageIntro } from "./PageIntro";
+import { SectionFooter } from "./SectionFooter";
 import { SectionTag } from "./SectionTag";
 import { SiteContainer } from "./SiteContainer";
 import { skills, timeline } from "@/lib/background";
@@ -23,10 +24,18 @@ export function About({ mode = "preview", theme = "dark" }: AboutProps) {
             <PageIntro
               label="(01) about"
               title="about me."
-              description="Software developer, founder, and student — based in Prishtina, Kosovo."
+              description="Founder & CEO @ Cyphera · Software Engineer · ICT & Network Engineering Student @ University of Prishtina."
             />
 
             <div className="mt-14 grid gap-10 md:mt-16 md:grid-cols-[minmax(0,1fr)_minmax(0,300px)] md:items-end md:gap-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)] lg:gap-24">
+              <FadeIn delay={0.08} className="order-1 shrink-0 md:order-2 md:justify-self-end">
+                <Portrait
+                  className="aspect-[4/5] w-full max-w-[260px] sm:max-w-[280px] md:max-w-[320px]"
+                  sizes="(max-width: 768px) 65vw, 320px"
+                  priority
+                />
+              </FadeIn>
+
               <div className="order-2 space-y-8 md:order-1 md:space-y-10">
                 {[...aboutParagraphs, ...aboutExtended].map((paragraph, index) => (
                   <FadeIn key={index} delay={0.1 + index * 0.06}>
@@ -46,14 +55,6 @@ export function About({ mode = "preview", theme = "dark" }: AboutProps) {
                   </p>
                 </FadeIn>
               </div>
-
-              <FadeIn delay={0.08} className="order-1 shrink-0 md:order-2 md:justify-self-end">
-                <Portrait
-                  className="aspect-[4/5] w-full max-w-[260px] sm:max-w-[280px] md:max-w-[320px]"
-                  sizes="(max-width: 768px) 65vw, 320px"
-                  priority
-                />
-              </FadeIn>
             </div>
           </SiteContainer>
         </HomeSection>
@@ -92,28 +93,24 @@ export function About({ mode = "preview", theme = "dark" }: AboutProps) {
             <SectionTag index="01" label="about" />
           </aside>
 
-          <div className="section-layout__content">
-            <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between md:gap-16 lg:gap-20">
-              <div className="min-w-0 flex-1 space-y-8">
-                <FadeIn blur={false}>
-                  <p className="max-w-2xl text-lg leading-relaxed md:text-xl">
-                    {aboutParagraphs[0]}
-                  </p>
-                </FadeIn>
+          <div className="section-layout__content flex flex-col gap-10">
+            <FadeIn delay={0.06} blur={false} className="shrink-0">
+              <Portrait
+                className="aspect-[4/5] w-full max-w-[220px] sm:max-w-[260px] md:mx-0 md:ml-auto md:max-w-[300px]"
+                sizes="(max-width: 768px) 70vw, 300px"
+                priority
+              />
+            </FadeIn>
 
-                <FadeIn delay={0.1} blur={false}>
-                  <CircleArrowLink href="/about" label="more about me" />
-                </FadeIn>
-              </div>
+            <FadeIn blur={false}>
+              <p className="max-w-2xl text-lg leading-relaxed md:text-xl">
+                {aboutParagraphs[0]}
+              </p>
+            </FadeIn>
 
-              <FadeIn delay={0.08} className="shrink-0 md:ml-auto">
-                <Portrait
-                  className="aspect-[4/5] w-full max-w-[220px] sm:max-w-[260px] md:max-w-[300px]"
-                  sizes="(max-width: 768px) 70vw, 300px"
-                  priority
-                />
-              </FadeIn>
-            </div>
+            <SectionFooter className="!mt-0 !border-t-0 !pt-0 md:!mt-2">
+              <CircleArrowLink href="/about" label="more about me" />
+            </SectionFooter>
           </div>
         </div>
       </SiteContainer>

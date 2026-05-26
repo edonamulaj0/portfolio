@@ -77,7 +77,7 @@ export function Portrait({
       >
         <Image
           src="/dona.png"
-          alt="Edona Mulaj"
+          alt="Edona S. Mulaj"
           fill
           priority={priority}
           sizes={sizes}

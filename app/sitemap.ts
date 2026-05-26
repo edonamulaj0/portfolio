@@ -1,14 +1,14 @@
 import type { MetadataRoute } from "next";
-import { getAllArticles } from "@/lib/articles";
+import { getMiscArticleSlugs } from "@/lib/misc";
 
 export const dynamic = "force-static";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://edonamulaj.com";
 
-const staticPages = ["/about", "/work", "/articles", "/misc", "/contact"];
+const staticPages = ["/about", "/work", "/gallery", "/misc", "/contact"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const articles = getAllArticles();
+  const slugs = getMiscArticleSlugs();
 
   return [
     {
@@ -23,9 +23,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
-    ...articles.map((article) => ({
-      url: `${siteUrl}/articles/${article.slug}`,
-      lastModified: new Date(article.date),
+    ...slugs.map((slug) => ({
+      url: `${siteUrl}/misc/${slug}`,
+      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),

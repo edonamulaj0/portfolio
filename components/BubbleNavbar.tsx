@@ -4,7 +4,6 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useMounted } from "@/lib/useMounted";
 import { useReducedMotion } from "framer-motion";
-import { usePathname } from "next/navigation";
 import {
   BUBBLE_HOVER_STYLES,
   BUBBLE_MENU_BG,
@@ -18,55 +17,40 @@ const BubbleMenu = dynamic(() => import("@/components/reactbits/BubbleMenu"), {
 const navLinks = [
   { label: "about", href: "/about", ariaLabel: "About", rotation: -6 },
   { label: "work", href: "/work", ariaLabel: "Work", rotation: 5 },
-  { label: "writing", href: "/articles", ariaLabel: "Writing", rotation: -4 },
+  { label: "gallery", href: "/gallery", ariaLabel: "Gallery", rotation: -4 },
   { label: "misc", href: "/misc", ariaLabel: "Misc", rotation: 6 },
   { label: "contact", href: "/contact", ariaLabel: "Contact", rotation: -5 },
 ] as const;
-
-function StaticNavbar() {
-  const pathname = usePathname();
-
-  return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 glass-panel">
-      <nav className="site-container flex items-center justify-between py-5">
-        <Link href="/" className="link-slide font-mono text-sm tracking-wide">
-          dona.
-        </Link>
-        <ul className="flex items-center gap-3 font-mono text-[10px] text-muted sm:gap-4 sm:text-xs md:gap-6 md:text-sm">
-          {navLinks.map((link, index) => {
-            const active =
-              link.href === "/articles"
-                ? pathname.startsWith("/articles")
-                : pathname === link.href;
-
-            return (
-              <li key={link.href} className="flex items-center gap-3 sm:gap-4 md:gap-6">
-                {index > 0 && (
-                  <span className="text-divider" aria-hidden="true">
-                    ·
-                  </span>
-                )}
-                <Link
-                  href={link.href}
-                  className={`link-slide ${active ? "text-accent" : "hover:text-text"}`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-    </header>
-  );
-}
 
 export function BubbleNavbar() {
   const mounted = useMounted();
   const prefersReducedMotion = useReducedMotion();
 
-  if (!mounted || prefersReducedMotion) {
-    return <StaticNavbar />;
+  if (!mounted) {
+    return (
+      <header className="site-header pointer-events-none fixed inset-x-0 top-0 z-50 h-20 opacity-0" />
+    );
+  }
+
+  if (prefersReducedMotion) {
+    return (
+      <header className="site-header fixed inset-x-0 top-0 z-50">
+        <nav className="site-container flex items-center justify-between py-5">
+          <Link href="/" className="site-logo shrink-0">
+            dona.
+          </Link>
+          <ul className="flex flex-wrap items-center justify-end gap-x-3 gap-y-1 font-mono text-[10px] text-muted sm:text-xs md:gap-4 md:text-sm">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="nav-link">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </header>
+    );
   }
 
   return (
@@ -90,7 +74,7 @@ export function BubbleNavbar() {
         rotation: link.rotation,
         hoverStyles: BUBBLE_HOVER_STYLES[i % BUBBLE_HOVER_STYLES.length],
       }))}
-      className="!top-5"
+      className="!top-5 site-container !left-1/2 !right-auto !w-full max-w-[80rem] !-translate-x-1/2 !px-6 md:!px-12"
     />
   );
 }

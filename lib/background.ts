@@ -10,19 +10,42 @@ export type SkillGroup = {
 };
 
 export const timeline: TimelineItem[] = [
-  { year: "2026", text: "Co-author — research paper accepted to MIPRO 2026" },
   {
     year: "2026",
-    text: "Student Council Representative, ICT Class of 2026, University of Prishtina",
+    text: "DigiCamp & Digital Skills Festival 2026 — 1st place, JunctionX Regional Hackathon",
   },
-  { year: "2025", text: "1st place — JunctionX Regional Hackathon, Kosovo" },
-  { year: "2025", text: "1st place — MASHTI 2025, IoT elder care system" },
-  { year: "2025", text: "Speaker — Girls in ICT Conference, Prishtina" },
+  {
+    year: "2026",
+    text: "Saxion University of Applied Sciences, Netherlands — Erasmus+ mobility, Information Security (Feb 2026–June 2026). Team-engineered automated algorithms to capture and visually map polarized digital discussions in an intuitive interface.",
+  },
+  {
+    year: "2026",
+    text: "University of Prishtina — BSc in Information and Communication Technologies (graduating June 2026)",
+  },
+  {
+    year: "2026",
+    text: "Atheneum Study Productivity Platform — full-stack study platform (March 2026–present)",
+  },
   {
     year: "2025",
-    text: "Cybersecurity training — DevelopHer x LuxDev (red teaming, pen testing, incident response)",
+    text: "Cyphera — Founder & CEO (June 2025–present)",
   },
-  { year: "2024", text: "Founded Cyphera" },
+  {
+    year: "2025",
+    text: "Literas Learning Management System — co-founded (August 2025–present)",
+  },
+  {
+    year: "2025",
+    text: "E-Studenti Educational Platform — open-source student hub (July 2025–present)",
+  },
+  {
+    year: "2025",
+    text: "Hack&Stack (HNS) — Founder & Community Lead; 130+ active developers and tech enthusiasts",
+  },
+  {
+    year: "2025",
+    text: "MASHTI — 1st place, Engineering category, Creative & Innovative STEM Projects. Led a multi-disciplinary squad to develop an IoT elderly monitoring prototype with real-time ML fall detection via Raspberry Pi and automated caregiver emergency warnings.",
+  },
 ];
 
 export const skills: SkillGroup[] = [

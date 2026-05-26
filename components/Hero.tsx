@@ -6,8 +6,10 @@ import { useEffect, useRef, useState } from "react";
 import { gsap, registerGsapPlugins } from "@/lib/gsap/register";
 import { SiteContainer } from "./SiteContainer";
 
+const NAME = "Edona S. Mulaj";
 const HEADLINE = "dona.";
-const SUBTITLE = "software developer · founder · prishtina, kosovo";
+const SUBTITLE =
+  "Founder & CEO @ Cyphera | Software Engineer | ICT & Network Engineering Student @ University of Prishtina";
 const LETTER_STAGGER = 0.06;
 const TYPEWRITER_MS = 35;
 
@@ -89,7 +91,7 @@ export function Hero() {
     <section className="hero-section relative flex h-[100dvh] flex-col justify-end overflow-hidden pb-10 md:pb-16">
       <div ref={imageRef} className="absolute inset-0 overflow-hidden will-change-transform">
         <Image
-          src="/dona.png"
+          src="/donamob.jpg"
           alt=""
           fill
           priority
@@ -124,6 +126,12 @@ export function Hero() {
 
       <SiteContainer className="relative z-10 flex flex-col justify-end">
         <div className="max-w-5xl">
+          <p className="hero-eyebrow mb-4 font-mono text-xs text-muted md:text-sm">
+            <span className="hero-eyebrow__star" aria-hidden="true">
+              ✦
+            </span>
+            {NAME}
+          </p>
           <div className="relative inline-block">
             <h1 className="hero-headline relative z-[1] max-w-5xl font-normal tracking-tight">
               {HEADLINE.split("").map((char, i) => (

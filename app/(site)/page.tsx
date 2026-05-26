@@ -1,10 +1,15 @@
+import type { Metadata } from "next";
 import { About } from "@/components/About";
 import { Academics } from "@/components/Academics";
-import { Articles } from "@/components/Articles";
 import { Contact } from "@/components/Contact";
+import { Gallery } from "@/components/Gallery";
 import { Hero } from "@/components/Hero";
 import { Misc } from "@/components/Misc";
 import { Work } from "@/components/Work";
+
+export const metadata: Metadata = {
+  title: "home",
+};
 
 export default function Home() {
   return (
@@ -13,7 +18,7 @@ export default function Home() {
       <About theme="dark" />
       <Work theme="hologram" />
       <Academics theme="dark" />
-      <Articles theme="hologram" />
+      <Gallery theme="hologram" />
       <Misc theme="dark" />
       <Contact theme="hologram" />
     </main>

@@ -7,31 +7,29 @@ export type AcademicItem = {
 
 export const academics: AcademicItem[] = [
   {
-    year: "2021",
-    title: "B.Sc. ICT & Network Engineering",
+    year: "2026",
+    title: "BSc in Information and Communication Technologies",
     institution: "University of Prishtina",
-    description:
-      "Undergraduate degree with focus on network security, distributed systems, and software engineering. Thesis track in applied cybersecurity.",
+    description: "Graduating June 2026.",
   },
   {
     year: "2026",
-    title: "Expected graduation",
-    institution: "University of Prishtina",
+    title: "Erasmus+ Mobility, Information Security",
+    institution: "Saxion University of Applied Sciences, Netherlands",
     description:
-      "Completing final year coursework in June 2026. Student Council Representative for the ICT Class of 2026.",
+      "Feb 2026–June 2026. Team-engineered automated algorithms to capture and visually map polarized digital discussions in an intuitive interface.",
   },
   {
     year: "2025",
-    title: "Research co-author",
-    institution: "MIPRO 2026",
+    title: "1st Place — Engineering Category, Creative & Innovative STEM Projects",
+    institution: "MASHTI",
     description:
-      "Co-authored a paper on low-frequency magnetic field exposure, accepted for publication at MIPRO 2026.",
+      "Led a multi-disciplinary engineering squad to develop an IoT elderly monitoring prototype. Implemented real-time machine learning fall detection logic via Raspberry Pi paired with automated caregiver emergency warning arrays.",
   },
   {
-    year: "2024",
-    title: "Cybersecurity training",
-    institution: "DevelopHer × LuxDev",
-    description:
-      "Intensive program covering red teaming, penetration testing, and incident response.",
+    year: "2026",
+    title: "1st Place — JunctionX Regional Hackathon",
+    institution: "DigiCamp & Digital Skills Festival 2026",
+    description: "Regional hackathon winner.",
   },
 ];

@@ -4,6 +4,7 @@ import { FadeIn, StaggerGroup, StaggerItem } from "./FadeIn";
 import { MagneticContactLink } from "./MagneticContactLink";
 import { HomeSection, type HomeSectionTheme } from "./HomeSection";
 import { PageIntro } from "./PageIntro";
+import { SectionFooter } from "./SectionFooter";
 import { SectionTag } from "./SectionTag";
 import { SiteContainer } from "./SiteContainer";
 import { SplitHeadline } from "./SplitHeadline";
@@ -60,16 +61,16 @@ export function Contact({ mode = "preview", theme = "dark" }: ContactProps) {
                 size="contact"
               />
 
-              <div className="max-w-md space-y-8 lg:text-right">
+              <div className="flex max-w-md flex-col gap-8 lg:ml-auto lg:text-right">
                 <FadeIn blur={false}>
                   <p className="text-base leading-relaxed text-muted md:text-lg">
                     I&apos;m currently open to freelance projects and exciting opportunities.
                   </p>
                 </FadeIn>
 
-                <FadeIn delay={0.1} blur={false} className="lg:flex lg:justify-end">
+                <SectionFooter className="!mt-0 !border-t-0 !pt-0 lg:justify-end">
                   <CircleArrowLink href="/contact" label="say hello" />
-                </FadeIn>
+                </SectionFooter>
               </div>
             </div>
           </div>

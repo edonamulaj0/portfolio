@@ -19,11 +19,7 @@ export function GalleryGrid({ limit, className = "" }: GalleryGridProps) {
       <ul className={`gallery-grid ${className}`.trim()}>
         {items.map((item, index) => (
           <li key={item.src} className="gallery-grid__item">
-            <GalleryImage
-              item={item}
-              layoutId={`gallery-${item.src}`}
-              onOpen={() => setLightboxIndex(index)}
-            />
+            <GalleryImage item={item} onOpen={() => setLightboxIndex(index)} />
           </li>
         ))}
       </ul>

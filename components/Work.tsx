@@ -3,6 +3,7 @@ import { CircleArrowLink } from "./CircleArrowLink";
 import { FadeIn, StaggerGroup, StaggerItem } from "./FadeIn";
 import { HomeSection, type HomeSectionTheme } from "./HomeSection";
 import { PageIntro } from "./PageIntro";
+import { SectionFooter } from "./SectionFooter";
 import { SectionTag } from "./SectionTag";
 import { SiteContainer } from "./SiteContainer";
 import { WorkPreviewRow } from "./WorkPreviewRow";
@@ -22,7 +23,7 @@ export function Work({ mode = "preview", theme = "dark" }: WorkProps) {
           <PageIntro
             label="(02) work"
             title="selected work."
-            description="Projects across AI, community platforms, open source, and client work through Cyphera."
+            description="Core engineering projects across study platforms, learning management, and open-source education."
           />
 
           <StaggerGroup
@@ -60,12 +61,7 @@ export function Work({ mode = "preview", theme = "dark" }: WorkProps) {
     <HomeSection id="work" theme={theme}>
       <SiteContainer>
         <div className="section-layout section-layout--stacked">
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <SectionTag index="02" label="work" />
-            <FadeIn blur={false}>
-              <CircleArrowLink href="/work" label="view all projects" />
-            </FadeIn>
-          </div>
+          <SectionTag index="02" label="work" />
 
           <ul className="project-list mt-10 md:mt-14">
             {visibleProjects.map((project, index) => (
@@ -77,6 +73,10 @@ export function Work({ mode = "preview", theme = "dark" }: WorkProps) {
               />
             ))}
           </ul>
+
+          <SectionFooter>
+            <CircleArrowLink href="/work" label="view all projects" />
+          </SectionFooter>
         </div>
       </SiteContainer>
     </HomeSection>

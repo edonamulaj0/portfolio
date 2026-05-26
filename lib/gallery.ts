@@ -3,41 +3,57 @@ export type GalleryItem = {
   alt: string;
 };
 
-export type Hobby = {
-  label: string;
-  detail: string;
-};
-
 export const GALLERY_COUNT = 12;
 export const GALLERY_PREVIEW_COUNT = 3;
 
-export const hobbies: Hobby[] = [
+/** Academics & work — public/gallery/1.jpeg … 12.jpeg */
+export const galleryItems: GalleryItem[] = [
   {
-    label: "drawing & painting",
-    detail: "charcoal sketches, watercolor scraps, whatever fits on the desk",
+    src: "/gallery/1.jpeg",
+    alt: "Speaking at Girls in ICT Conference, AAB College",
   },
   {
-    label: "music",
-    detail: "records, playlists, live shows — mostly alt, electronic, and whatever friends send me",
+    src: "/gallery/2.jpeg",
+    alt: "Me at SHEcurity 2026 Hackathon, in FIEK, Prishtina",
   },
   {
-    label: "languages",
-    detail: "learning french and german, slowly, between deadlines",
+    src: "/gallery/3.jpeg",
+    alt: "Graduation picture",
   },
   {
-    label: "kubist",
-    detail: "a small 3D art community i run — renders, feedback, good people",
+    src: "/gallery/4.jpeg",
+    alt: "Me and my team at DigiCamp & Digital Skills Festival 2026",
+  },
+  {
+    src: "/gallery/5.jpeg",
+    alt: "Me and my team again :3",
+  },
+  {
+    src: "/gallery/6.jpeg",
+    alt: "Presenting Drit' in JunctionX Regional Hackathon",
+  },
+  {
+    src: "/gallery/7.jpeg",
+    alt: "My mentor Teuta Sahatqija",
+  },
+  {
+    src: "/gallery/8.jpeg",
+    alt: "Cybersecurity training — DevelopHer x LuxDev Ceremony",
+  },
+  {
+    src: "/gallery/9.jpeg",
+    alt: "Me and my other mentor, Sanija Murati",
+  },
+  {
+    src: "/gallery/10.jpeg",
+    alt: "First place award project at JunctionX Regional Hackathon, DigiCamp & Digital Skills Festival 2026",
+  },
+  {
+    src: "/gallery/11.jpeg",
+    alt: "Me and my team at MASHTI Engineering Competition Awards Ceremony",
+  },
+  {
+    src: "/gallery/12.jpeg",
+    alt: "Presenting our IoT medical room simulation at Sofia University, Bulgaria",
   },
 ];
-
-/** Landscape gallery slots: public/gallery/1.jpeg … 12.jpeg */
-export const galleryItems: GalleryItem[] = Array.from(
-  { length: GALLERY_COUNT },
-  (_, i) => {
-    const n = i + 1;
-    return {
-      src: `/gallery/${n}.jpeg`,
-      alt: `Gallery photo ${n}`,
-    };
-  },
-);

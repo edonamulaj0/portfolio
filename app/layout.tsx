@@ -17,13 +17,20 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://edonamulaj.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "dona — software developer",
+  title: {
+    default: "Edona Mulaj",
+    template: "%s | Edona Mulaj",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
   description:
-    "Edona Mulaj — software developer and founder based in Prishtina, Kosovo",
+    "Edona S. Mulaj — Founder & CEO @ Cyphera, Software Engineer, and ICT & Network Engineering Student @ University of Prishtina.",
   openGraph: {
-    title: "dona — software developer",
+    title: "Edona Mulaj",
     description:
-      "Edona Mulaj — software developer and founder based in Prishtina, Kosovo",
+      "Edona S. Mulaj — Founder & CEO @ Cyphera, Software Engineer, and ICT & Network Engineering Student @ University of Prishtina.",
     type: "website",
     url: siteUrl,
     images: [
@@ -31,15 +38,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "dona — software developer",
+        alt: "Edona S. Mulaj (dona.)",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "dona — software developer",
+    title: "Edona Mulaj",
     description:
-      "Edona Mulaj — software developer and founder based in Prishtina, Kosovo",
+      "Edona S. Mulaj — Founder & CEO @ Cyphera, Software Engineer, and ICT & Network Engineering Student @ University of Prishtina.",
     images: ["/og-image.png"],
   },
 };

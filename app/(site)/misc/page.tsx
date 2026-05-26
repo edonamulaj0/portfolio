@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Misc } from "@/components/Misc";
 
 export const metadata: Metadata = {
-  title: "misc — dona",
-  description: "Art, music, languages, and personal gallery — a glimpse into life outside work.",
+  title: "misc",
+  description:
+    "Misc — articles on software and security, personal writing, and standalone images.",
 };
 
 export default function MiscPage() {

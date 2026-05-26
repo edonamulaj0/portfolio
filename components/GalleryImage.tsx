@@ -1,24 +1,19 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import type { GalleryItem } from "@/lib/gallery";
 
 type GalleryImageProps = {
   item: GalleryItem;
-  layoutId: string;
   onOpen: () => void;
 };
 
-export function GalleryImage({ item, layoutId, onOpen }: GalleryImageProps) {
+export function GalleryImage({ item, onOpen }: GalleryImageProps) {
   const [loaded, setLoaded] = useState(false);
-  const rootRef = useRef<HTMLElement>(null);
 
   return (
-    <motion.figure
-      ref={rootRef}
-      layoutId={layoutId}
+    <figure
       className="gallery-card group flex h-full min-h-0 cursor-pointer flex-col"
       onClick={onOpen}
       onKeyDown={(e) => {
@@ -30,10 +25,7 @@ export function GalleryImage({ item, layoutId, onOpen }: GalleryImageProps) {
       role="button"
       tabIndex={0}
     >
-      <div
-        className="gallery-grid__frame image-frame relative overflow-hidden border-purple-500/25 bg-violet-950/10"
-        style={{ perspective: 1000 }}
-      >
+      <div className="gallery-grid__frame image-frame relative overflow-hidden border-purple-500/25 bg-violet-950/10">
         {!loaded && (
           <div className="absolute inset-0 bg-violet-950/20" aria-hidden="true" />
         )}
@@ -52,9 +44,9 @@ export function GalleryImage({ item, layoutId, onOpen }: GalleryImageProps) {
           aria-hidden="true"
         />
       </div>
-      <figcaption className="mt-3 shrink-0 font-mono text-[11px] text-muted transition-colors duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:text-purple-200/80 md:text-xs">
+      <figcaption className="mt-3 shrink-0 font-mono text-[11px] leading-snug text-muted transition-colors duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:text-purple-200/80 md:text-xs">
         {item.alt}
       </figcaption>
-    </motion.figure>
+    </figure>
   );
 }
