@@ -89,12 +89,21 @@ export function Hero() {
     <section className="hero-section relative flex h-[100dvh] flex-col justify-end overflow-hidden pb-10 md:pb-16">
       <div ref={imageRef} className="absolute inset-0 overflow-hidden will-change-transform">
         <Image
+          src="/dona.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center md:hidden"
+          aria-hidden="true"
+        />
+        <Image
           src="/donahero.jpg"
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="hidden object-cover object-center md:block"
           aria-hidden="true"
         />
       </div>

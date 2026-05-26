@@ -30,13 +30,13 @@ export const hobbies: Hobby[] = [
   },
 ];
 
-/** Landscape gallery slots: public/gallery/1.png … 12.png */
+/** Landscape gallery slots: public/gallery/1.jpeg … 12.jpeg */
 export const galleryItems: GalleryItem[] = Array.from(
   { length: GALLERY_COUNT },
   (_, i) => {
     const n = i + 1;
     return {
-      src: `/gallery/${n}.png`,
+      src: `/gallery/${n}.jpeg`,
       alt: `Gallery photo ${n}`,
     };
   },

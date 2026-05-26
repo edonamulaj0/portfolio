@@ -14,8 +14,31 @@
   --ease-premium: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-* {
-  cursor: none !important;
+@media (pointer: fine) {
+  html {
+    cursor: none;
+  }
+}
+
+@media (pointer: coarse) {
+  html,
+  body {
+    cursor: auto;
+  }
+}
+
+a[href],
+button:not(:disabled),
+[role="button"],
+[data-magnetic],
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+label[for],
+select,
+summary,
+.gallery-card {
+  cursor: pointer;
 }
 
 html {
@@ -597,8 +620,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
-    cursor: auto !important;
+  html {
+    cursor: auto;
   }
 
   html::before {
