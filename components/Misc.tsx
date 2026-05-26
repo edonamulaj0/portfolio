@@ -1,40 +1,16 @@
-import Image from "next/image";
-import { galleryItems } from "@/lib/gallery";
 import { CircleArrowLink } from "./CircleArrowLink";
 import { FadeIn } from "./FadeIn";
-import { GalleryMasonry } from "./GalleryMasonry";
+import { GalleryGrid } from "./GalleryGrid";
 import { HomeSection, type HomeSectionTheme } from "./HomeSection";
 import { PageIntro } from "./PageIntro";
 import { SectionTag } from "./SectionTag";
 import { SiteContainer } from "./SiteContainer";
-import { hobbies } from "@/lib/gallery";
+import { GALLERY_PREVIEW_COUNT, hobbies } from "@/lib/gallery";
 
 type MiscProps = {
   mode?: "preview" | "full";
   theme?: HomeSectionTheme;
 };
-
-function MomentsStrip() {
-  const items = galleryItems.slice(0, 5);
-
-  return (
-    <ul className="moments-strip">
-      {items.map((item, index) => (
-        <li key={`${item.src}-${index}`} className="moments-strip__item">
-          <div className="moments-strip__frame">
-            <Image
-              src={item.src}
-              alt={item.alt}
-              fill
-              sizes="(max-width: 640px) 40vw, 180px"
-              className="object-cover"
-            />
-          </div>
-        </li>
-      ))}
-    </ul>
-  );
-}
 
 export function Misc({ mode = "preview", theme = "dark" }: MiscProps) {
   if (mode === "full") {
@@ -71,11 +47,11 @@ export function Misc({ mode = "preview", theme = "dark" }: MiscProps) {
                 </p>
               </div>
             </FadeIn>
-          </SiteContainer>
 
-          <div className="relative z-20 mt-10 md:mt-14">
-            <GalleryMasonry />
-          </div>
+            <FadeIn delay={0.2} blur={false} className="mt-10 md:mt-14">
+              <GalleryGrid />
+            </FadeIn>
+          </SiteContainer>
         </HomeSection>
       </>
     );
@@ -93,7 +69,7 @@ export function Misc({ mode = "preview", theme = "dark" }: MiscProps) {
           </div>
 
           <FadeIn delay={0.1} blur={false} className="mt-10 md:mt-14">
-            <MomentsStrip />
+            <GalleryGrid limit={GALLERY_PREVIEW_COUNT} />
           </FadeIn>
         </div>
       </SiteContainer>

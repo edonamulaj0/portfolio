@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { resolveMarqueeSrc } from "@/lib/marqueeCards";
 import type { GalleryItem } from "@/lib/gallery";
 
 type GalleryImageProps = {
@@ -13,9 +12,8 @@ export function GalleryImage({ item }: GalleryImageProps) {
   const [loaded, setLoaded] = useState(false);
   const rootRef = useRef<HTMLElement>(null);
 
-  const orientation =
-    item.aspect === "landscape" ? "landscape" : "portrait";
-  const src = resolveMarqueeSrc(orientation);
+  const orientation = "landscape";
+  const src = item.src;
 
   return (
     <figure ref={rootRef} className="gallery-card group flex h-full min-h-0 flex-col">
@@ -46,7 +44,7 @@ export function GalleryImage({ item }: GalleryImageProps) {
         />
       </div>
       <figcaption className="mt-3 shrink-0 font-mono text-[11px] text-muted transition-colors duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:text-purple-200/80 md:text-xs">
-        {item.caption}
+        {item.alt}
       </figcaption>
     </figure>
   );

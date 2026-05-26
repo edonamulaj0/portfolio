@@ -17,13 +17,10 @@ export function resolveMarqueeSrc(orientation: MarqueeOrientation): string {
 }
 
 export function galleryItemToMarqueeCard(item: GalleryItem): MarqueeCardData {
-  const orientation: MarqueeOrientation =
-    item.aspect === "landscape" ? "landscape" : "portrait";
-
   return {
-    orientation,
-    src: resolveMarqueeSrc(orientation),
-    caption: item.caption,
+    orientation: "landscape",
+    src: item.src,
+    caption: item.alt,
     alt: item.alt,
   };
 }

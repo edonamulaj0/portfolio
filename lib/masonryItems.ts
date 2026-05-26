@@ -1,5 +1,4 @@
 import { galleryItems, type GalleryItem } from "./gallery";
-import { LANDSCAPE_ASSET, PORTRAIT_ASSET } from "./marqueeCards";
 
 export type MasonryItem = {
   id: string;
@@ -9,18 +8,11 @@ export type MasonryItem = {
 };
 
 function resolveImage(item: GalleryItem): string {
-  return item.aspect === "landscape" ? LANDSCAPE_ASSET : PORTRAIT_ASSET;
+  return item.src;
 }
 
-function resolveHeight(item: GalleryItem): number {
-  switch (item.aspect) {
-    case "landscape":
-      return 300;
-    case "portrait":
-      return 480;
-    default:
-      return 380;
-  }
+function resolveHeight(): number {
+  return 300;
 }
 
 export function galleryToMasonryItems(
@@ -30,9 +22,9 @@ export function galleryToMasonryItems(
   const sliced = limit ? items.slice(0, limit) : items;
 
   return sliced.map((item, index) => ({
-    id: `masonry-${index}-${item.caption}`,
+    id: `masonry-${index}-${item.alt}`,
     img: resolveImage(item),
     url: "/misc",
-    height: resolveHeight(item),
+    height: resolveHeight(),
   }));
 }
