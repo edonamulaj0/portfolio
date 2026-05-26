@@ -19,7 +19,7 @@ export function Background() {
         <ul className="mt-12 space-y-6 border-t border-divider pt-10 md:mt-16 md:space-y-8 md:pt-12">
           {previewItems.map((item, index) => (
             <FadeIn key={`${item.year}-${index}`} delay={index * 0.05}>
-              <li className="grid gap-3 md:grid-cols-[4.5rem_1fr] md:gap-10">
+              <li className="premium-row grid gap-3 md:grid-cols-[4.5rem_1fr] md:gap-10">
                 <span className="font-mono text-sm text-accent">{item.year}</span>
                 <span className="leading-relaxed text-text md:text-lg">{item.text}</span>
               </li>

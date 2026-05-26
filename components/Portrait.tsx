@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ParallaxMedia } from "./ParallaxMedia";
 
 type PortraitProps = {
   className?: string;
@@ -12,17 +12,16 @@ export function Portrait({
   sizes = "(max-width: 768px) 40vw, 280px",
 }: PortraitProps) {
   return (
-    <div
-      className={`relative overflow-hidden rounded-sm border border-divider/80 bg-divider/10 ${className}`}
-    >
-      <Image
-        src="/dona.png"
-        alt="Edona Mulaj"
-        fill
-        priority={priority}
-        sizes={sizes}
-        className="object-cover object-center"
-      />
-    </div>
+    <ParallaxMedia
+      className={`relative ${className}`}
+      frameClassName="absolute inset-0"
+      imageProps={{
+        src: "/dona.png",
+        alt: "Edona Mulaj",
+        fill: true,
+        priority,
+        sizes,
+      }}
+    />
   );
 }

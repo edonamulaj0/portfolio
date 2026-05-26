@@ -27,6 +27,7 @@ export function PageIntro({ label, title, description }: PageIntroProps) {
         text={title}
         className="contact-headline mt-6 font-normal tracking-tight"
         delay={0.08}
+        gradient
       />
 
       {description ? (

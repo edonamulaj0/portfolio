@@ -1,5 +1,6 @@
 import { projects, type Project } from "@/lib/projects";
 import { FadeIn, StaggerGroup, StaggerItem } from "./FadeIn";
+import { Magnetic } from "./Magnetic";
 import { PageIntro } from "./PageIntro";
 import { SeeMoreLink } from "./SeeMoreLink";
 import { SiteContainer } from "./SiteContainer";
@@ -7,16 +8,17 @@ import { SiteContainer } from "./SiteContainer";
 function ProjectLink({ project }: { project: Project }) {
   if (project.link) {
     return (
-      <a
-        href={project.link}
-        className="link-slide inline-flex items-center gap-2 font-mono text-xs text-accent md:text-sm"
-        target="_blank"
-        rel="noopener noreferrer"
-        data-cursor-hover
-      >
-        <span>→</span>
-        <span>{project.linkLabel}</span>
-      </a>
+      <Magnetic strength={0.2} className="inline-block">
+        <a
+          href={project.link}
+          className="link-slide inline-flex items-center gap-2 font-mono text-xs text-accent md:text-sm"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>→</span>
+          <span>{project.linkLabel}</span>
+        </a>
+      </Magnetic>
     );
   }
 
@@ -54,7 +56,7 @@ export function Work({ mode = "preview" }: WorkProps) {
               <StaggerItem
                 as="li"
                 key={project.name}
-                className="border-b border-divider py-8 md:py-10"
+                className="premium-row border-b border-divider py-8 md:py-10"
               >
                   <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between">
                     <h2 className="project-name font-normal">{project.name}</h2>
@@ -98,7 +100,7 @@ export function Work({ mode = "preview" }: WorkProps) {
             <StaggerItem
               as="li"
               key={project.name}
-              className="group border-b border-divider py-8 md:py-10"
+              className="premium-row group border-b border-divider py-8 md:py-10"
             >
                 <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between">
                   <h3 className="project-name font-normal">{project.name}</h3>

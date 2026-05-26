@@ -1,5 +1,6 @@
 import { contactExtended, contactIntro, contactLinks } from "@/lib/contact";
 import { FadeIn, StaggerGroup, StaggerItem } from "./FadeIn";
+import { Magnetic } from "./Magnetic";
 import { RevealText } from "./RevealText";
 import { PageIntro } from "./PageIntro";
 import { SeeMoreLink } from "./SeeMoreLink";
@@ -30,16 +31,17 @@ export function Contact({ mode = "preview" }: ContactProps) {
             >
               {contactLinks.map((link) => (
                 <StaggerItem as="li" key={link.href}>
+                  <Magnetic strength={0.18} className="inline-block">
                     <a
                       href={link.href}
                       className="link-slide inline-flex items-center gap-4 font-mono text-base text-text md:text-xl"
                       target={link.external ? "_blank" : undefined}
                       rel={link.external ? "noopener noreferrer" : undefined}
-                      data-cursor-hover
                     >
                       <span>{link.label}</span>
                       <span className="text-accent">→</span>
                     </a>
+                  </Magnetic>
                 </StaggerItem>
               ))}
             </StaggerGroup>
@@ -67,6 +69,7 @@ export function Contact({ mode = "preview" }: ContactProps) {
           text="let's talk."
           className="contact-headline mt-10 font-normal tracking-tight md:mt-12"
           delay={0.06}
+          gradient
         />
 
         <FadeIn delay={0.16}>

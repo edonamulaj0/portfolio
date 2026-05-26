@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { easePremium } from "@/lib/motion";
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
@@ -59,16 +60,20 @@ export function Navbar() {
       transition={
         prefersReducedMotion
           ? { duration: 0 }
-          : { duration: 0.45, ease: [0.22, 1, 0.36, 1] }
+          : { duration: 0.5, ease: easePremium }
       }
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,box-shadow,backdrop-filter] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${
         scrolled
-          ? "border-divider/80 bg-bg/85 backdrop-blur-md"
+          ? "glass-panel border-purple-500/20 shadow-[0_8px_32px_-12px_rgba(109,40,217,0.35)]"
           : "border-transparent bg-transparent"
       }`}
     >
       <nav className="site-container flex items-center justify-between py-5">
-        <Link href="/" className="link-slide font-mono text-sm tracking-wide">
+        <Link
+          href="/"
+          className="link-slide font-mono text-sm tracking-wide"
+          data-cursor-hover
+        >
           dona.
         </Link>
         <ul className="flex items-center gap-3 font-mono text-[10px] text-muted sm:gap-4 sm:text-xs md:gap-6 md:text-sm">
@@ -81,9 +86,12 @@ export function Navbar() {
               )}
               <Link
                 href={link.href}
-                className={`link-slide transition-colors duration-300 ${
-                  isActive(pathname, link.href) ? "text-text" : "hover:text-text"
+                className={`link-slide transition-colors duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${
+                  isActive(pathname, link.href)
+                    ? "text-purple-200"
+                    : "hover:text-text"
                 }`}
+                data-cursor-hover
               >
                 {link.label}
               </Link>

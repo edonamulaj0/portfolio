@@ -1,9 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { easePremium, revealY, transitionReveal } from "@/lib/motion";
 import { type ElementType, type ReactNode, useEffect, useState } from "react";
-
-const ease = [0.22, 1, 0.36, 1] as const;
 
 type FadeInProps = {
   children: ReactNode;
@@ -39,8 +38,8 @@ export function FadeIn({
           ? false
           : {
               opacity: 0,
-              y: 32,
-              filter: blur ? "blur(12px)" : "blur(0px)",
+              y: revealY,
+              filter: blur ? "blur(10px)" : "blur(0px)",
             }
       }
       whileInView={{
@@ -48,8 +47,8 @@ export function FadeIn({
         y: 0,
         filter: "blur(0px)",
       }}
-      viewport={{ once: true, margin: "-8% 0px -8% 0px" }}
-      transition={{ duration: 0.85, ease, delay }}
+      viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+      transition={{ ...transitionReveal, delay }}
     >
       {children}
     </motion.div>
@@ -66,7 +65,7 @@ type StaggerGroupProps = {
 export function StaggerGroup({
   children,
   className,
-  stagger = 0.07,
+  stagger = 0.08,
   as = "div",
 }: StaggerGroupProps) {
   const prefersReducedMotion = useReducedMotion();
@@ -87,11 +86,11 @@ export function StaggerGroup({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-8% 0px -8% 0px" }}
+      viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
       variants={{
         hidden: {},
         visible: {
-          transition: { staggerChildren: stagger, delayChildren: 0.05 },
+          transition: { staggerChildren: stagger, delayChildren: 0.06 },
         },
       }}
     >
@@ -124,12 +123,12 @@ export function StaggerItem({ children, className, as = "div" }: StaggerItemProp
     <MotionTag
       className={className}
       variants={{
-        hidden: { opacity: 0, y: 28, filter: "blur(10px)" },
+        hidden: { opacity: 0, y: revealY, filter: "blur(8px)" },
         visible: {
           opacity: 1,
           y: 0,
           filter: "blur(0px)",
-          transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+          transition: transitionReveal,
         },
       }}
     >

@@ -30,14 +30,14 @@ export function Articles({ mode = "preview", limit = 2 }: ArticlesProps) {
         <ul className="mt-12 border-t border-divider md:mt-16">
           {articles.map((article, index) => (
             <FadeIn key={article.slug} delay={index * 0.06}>
-              <li className="border-b border-divider py-8 md:py-10">
+              <li className="premium-row border-b border-divider py-8 md:py-10">
                 <Link
                   href={`/articles/${article.slug}`}
                   className="group block"
                   data-cursor-hover
                 >
                   <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between">
-                    <h3 className="project-name font-normal transition-colors group-hover:text-purple-200">
+                    <h3 className="project-name font-normal transition-colors duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:text-purple-200">
                       {article.title}
                     </h3>
                     <time

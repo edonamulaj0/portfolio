@@ -1,14 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0a0812;
-  --color-text: #e8e4de;
-  --color-muted: #8a8494;
-  --color-accent: #c9a96e;
+  --color-bg: #07050e;
+  --color-text: #ebe7f0;
+  --color-muted: #8b8498;
+  --color-accent: #c4b5fd;
   --color-purple: #a78bfa;
+  --color-purple-neon: #c084fc;
+  --color-violet-deep: #6d28d9;
   --color-divider: #2a2438;
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --ease-premium: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 html {
@@ -46,8 +49,46 @@ body.cursor-none * {
 }
 
 ::selection {
-  background-color: color-mix(in srgb, var(--color-accent) 25%, transparent);
+  background-color: color-mix(in srgb, var(--color-purple) 35%, transparent);
   color: var(--color-text);
+}
+
+.text-gradient-purple {
+  background: linear-gradient(
+    135deg,
+    var(--color-text) 0%,
+    color-mix(in srgb, var(--color-purple-neon) 85%, var(--color-text)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass-panel {
+  background: color-mix(in srgb, var(--color-bg) 72%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-purple) 22%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.image-frame {
+  background: color-mix(in srgb, var(--color-divider) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-purple) 28%, var(--color-divider));
+  border-radius: 0.125rem;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-violet-deep) 12%, transparent) inset,
+    0 24px 48px -24px color-mix(in srgb, var(--color-violet-deep) 35%, transparent);
+  transition:
+    border-color 0.7s var(--ease-premium),
+    box-shadow 0.7s var(--ease-premium);
+}
+
+.image-frame:hover,
+.group\/frame:hover .image-frame {
+  border-color: color-mix(in srgb, var(--color-purple-neon) 45%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-purple) 20%, transparent) inset,
+    0 28px 56px -20px color-mix(in srgb, var(--color-violet-deep) 45%, transparent);
 }
 
 .link-slide {
@@ -55,6 +96,21 @@ body.cursor-none * {
   display: inline-block;
   text-decoration: none;
   color: inherit;
+  transition: color 0.45s var(--ease-premium);
+}
+
+.link-slide::before {
+  content: "";
+  position: absolute;
+  inset: -0.35em -0.5em;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--color-purple) 12%, transparent);
+  opacity: 0;
+  transform: scale(0.92);
+  transition:
+    opacity 0.5s var(--ease-premium),
+    transform 0.5s var(--ease-premium);
+  z-index: -1;
 }
 
 .link-slide::after {
@@ -64,10 +120,25 @@ body.cursor-none * {
   bottom: 0.1em;
   width: 100%;
   height: 1px;
-  background-color: var(--color-accent);
+  background: linear-gradient(
+    90deg,
+    var(--color-accent),
+    var(--color-purple-neon)
+  );
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.55s var(--ease-premium);
+}
+
+.link-slide:hover,
+.link-slide:focus-visible {
+  color: color-mix(in srgb, var(--color-purple-neon) 90%, var(--color-text));
+}
+
+.link-slide:hover::before,
+.link-slide:focus-visible::before {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .link-slide:hover::after,
@@ -76,8 +147,41 @@ body.cursor-none * {
 }
 
 .link-slide:focus-visible {
-  outline: 1px solid var(--color-accent);
+  outline: 1px solid color-mix(in srgb, var(--color-purple) 60%, transparent);
   outline-offset: 4px;
+}
+
+.premium-row {
+  position: relative;
+  transition:
+    border-color 0.6s var(--ease-premium),
+    background-color 0.6s var(--ease-premium);
+}
+
+.premium-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--color-purple-neon),
+    transparent
+  );
+  opacity: 0;
+  transform: scaleY(0.4);
+  transition:
+    opacity 0.55s var(--ease-premium),
+    transform 0.55s var(--ease-premium);
+}
+
+.premium-row:hover::before,
+.premium-row:focus-within::before {
+  opacity: 0.85;
+  transform: scaleY(1);
 }
 
 .section-shell {
@@ -141,13 +245,14 @@ body.cursor-none * {
 }
 
 .scroll-indicator {
-  animation: scroll-bounce 2s ease-in-out infinite;
+  animation: scroll-bounce 2.4s var(--ease-premium) infinite;
+  color: color-mix(in srgb, var(--color-purple) 70%, var(--color-muted));
 }
 
 .project-reveal {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: grid-template-rows 0.65s var(--ease-premium);
 }
 
 .group:hover .project-reveal,
@@ -161,10 +266,10 @@ body.cursor-none * {
 
 .project-reveal-content {
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(12px);
   transition:
-    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.6s var(--ease-premium),
+    transform 0.6s var(--ease-premium);
 }
 
 .group:hover .project-reveal-content,
@@ -187,7 +292,7 @@ body.cursor-none * {
 .gradient-blob {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(80px);
+  filter: blur(90px);
   will-change: transform;
 }
 
@@ -198,8 +303,8 @@ body.cursor-none * {
   height: min(55vw, 32rem);
   background: radial-gradient(
     circle,
-    rgba(139, 92, 246, 0.45) 0%,
-    rgba(109, 40, 217, 0.2) 45%,
+    rgba(168, 85, 247, 0.55) 0%,
+    rgba(109, 40, 217, 0.28) 45%,
     transparent 72%
   );
 }
@@ -211,8 +316,8 @@ body.cursor-none * {
   height: min(48vw, 28rem);
   background: radial-gradient(
     circle,
-    rgba(167, 139, 250, 0.35) 0%,
-    rgba(124, 58, 237, 0.15) 50%,
+    rgba(192, 132, 252, 0.42) 0%,
+    rgba(124, 58, 237, 0.2) 50%,
     transparent 70%
   );
 }
@@ -224,8 +329,8 @@ body.cursor-none * {
   height: min(42vw, 26rem);
   background: radial-gradient(
     circle,
-    rgba(192, 132, 252, 0.3) 0%,
-    rgba(91, 33, 182, 0.12) 55%,
+    rgba(216, 180, 254, 0.38) 0%,
+    rgba(91, 33, 182, 0.16) 55%,
     transparent 72%
   );
 }
@@ -237,8 +342,8 @@ body.cursor-none * {
   height: min(50vw, 30rem);
   background: radial-gradient(
     circle,
-    rgba(76, 29, 149, 0.35) 0%,
-    rgba(49, 46, 129, 0.15) 48%,
+    rgba(91, 33, 182, 0.45) 0%,
+    rgba(49, 46, 129, 0.2) 48%,
     transparent 70%
   );
 }
@@ -308,9 +413,10 @@ body.cursor-none * {
 .progress-bar {
   background: linear-gradient(
     90deg,
-    color-mix(in srgb, var(--color-accent) 85%, transparent),
-    color-mix(in srgb, var(--color-purple) 75%, transparent)
+    color-mix(in srgb, var(--color-purple-neon) 90%, transparent),
+    color-mix(in srgb, var(--color-violet-deep) 80%, transparent)
   );
+  box-shadow: 0 0 12px color-mix(in srgb, var(--color-purple) 50%, transparent);
 }
 
 .section-rule {
@@ -320,10 +426,10 @@ body.cursor-none * {
   background: linear-gradient(
     90deg,
     var(--color-divider) 0%,
-    color-mix(in srgb, var(--color-purple) 35%, var(--color-divider)) 50%,
+    color-mix(in srgb, var(--color-purple-neon) 50%, var(--color-divider)) 50%,
     transparent 100%
   );
-  animation: rule-draw 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: rule-draw 1.15s var(--ease-premium) both;
 }
 
 @keyframes rule-draw {
@@ -337,12 +443,35 @@ body.cursor-none * {
   }
 }
 
+@supports (animation-timeline: view()) {
+  .scroll-fade-rise {
+    animation: fade-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 35%;
+  }
+
+  @keyframes fade-rise {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .section-rule {
     animation: none;
   }
 
   .scroll-indicator {
+    animation: none;
+  }
+
+  .scroll-fade-rise {
     animation: none;
   }
 }

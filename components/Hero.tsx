@@ -1,5 +1,6 @@
 "use client";
 
+import { easePremium } from "@/lib/motion";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -11,8 +12,8 @@ function HeroBackground() {
   const [mounted, setMounted] = useState(false);
   const prefersReducedMotion = useReducedMotion();
   const { scrollY } = useScroll();
-  const imageY = useTransform(scrollY, [0, 700], [0, 120]);
-  const imageScale = useTransform(scrollY, [0, 700], [1, 1.08]);
+  const imageY = useTransform(scrollY, [0, 800], [0, 140]);
+  const imageScale = useTransform(scrollY, [0, 800], [1, 1.1]);
 
   useEffect(() => {
     setMounted(true);
@@ -25,7 +26,7 @@ function HeroBackground() {
       fill
       priority
       sizes="100vw"
-      className="object-cover object-center"
+      className="object-cover object-center transition-opacity duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]"
       aria-hidden="true"
     />
   );
@@ -36,7 +37,7 @@ function HeroBackground() {
 
   return (
     <motion.div
-      className="absolute inset-0 will-change-transform"
+      className="absolute inset-[-4%] will-change-transform"
       style={{ y: imageY, scale: imageScale }}
     >
       {image}
@@ -64,7 +65,18 @@ export function Hero() {
 
   return (
     <section className="relative flex h-[100dvh] flex-col justify-end overflow-hidden pb-10 md:pb-16">
-      <HeroBackground />
+      <div className="absolute inset-0 overflow-hidden">
+        <HeroBackground />
+      </div>
+
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_80%,rgba(109,40,217,0.22)_0%,transparent_55%)]"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_90%_20%,rgba(192,132,252,0.12)_0%,transparent_40%)]"
+        aria-hidden="true"
+      />
 
       <div
         className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-bg from-0% via-bg/98 via-35% to-transparent"
@@ -78,6 +90,7 @@ export function Hero() {
             text="dona."
             className="hero-headline font-normal tracking-tight"
             immediate
+            gradient
           />
           <FadeIn immediate delay={0.2} blur={false}>
             <p className="mt-6 max-w-xl font-mono text-xs text-muted md:text-sm">
@@ -90,19 +103,19 @@ export function Hero() {
       {mounted && !prefersReducedMotion ? (
         <motion.div
           initial={false}
-          animate={{ opacity: scrolled ? 0 : 1, y: scrolled ? 8 : 0 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          animate={{ opacity: scrolled ? 0 : 1, y: scrolled ? 10 : 0 }}
+          transition={{ duration: 0.55, ease: easePremium }}
           className="pointer-events-none absolute inset-x-0 bottom-8 z-10 flex justify-center"
           aria-hidden={scrolled}
         >
-          <span className="scroll-indicator font-mono text-xs text-muted">↓ scroll</span>
+          <span className="scroll-indicator font-mono text-xs">↓ scroll</span>
         </motion.div>
       ) : (
         <div
           className="pointer-events-none absolute inset-x-0 bottom-8 z-10 flex justify-center"
           aria-hidden={scrolled}
         >
-          <span className="scroll-indicator font-mono text-xs text-muted">↓ scroll</span>
+          <span className="scroll-indicator font-mono text-xs">↓ scroll</span>
         </div>
       )}
     </section>
