@@ -1,17 +1,21 @@
 import { contactExtended, contactIntro, contactLinks } from "@/lib/contact";
+import { CircleArrowLink } from "./CircleArrowLink";
 import { FadeIn, StaggerGroup, StaggerItem } from "./FadeIn";
+import { HomeSection, type HomeSectionTheme } from "./HomeSection";
 import { PageIntro } from "./PageIntro";
-import { SeeMoreLink } from "./SeeMoreLink";
+import { SectionTag } from "./SectionTag";
 import { SiteContainer } from "./SiteContainer";
+import { SplitHeadline } from "./SplitHeadline";
 
 type ContactProps = {
   mode?: "preview" | "full";
+  theme?: HomeSectionTheme;
 };
 
-export function Contact({ mode = "preview" }: ContactProps) {
+export function Contact({ mode = "preview", theme = "dark" }: ContactProps) {
   if (mode === "full") {
     return (
-      <section className="section-shell pt-28 md:pt-32">
+      <HomeSection theme="hologram" className="home-section--page-first home-section--contact">
         <SiteContainer className="flex min-h-[calc(100dvh-10rem)] flex-col justify-between">
           <div>
             <PageIntro label="(06) contact" title="let's talk." description={contactIntro} />
@@ -42,40 +46,42 @@ export function Contact({ mode = "preview" }: ContactProps) {
               ))}
             </StaggerGroup>
           </div>
-
-          <FadeIn delay={0.28}>
-            <p className="mt-20 font-mono text-[10px] text-muted md:mt-24 md:text-xs">
-              © 2026 Edona Mulaj · edonamulaj.com
-            </p>
-          </FadeIn>
         </SiteContainer>
-      </section>
+      </HomeSection>
     );
   }
 
   return (
-    <section id="contact" className="section-shell scroll-mt-20">
-      <SiteContainer className="flex min-h-[50dvh] flex-col justify-center">
-        <FadeIn blur={false}>
-          <p className="font-mono text-sm text-accent md:text-base">(06) contact</p>
-        </FadeIn>
+    <HomeSection id="contact" theme={theme} className="home-section--contact">
+      <SiteContainer>
+        <div className="section-layout">
+          <aside className="section-layout__aside">
+            <SectionTag index="06" label="contact" />
+          </aside>
 
-        <h2 className="contact-headline mt-10 font-normal tracking-tight md:mt-12">
-          let&apos;s talk.
-        </h2>
+          <div className="section-layout__content">
+            <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
+              <SplitHeadline
+                lead="let's create something "
+                accent="amazing."
+                size="contact"
+              />
 
-        <FadeIn delay={0.16}>
-          <p className="mt-8 max-w-xl text-base leading-relaxed text-muted md:mt-10 md:text-lg">
-            {contactIntro}
-          </p>
-        </FadeIn>
+              <div className="max-w-md space-y-8 lg:text-right">
+                <FadeIn blur={false}>
+                  <p className="text-base leading-relaxed text-muted md:text-lg">
+                    I&apos;m currently open to freelance projects and exciting opportunities.
+                  </p>
+                </FadeIn>
 
-        <FadeIn delay={0.24}>
-          <div className="mt-10">
-            <SeeMoreLink href="/contact" label="get in touch" />
+                <FadeIn delay={0.1} blur={false} className="lg:flex lg:justify-end">
+                  <CircleArrowLink href="/contact" label="say hello" />
+                </FadeIn>
+              </div>
+            </div>
           </div>
-        </FadeIn>
+        </div>
       </SiteContainer>
-    </section>
+    </HomeSection>
   );
 }

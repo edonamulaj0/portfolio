@@ -1,15 +1,19 @@
 import Link from "next/link";
 import { formatArticleDate, getLatestArticles } from "@/lib/articles";
+import { CircleArrowLink } from "./CircleArrowLink";
 import { FadeIn } from "./FadeIn";
-import { SeeMoreLink } from "./SeeMoreLink";
+import { HomeSection, type HomeSectionTheme } from "./HomeSection";
+import { IridescentThumb } from "./IridescentThumb";
+import { SectionTag } from "./SectionTag";
 import { SiteContainer } from "./SiteContainer";
 
 type ArticlesProps = {
   mode?: "preview" | "full";
   limit?: number;
+  theme?: HomeSectionTheme;
 };
 
-export function Articles({ mode = "preview", limit = 2 }: ArticlesProps) {
+export function Articles({ mode = "preview", limit = 2, theme = "dark" }: ArticlesProps) {
   const articles =
     mode === "preview" ? getLatestArticles(limit) : getLatestArticles(100);
 
@@ -18,44 +22,36 @@ export function Articles({ mode = "preview", limit = 2 }: ArticlesProps) {
   }
 
   return (
-    <section id="writing" className="section-shell scroll-mt-20">
-      <SiteContainer className="flex min-h-[calc(100dvh-10rem)] flex-col justify-center">
-        <FadeIn>
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <p className="font-mono text-sm text-accent md:text-base">(04) writing</p>
-            <SeeMoreLink href="/articles" label="all articles" />
-          </div>
-        </FadeIn>
-
-        <ul className="mt-12 border-t border-divider md:mt-16">
-          {articles.map((article, index) => (
-            <FadeIn key={article.slug} delay={index * 0.06}>
-              <li className="premium-row border-b border-divider py-8 md:py-10">
-                <Link
-                  href={`/articles/${article.slug}`}
-                  className="group block"
-                  data-cursor-hover
-                >
-                  <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between">
-                    <h3 className="project-name font-normal transition-colors duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:text-purple-200">
-                      {article.title}
-                    </h3>
-                    <time
-                      dateTime={article.date}
-                      className="shrink-0 font-mono text-xs text-muted md:text-sm"
-                    >
-                      {formatArticleDate(article.date)}
-                    </time>
-                  </div>
-                  <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted md:text-base">
-                    {article.excerpt}
-                  </p>
-                </Link>
-              </li>
+    <HomeSection id="writing" theme={theme}>
+      <SiteContainer>
+        <div className="section-layout section-layout--stacked">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <SectionTag index="04" label="writing" />
+            <FadeIn blur={false}>
+              <CircleArrowLink href="/articles" label="view all articles" />
             </FadeIn>
-          ))}
-        </ul>
+          </div>
+
+          <ul className="article-list mt-10 border-t border-divider md:mt-14">
+            {articles.map((article, index) => (
+              <FadeIn key={article.slug} delay={index * 0.06} blur={false}>
+                <li className="article-row">
+                  <Link href={`/articles/${article.slug}`} className="article-row__link group">
+                    <IridescentThumb className="article-row__thumb" variant={index + 1} />
+                    <div className="article-row__body">
+                      <h3 className="article-row__title">{article.title}</h3>
+                      <p className="article-row__excerpt">{article.excerpt}</p>
+                    </div>
+                    <time dateTime={article.date} className="article-row__date">
+                      {formatArticleDate(article.date).toUpperCase()}
+                    </time>
+                  </Link>
+                </li>
+              </FadeIn>
+            ))}
+          </ul>
+        </div>
       </SiteContainer>
-    </section>
+    </HomeSection>
   );
 }
