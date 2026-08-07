@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main>
+    <main id="main">
       <Hero />
       <About theme="dark" />
       <Work theme="hologram" />

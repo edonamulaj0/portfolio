@@ -69,10 +69,25 @@ The homepage is an overview. Each section links to a dedicated page with full co
 ```
 app/(site)/       Home + section pages
 components/       Shared UI and section components
-lib/              Content data (articles, projects, gallery, etc.)
+lib/              Content data (see below)
 public/dona.png   Portrait photo
 public/gallery/   Gallery images
 ```
+
+### Content data
+
+All résumé and contact content is plain TypeScript in `lib/` — edit these to update the site:
+
+| File | Contents |
+| --- | --- |
+| `lib/social.ts` | Single source of truth for email, LinkedIn, GitHub, and Cyphera links (used by the nav, footer, about page, and contact page) |
+| `lib/experience.ts` | Work experience with per-role highlight bullets |
+| `lib/education.ts` | Degrees, Erasmus+ mobilities, and school |
+| `lib/credentials.ts` | Awards, publications, and certifications |
+| `lib/projects.ts` | Projects shown on the homepage preview and `/work` |
+| `lib/academics.ts` | Curated highlights for the homepage `(03)` section |
+| `lib/background.ts` | Technology groups rendered as chips on `/about#background` |
+| `lib/about.ts` | Intro copy for the homepage and about page |
 
 ## Adding articles
 

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function MiscPage() {
   return (
-    <main>
+    <main id="main">
       <Misc mode="full" />
     </main>
   );

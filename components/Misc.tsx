@@ -37,7 +37,12 @@ export function Misc({ mode = "preview", theme = "dark" }: MiscProps) {
   const items = getLatestMiscItems(3);
 
   return (
-    <HomeSection id="misc" theme={theme} curveDivider={theme === "dark"}>
+    <HomeSection
+      id="misc"
+      theme={theme}
+      curveDivider={theme === "dark"}
+      heading="Misc"
+    >
       <SiteContainer>
         <div className="section-layout section-layout--stacked">
           <SectionTag index="05" label="misc" />

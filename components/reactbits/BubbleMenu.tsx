@@ -17,6 +17,10 @@ type MenuItem = {
 
 export type BubbleMenuProps = {
   logo: ReactNode | string;
+  /** Rendered in the top bar, before the toggle button (e.g. social icons) */
+  trailing?: ReactNode;
+  /** Rendered at the bottom of the open overlay */
+  overlayFooter?: ReactNode;
   onMenuClick?: (open: boolean) => void;
   className?: string;
   style?: CSSProperties;
@@ -43,6 +47,8 @@ const DEFAULT_ITEMS: MenuItem[] = [
 
 export default function BubbleMenu({
   logo,
+  trailing,
+  overlayFooter,
   onMenuClick,
   className,
   style,
@@ -232,6 +238,15 @@ export default function BubbleMenu({
           justify-content: center;
           pointer-events: none;
         }
+        .bubble-menu-footer {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: max(1.75rem, env(safe-area-inset-bottom));
+          display: flex;
+          justify-content: center;
+          pointer-events: auto;
+        }
         .bubble-menu-items .pill-list {
           list-style: none;
           margin: 0 auto;
@@ -341,37 +356,41 @@ export default function BubbleMenu({
           </span>
         </div>
 
-        <button
-          type="button"
-          className={[
-            "bubble toggle-bubble menu-btn pointer-events-auto inline-flex h-12 w-12 cursor-pointer flex-col items-center justify-center rounded-full border-0 p-0 shadow-[0_4px_16px_rgba(0,0,0,0.35)] will-change-transform md:h-14 md:w-14",
-            isMenuOpen ? "open" : "",
-          ].join(" ")}
-          onClick={handleToggle}
-          aria-label={menuAriaLabel}
-          aria-pressed={isMenuOpen}
-          aria-expanded={isMenuOpen}
-          style={{ background: menuBg }}
-        >
-          <span
-            className="menu-line block rounded-[2px]"
-            style={{
-              width: 26,
-              height: 2,
-              background: menuContentColor,
-              transform: isMenuOpen ? "translateY(4px) rotate(45deg)" : "none",
-            }}
-          />
-          <span
-            className="menu-line short mt-1.5 block rounded-[2px]"
-            style={{
-              width: 26,
-              height: 2,
-              background: menuContentColor,
-              transform: isMenuOpen ? "translateY(-4px) rotate(-45deg)" : "none",
-            }}
-          />
-        </button>
+        <div className="pointer-events-auto flex items-center gap-2 md:gap-3">
+          {trailing}
+
+          <button
+            type="button"
+            className={[
+              "bubble toggle-bubble menu-btn pointer-events-auto inline-flex h-12 w-12 cursor-pointer flex-col items-center justify-center rounded-full border-0 p-0 shadow-[0_4px_16px_rgba(0,0,0,0.35)] will-change-transform md:h-14 md:w-14",
+              isMenuOpen ? "open" : "",
+            ].join(" ")}
+            onClick={handleToggle}
+            aria-label={menuAriaLabel}
+            aria-pressed={isMenuOpen}
+            aria-expanded={isMenuOpen}
+            style={{ background: menuBg }}
+          >
+            <span
+              className="menu-line block rounded-[2px]"
+              style={{
+                width: 26,
+                height: 2,
+                background: menuContentColor,
+                transform: isMenuOpen ? "translateY(4px) rotate(45deg)" : "none",
+              }}
+            />
+            <span
+              className="menu-line short mt-1.5 block rounded-[2px]"
+              style={{
+                width: 26,
+                height: 2,
+                background: menuContentColor,
+                transform: isMenuOpen ? "translateY(-4px) rotate(-45deg)" : "none",
+              }}
+            />
+          </button>
+        </div>
       </nav>
 
       {showOverlay ? (
@@ -426,6 +445,10 @@ export default function BubbleMenu({
                 </li>
               ))}
             </ul>
+
+            {overlayFooter ? (
+              <div className="bubble-menu-footer">{overlayFooter}</div>
+            ) : null}
           </div>
         </div>
       ) : null}

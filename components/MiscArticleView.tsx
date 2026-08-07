@@ -11,7 +11,7 @@ type MiscArticleViewProps = {
 
 export function MiscArticleView({ article }: MiscArticleViewProps) {
   return (
-    <main>
+    <main id="main">
       <HomeSection theme="hologram" className="home-section--page-first">
         <SiteContainer>
           <article>

@@ -1,8 +1,9 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 import { useRef } from "react";
 import type { ContactLink } from "@/lib/contact";
+import { SocialIcon } from "./SocialIcon";
 
 const PULL_RADIUS = 80;
 const MAX_OFFSET = 12;
@@ -12,6 +13,7 @@ type MagneticContactLinkProps = {
 };
 
 export function MagneticContactLink({ link }: MagneticContactLinkProps) {
+  const prefersReducedMotion = useReducedMotion();
   const ref = useRef<HTMLAnchorElement>(null);
   const offsetX = useMotionValue(0);
   const offsetY = useMotionValue(0);
@@ -20,7 +22,7 @@ export function MagneticContactLink({ link }: MagneticContactLinkProps) {
 
   const onMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || prefersReducedMotion) return;
     const rect = el.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
@@ -48,21 +50,19 @@ export function MagneticContactLink({ link }: MagneticContactLinkProps) {
     <motion.a
       ref={ref}
       href={link.href}
-      className="link-slide inline-flex items-center gap-4 font-mono text-base text-text md:text-xl"
+      className="contact-link link-slide group"
       target={link.external ? "_blank" : undefined}
       rel={link.external ? "noopener noreferrer" : undefined}
-      style={{ x: springX, y: springY }}
+      aria-label={link.ariaLabel}
+      style={prefersReducedMotion ? undefined : { x: springX, y: springY }}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
     >
-      <span>{link.label}</span>
-      <motion.span
-        className="inline-block text-accent"
-        whileHover={{ rotate: -45 }}
-        transition={{ type: "spring", stiffness: 320, damping: 18 }}
-      >
+      <SocialIcon id={link.id} className="contact-link__icon" />
+      <span className="contact-link__handle">{link.handle}</span>
+      <span className="contact-link__arrow" aria-hidden="true">
         →
-      </motion.span>
+      </span>
     </motion.a>
   );
 }

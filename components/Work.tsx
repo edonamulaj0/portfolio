@@ -1,6 +1,6 @@
 import { projects } from "@/lib/projects";
 import { CircleArrowLink } from "./CircleArrowLink";
-import { FadeIn, StaggerGroup, StaggerItem } from "./FadeIn";
+import { StaggerGroup, StaggerItem } from "./FadeIn";
 import { HomeSection, type HomeSectionTheme } from "./HomeSection";
 import { PageIntro } from "./PageIntro";
 import { SectionFooter } from "./SectionFooter";
@@ -23,56 +23,50 @@ export function Work({ mode = "preview", theme = "dark" }: WorkProps) {
           <PageIntro
             label="(02) work"
             title="selected work."
-            description="Core engineering projects across study platforms, learning management, and open-source education."
+            description="Platforms in production — study tooling, learning management, open-source education, and public health."
           />
 
-          <StaggerGroup
-            as="ul"
-            className="mt-14 list-none border-t border-divider p-0 md:mt-16"
-            stagger={0.08}
-          >
+          <StaggerGroup as="ul" className="work-list" stagger={0.08}>
             {projects.map((project) => (
-              <StaggerItem
-                as="li"
-                key={project.name}
-                className="border-b border-divider py-8 md:py-10"
-              >
-                {project.link ? (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-row--link block"
-                  >
-                    <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between">
-                      <h2 className="project-name font-normal">{project.name}</h2>
-                      <span className="shrink-0 font-mono text-xs text-muted md:text-sm">
-                        {project.period}
-                      </span>
-                    </div>
-                    <p className="mt-5 max-w-3xl text-sm leading-relaxed text-muted md:text-base">
-                      {project.description}
-                    </p>
-                    {project.stack ? (
-                      <p className="mt-4 font-mono text-xs text-muted">{project.stack}</p>
-                    ) : null}
-                  </a>
-                ) : (
-                  <>
-                    <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between">
-                      <h2 className="project-name font-normal">{project.name}</h2>
-                      <span className="shrink-0 font-mono text-xs text-muted md:text-sm">
-                        {project.period}
-                      </span>
-                    </div>
-                    <p className="mt-5 max-w-3xl text-sm leading-relaxed text-muted md:text-base">
-                      {project.description}
-                    </p>
-                    {project.stack ? (
-                      <p className="mt-4 font-mono text-xs text-muted">{project.stack}</p>
-                    ) : null}
-                  </>
-                )}
+              <StaggerItem as="li" key={project.name} className="work-card">
+                <div className="work-card__header">
+                  <div className="work-card__heading">
+                    <h2 className="work-card__title">{project.name}</h2>
+                    <span className="work-card__category">{project.category}</span>
+                  </div>
+                  <span className="work-card__period">{project.period}</span>
+                </div>
+
+                <ul className="work-card__highlights">
+                  {project.highlights.map((highlight) => (
+                    <li key={highlight}>{highlight}</li>
+                  ))}
+                </ul>
+
+                <div className="work-card__footer">
+                  {project.stack?.length ? (
+                    <ul className="chip-row" aria-label={`${project.name} tech stack`}>
+                      {project.stack.map((tech) => (
+                        <li key={tech} className="chip">
+                          {tech}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+
+                  {project.link ? (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="work-card__link link-slide"
+                      aria-label={`Visit ${project.name} (opens in a new tab)`}
+                    >
+                      {project.linkLabel ?? project.link}
+                      <span aria-hidden="true"> ↗</span>
+                    </a>
+                  ) : null}
+                </div>
               </StaggerItem>
             ))}
           </StaggerGroup>
@@ -82,7 +76,7 @@ export function Work({ mode = "preview", theme = "dark" }: WorkProps) {
   }
 
   return (
-    <HomeSection id="work" theme={theme}>
+    <HomeSection id="work" theme={theme} heading="Selected work">
       <SiteContainer>
         <div className="section-layout section-layout--stacked">
           <SectionTag index="02" label="work" />

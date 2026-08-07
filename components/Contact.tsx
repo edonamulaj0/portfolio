@@ -28,11 +28,7 @@ export function Contact({ mode = "preview", theme = "dark" }: ContactProps) {
               </p>
             </FadeIn>
 
-            <StaggerGroup
-              as="ul"
-              className="mt-12 list-none space-y-5 p-0 md:mt-16 md:space-y-6"
-              stagger={0.06}
-            >
+            <StaggerGroup as="ul" className="contact-list" stagger={0.06}>
               {contactLinks.map((link) => (
                 <StaggerItem as="li" key={link.href}>
                   <MagneticContactLink link={link} />
@@ -40,13 +36,22 @@ export function Contact({ mode = "preview", theme = "dark" }: ContactProps) {
               ))}
             </StaggerGroup>
           </div>
+
+          <FadeIn delay={0.3} blur={false}>
+            <p className="contact-location">Prishtina, Kosovo · open to remote work</p>
+          </FadeIn>
         </SiteContainer>
       </HomeSection>
     );
   }
 
   return (
-    <HomeSection id="contact" theme={theme} className="home-section--contact">
+    <HomeSection
+      id="contact"
+      theme={theme}
+      className="home-section--contact"
+      heading="Contact"
+    >
       <SiteContainer>
         <div className="section-layout">
           <aside className="section-layout__aside">

@@ -9,6 +9,11 @@ type HomeSectionProps = {
   className?: string;
   /** Smooth SVG curve into a following hologram section */
   curveDivider?: boolean;
+  /**
+   * Accessible name for the landmark. Rendered as a visually hidden heading so
+   * the section reads correctly in a document outline without changing the design.
+   */
+  heading?: string;
   children: ReactNode;
 };
 
@@ -17,12 +22,16 @@ export function HomeSection({
   theme = "dark",
   className = "",
   curveDivider = false,
+  heading,
   children,
 }: HomeSectionProps) {
+  const headingId = heading ? `${id ?? heading.toLowerCase()}-heading` : undefined;
+
   return (
     <section
       id={id}
       data-theme={theme}
+      aria-labelledby={headingId}
       className={[
         "home-section",
         `home-section--${theme}`,
@@ -36,7 +45,14 @@ export function HomeSection({
       {theme === "hologram" ? (
         <div className="home-section__hologram" aria-hidden="true" />
       ) : null}
-      <div className="home-section__content relative z-[1]">{children}</div>
+      <div className="home-section__content relative z-[1]">
+        {heading ? (
+          <h2 id={headingId} className="sr-only">
+            {heading}
+          </h2>
+        ) : null}
+        {children}
+      </div>
       {theme === "dark" && curveDivider ? <SectionCurveDivider /> : null}
     </section>
   );

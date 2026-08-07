@@ -1,19 +1,43 @@
 import { aboutCurrently, aboutExtended, aboutParagraphs } from "@/lib/about";
+import { experience } from "@/lib/experience";
+import { education } from "@/lib/education";
+import { awards, certifications, publications } from "@/lib/credentials";
+import { techStack } from "@/lib/background";
 import { Portrait } from "./Portrait";
 import { CircleArrowLink } from "./CircleArrowLink";
 import { FadeIn } from "./FadeIn";
 import { HomeSection, type HomeSectionTheme } from "./HomeSection";
 import { PageIntro } from "./PageIntro";
+import { ResumeRow } from "./ResumeRow";
 import { SectionFooter } from "./SectionFooter";
 import { SectionTag } from "./SectionTag";
 import { SiteContainer } from "./SiteContainer";
-import { skills, timeline } from "@/lib/background";
-import { SkillBars } from "./SkillBars";
+import { SocialLinks } from "./SocialLinks";
+import { TechStack } from "./TechStack";
 
 type AboutProps = {
   mode?: "preview" | "full";
   theme?: HomeSectionTheme;
 };
+
+type ResumeBlockProps = {
+  id: string;
+  title: string;
+  children: React.ReactNode;
+};
+
+function ResumeBlock({ id, title, children }: ResumeBlockProps) {
+  return (
+    <section className="resume-block" aria-labelledby={id}>
+      <FadeIn blur={false}>
+        <h2 id={id} className="resume-block__title">
+          {title}
+        </h2>
+      </FadeIn>
+      {children}
+    </section>
+  );
+}
 
 export function About({ mode = "preview", theme = "dark" }: AboutProps) {
   if (mode === "full") {
@@ -24,11 +48,11 @@ export function About({ mode = "preview", theme = "dark" }: AboutProps) {
             <PageIntro
               label="(01) about"
               title="about me."
-              description="Founder & CEO @ Cyphera · Software Engineer · ICT & Network Engineering Student @ University of Prishtina."
+              description="Founder & CEO @ Cyphera · Software Engineer · ICT @ University of Prishtina."
             />
 
-            <div className="mt-14 grid gap-10 md:mt-16 md:grid-cols-[minmax(0,1fr)_minmax(0,300px)] md:items-end md:gap-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)] lg:gap-24">
-              <FadeIn delay={0.08} className="order-1 shrink-0 md:order-2 md:justify-self-end">
+            <div className="about-intro">
+              <FadeIn delay={0.08} className="about-intro__portrait">
                 <Portrait
                   className="aspect-[4/5] w-full max-w-[260px] sm:max-w-[280px] md:max-w-[320px]"
                   sizes="(max-width: 768px) 65vw, 320px"
@@ -36,13 +60,15 @@ export function About({ mode = "preview", theme = "dark" }: AboutProps) {
                 />
               </FadeIn>
 
-              <div className="order-2 space-y-8 md:order-1 md:space-y-10">
+              <div className="about-intro__copy">
                 {[...aboutParagraphs, ...aboutExtended].map((paragraph, index) => (
                   <FadeIn key={index} delay={0.1 + index * 0.06}>
                     <p
-                      className={`max-w-2xl text-lg leading-relaxed md:text-xl ${
-                        index < aboutParagraphs.length ? "text-text" : "text-muted"
-                      }`}
+                      className={
+                        index < aboutParagraphs.length
+                          ? "about-intro__lead"
+                          : "about-intro__paragraph"
+                      }
                     >
                       {paragraph}
                     </p>
@@ -50,9 +76,8 @@ export function About({ mode = "preview", theme = "dark" }: AboutProps) {
                 ))}
 
                 <FadeIn delay={0.34}>
-                  <p className="max-w-2xl font-mono text-xs leading-relaxed text-muted md:text-sm">
-                    {aboutCurrently}
-                  </p>
+                  <p className="about-intro__currently">{aboutCurrently}</p>
+                  <SocialLinks variant="labelled" className="about-intro__socials" />
                 </FadeIn>
               </div>
             </div>
@@ -61,24 +86,99 @@ export function About({ mode = "preview", theme = "dark" }: AboutProps) {
 
         <HomeSection id="background" theme="dark" className="scroll-mt-24">
           <SiteContainer>
-            <FadeIn>
-              <p className="font-mono text-sm text-accent md:text-base">background</p>
+            <FadeIn blur={false}>
+              <p className="resume-eyebrow">background</p>
             </FadeIn>
 
-            <ul className="mt-10 space-y-6 border-t border-divider pt-10 md:mt-12 md:space-y-8 md:pt-12">
-              {timeline.map((item, index) => (
-                <FadeIn key={`${item.year}-${index}`} delay={index * 0.04}>
-                  <li className="grid gap-3 md:grid-cols-[4.5rem_1fr] md:gap-10">
-                    <span className="font-mono text-sm text-accent">{item.year}</span>
-                    <span className="leading-relaxed text-text md:text-lg">{item.text}</span>
-                  </li>
-                </FadeIn>
-              ))}
-            </ul>
+            <div className="resume-stack">
+              <ResumeBlock id="resume-experience" title="Experience">
+                <ul className="resume-list">
+                  {experience.map((item, index) => (
+                    <ResumeRow
+                      key={`${item.company}-${item.role}`}
+                      meta={item.period}
+                      location={item.location}
+                      title={item.role}
+                      subtitle={item.company}
+                      description={item.summary}
+                      bullets={item.highlights}
+                      href={item.href}
+                      delay={index * 0.04}
+                    />
+                  ))}
+                </ul>
+              </ResumeBlock>
 
-            <FadeIn delay={0.2}>
-              <SkillBars groups={skills} />
-            </FadeIn>
+              <ResumeBlock id="resume-education" title="Education">
+                <ul className="resume-list">
+                  {education.map((item, index) => (
+                    <ResumeRow
+                      key={`${item.institution}-${item.degree}`}
+                      meta={item.period}
+                      location={item.location}
+                      title={item.degree}
+                      subtitle={item.institution}
+                      description={item.description}
+                      bullets={item.highlights}
+                      delay={index * 0.04}
+                    />
+                  ))}
+                </ul>
+              </ResumeBlock>
+
+              <ResumeBlock id="resume-awards" title="Awards & achievements">
+                <ul className="resume-list">
+                  {awards.map((item, index) => (
+                    <ResumeRow
+                      key={item.title}
+                      meta={item.date}
+                      title={item.title}
+                      subtitle={item.event}
+                      bullets={item.highlights}
+                      href={item.href}
+                      delay={index * 0.04}
+                    />
+                  ))}
+                </ul>
+              </ResumeBlock>
+
+              <ResumeBlock id="resume-publications" title="Publications">
+                <ul className="resume-list">
+                  {publications.map((item, index) => (
+                    <ResumeRow
+                      key={item.title}
+                      meta={item.date}
+                      title={item.title}
+                      subtitle={item.venue}
+                      delay={index * 0.04}
+                    />
+                  ))}
+                </ul>
+              </ResumeBlock>
+
+              <ResumeBlock id="resume-certifications" title="Certifications & training">
+                <ul className="resume-list resume-list--compact">
+                  {certifications.map((item, index) => (
+                    <ResumeRow
+                      key={`${item.title}-${item.issuer}`}
+                      meta={item.period}
+                      title={item.title}
+                      subtitle={item.issuer}
+                      description={item.description}
+                      delay={index * 0.03}
+                    />
+                  ))}
+                </ul>
+              </ResumeBlock>
+
+              <ResumeBlock id="resume-technologies" title="Technologies">
+                <TechStack groups={techStack} />
+              </ResumeBlock>
+            </div>
+
+            <SectionFooter>
+              <CircleArrowLink href="/work" label="see the work" />
+            </SectionFooter>
           </SiteContainer>
         </HomeSection>
       </>
@@ -86,7 +186,12 @@ export function About({ mode = "preview", theme = "dark" }: AboutProps) {
   }
 
   return (
-    <HomeSection id="about" theme={theme} curveDivider={theme === "dark"}>
+    <HomeSection
+      id="about"
+      theme={theme}
+      curveDivider={theme === "dark"}
+      heading="About"
+    >
       <SiteContainer>
         <div className="section-layout">
           <aside className="section-layout__aside">
@@ -97,7 +202,7 @@ export function About({ mode = "preview", theme = "dark" }: AboutProps) {
             <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between md:gap-12 lg:gap-16">
               <div className="order-2 flex min-w-0 flex-1 flex-col gap-8 md:order-1 md:max-w-2xl">
                 <FadeIn blur={false}>
-                  <p className="text-lg leading-relaxed md:text-xl">
+                  <p className="text-balance text-lg leading-relaxed md:text-xl">
                     {aboutParagraphs[0]}
                   </p>
                 </FadeIn>

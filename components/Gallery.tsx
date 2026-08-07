@@ -33,7 +33,7 @@ export function Gallery({ mode = "preview", theme = "dark" }: GalleryProps) {
   }
 
   return (
-    <HomeSection id="gallery" theme={theme}>
+    <HomeSection id="gallery" theme={theme} heading="Gallery">
       <SiteContainer>
         <div className="section-layout section-layout--stacked">
           <SectionTag index="04" label="gallery" />

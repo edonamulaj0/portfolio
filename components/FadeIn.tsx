@@ -10,6 +10,8 @@ type FadeInProps = {
   delay?: number;
   immediate?: boolean;
   blur?: boolean;
+  /** Element to render — use "li" inside lists to keep markup valid */
+  as?: ElementType;
 };
 
 export function FadeIn({
@@ -18,20 +20,23 @@ export function FadeIn({
   delay = 0,
   immediate = false,
   blur = true,
+  as = "div",
 }: FadeInProps) {
   const prefersReducedMotion = useReducedMotion();
   const [mounted, setMounted] = useState(false);
+  const MotionTag = motion.create(as);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   if (!mounted || prefersReducedMotion) {
-    return <div className={className}>{children}</div>;
+    const Tag = as;
+    return <Tag className={className}>{children}</Tag>;
   }
 
   return (
-    <motion.div
+    <MotionTag
       className={className}
       initial={
         immediate
@@ -51,7 +56,7 @@ export function FadeIn({
       transition={{ ...transitionReveal, delay }}
     >
       {children}
-    </motion.div>
+    </MotionTag>
   );
 }
 
