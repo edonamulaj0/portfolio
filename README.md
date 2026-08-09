@@ -1,13 +1,33 @@
-# dona — Personal Portfolio
+# dona — Personal Portfolio (v2)
 
-Editorial single-page portfolio built with Next.js 15, Tailwind CSS v4, and Framer Motion. Configured for static export and deployment to Cloudflare Pages.
+Editorial portfolio built with Next.js 15, Tailwind CSS v4, and Framer Motion. Configured for static export and deployment to Cloudflare Pages.
 
 ## Tech stack
 
 - Next.js 15 (App Router, TypeScript)
 - Tailwind CSS v4
-- Framer Motion
+- Framer Motion — reveals and micro-interactions
+- Lenis — inertial smooth scrolling
+- GSAP ScrollTrigger — hero parallax
 - Geist Sans & Geist Mono via `next/font`
+
+## Design system (v2)
+
+One dark canvas end to end. v1 alternated black sections with a photographic
+"hologram" background; v2 drops that image entirely and builds depth from
+elevation instead:
+
+- **Surfaces** — `--color-bg` → `--color-surface` → `--color-surface-2`, with
+  hairline `--color-line` borders. Sections alternate base and raised tones
+  (`<Section tone="raised">`) for vertical rhythm.
+- **Aurora** — a fixed, CSS-only ambient backdrop (`components/Aurora.tsx`).
+  No image payload, no WebGL, and it pauses under `prefers-reduced-motion`.
+- **Accents** — lavender `--color-accent`, sky, and rose, used for rules,
+  indices, and interactive states rather than large washes.
+- **Motion** — a single easing curve (`--ease-premium`) across every
+  transition; Lenis drives scroll and is disabled for reduced motion.
+
+Tokens live at the top of `app/globals.css`.
 
 ## Run locally
 
@@ -60,10 +80,10 @@ The homepage is an overview. Each section links to a dedicated page with full co
 | Page | Route |
 | --- | --- |
 | Home | `/` |
-| About | `/about` |
+| About + full résumé | `/about` (`/about#background`) |
 | Work | `/work` |
-| Writing | `/articles` |
-| Misc | `/misc` |
+| Gallery | `/gallery` |
+| Misc | `/misc` (legacy `/articles` redirects here) |
 | Contact | `/contact` |
 
 ```
@@ -88,15 +108,16 @@ All résumé and contact content is plain TypeScript in `lib/` — edit these to
 | `lib/academics.ts` | Curated highlights for the homepage `(03)` section |
 | `lib/background.ts` | Technology groups rendered as chips on `/about#background` |
 | `lib/about.ts` | Intro copy for the homepage and about page |
+| `lib/highlights.ts` | Stat band numbers and the hero ticker words |
 
 ## Adding articles
 
-1. Open `lib/articles.ts`
+1. Open `lib/misc.ts`
 2. Add a new entry to the `articles` array with `slug`, `title`, `date`, `excerpt`, `tags`, and `content`
 3. Use `## Heading` for section headings in content
 4. Rebuild — the sitemap and static article pages update automatically
 
-Articles appear in the `(04) writing` section on the homepage and at `/articles`.
+Articles appear in the `(05) misc` section on the homepage and at `/misc`.
 
 ## Gallery & misc section
 

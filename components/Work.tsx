@@ -1,31 +1,83 @@
-import { projects } from "@/lib/projects";
+import { projects, type Project } from "@/lib/projects";
 import { CircleArrowLink } from "./CircleArrowLink";
 import { StaggerGroup, StaggerItem } from "./FadeIn";
-import { HomeSection, type HomeSectionTheme } from "./HomeSection";
 import { PageIntro } from "./PageIntro";
-import { SectionFooter } from "./SectionFooter";
-import { SectionTag } from "./SectionTag";
+import { Section } from "./Section";
 import { SiteContainer } from "./SiteContainer";
-import { WorkPreviewRow } from "./WorkPreviewRow";
 
 type WorkProps = {
   mode?: "preview" | "full";
-  theme?: HomeSectionTheme;
 };
 
-export function Work({ mode = "preview", theme = "dark" }: WorkProps) {
-  const visibleProjects = mode === "preview" ? projects.slice(0, 3) : projects;
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const body = (
+    <>
+      <div className="project-card__top">
+        <span className="project-card__index">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <span className="project-card__period">{project.period}</span>
+      </div>
 
+      <h3 className="project-card__title">{project.name}</h3>
+      <p className="project-card__category">{project.category}</p>
+      <p className="project-card__description">{project.description}</p>
+
+      <div className="project-card__foot">
+        {project.stack?.length ? (
+          <ul className="chip-row">
+            {project.stack.slice(0, 4).map((tech) => (
+              <li key={tech} className="chip">
+                {tech}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <span />
+        )}
+
+        {project.link ? (
+          <span className="project-card__cta">
+            {project.linkLabel ?? "visit"}
+            <span aria-hidden="true">↗</span>
+          </span>
+        ) : null}
+      </div>
+    </>
+  );
+
+  if (!project.link) {
+    return <article className="project-card">{body}</article>;
+  }
+
+  return (
+    <a
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="project-card"
+      aria-label={`${project.name} — ${project.category} (opens in a new tab)`}
+    >
+      {body}
+    </a>
+  );
+}
+
+export function Work({ mode = "preview" }: WorkProps) {
   if (mode === "full") {
     return (
-      <HomeSection theme="hologram" className="home-section--page-first">
-        <SiteContainer>
-          <PageIntro
-            label="(02) work"
-            title="selected work."
-            description="Platforms in production — study tooling, learning management, open-source education, and public health."
-          />
+      <>
+        <section className="section" aria-label="Introduction">
+          <SiteContainer>
+            <PageIntro
+              label="(02) work"
+              title="selected work."
+              description="Platforms in production — study tooling, learning management, open-source education, and public health."
+            />
+          </SiteContainer>
+        </section>
 
+        <Section label="projects" index="02" tone="raised">
           <StaggerGroup as="ul" className="work-list" stagger={0.08}>
             {projects.map((project) => (
               <StaggerItem as="li" key={project.name} className="work-card">
@@ -52,7 +104,9 @@ export function Work({ mode = "preview", theme = "dark" }: WorkProps) {
                         </li>
                       ))}
                     </ul>
-                  ) : null}
+                  ) : (
+                    <span />
+                  )}
 
                   {project.link ? (
                     <a
@@ -70,33 +124,30 @@ export function Work({ mode = "preview", theme = "dark" }: WorkProps) {
               </StaggerItem>
             ))}
           </StaggerGroup>
-        </SiteContainer>
-      </HomeSection>
+        </Section>
+      </>
     );
   }
 
   return (
-    <HomeSection id="work" theme={theme} heading="Selected work">
-      <SiteContainer>
-        <div className="section-layout section-layout--stacked">
-          <SectionTag index="02" label="work" />
+    <Section
+      id="work"
+      index="02"
+      label="work"
+      title="things I've shipped."
+      intro="Four platforms in production — study tooling, learning management, open-source education, and a hackathon-winning child health record."
+    >
+      <StaggerGroup as="ul" className="project-grid" stagger={0.08}>
+        {projects.map((project, index) => (
+          <StaggerItem as="li" key={project.name}>
+            <ProjectCard project={project} index={index} />
+          </StaggerItem>
+        ))}
+      </StaggerGroup>
 
-          <ul className="project-list mt-10 md:mt-14">
-            {visibleProjects.map((project, index) => (
-              <WorkPreviewRow
-                key={project.name}
-                project={project}
-                variant={index}
-                delay={index * 0.06}
-              />
-            ))}
-          </ul>
-
-          <SectionFooter>
-            <CircleArrowLink href="/work" label="view all projects" />
-          </SectionFooter>
-        </div>
-      </SiteContainer>
-    </HomeSection>
+      <div className="section-foot">
+        <CircleArrowLink href="/work" label="view all projects" />
+      </div>
+    </Section>
   );
 }

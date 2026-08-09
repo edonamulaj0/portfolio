@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArticleBody } from "./ArticleBody";
 import { FadeIn } from "./FadeIn";
-import { HomeSection } from "./HomeSection";
 import { SiteContainer } from "./SiteContainer";
 import { formatMiscDate, type MiscArticle } from "@/lib/misc";
 
@@ -12,31 +11,25 @@ type MiscArticleViewProps = {
 export function MiscArticleView({ article }: MiscArticleViewProps) {
   return (
     <main id="main">
-      <HomeSection theme="hologram" className="home-section--page-first">
+      <section className="section">
         <SiteContainer>
           <article>
-            <FadeIn immediate>
-              <Link
-                href="/misc"
-                className="link-slide font-mono text-xs text-muted md:text-sm"
-              >
+            <FadeIn immediate blur={false}>
+              <Link href="/misc" className="page-intro__back link-slide">
                 ← misc
               </Link>
 
-              <header className="mt-10 max-w-3xl border-b border-divider pb-10 md:mt-12 md:pb-12">
-                <time dateTime={article.date} className="font-mono text-xs text-accent md:text-sm">
+              <header className="mt-10 max-w-3xl border-b border-line pb-10 md:mt-12 md:pb-12">
+                <time dateTime={article.date} className="eyebrow !text-accent">
                   {formatMiscDate(article.date)}
                 </time>
-                <h1 className="mt-4 text-3xl font-normal tracking-tight md:text-5xl md:leading-tight">
+                <h1 className="mt-4 text-3xl font-light tracking-tight md:text-5xl md:leading-tight">
                   {article.title}
                 </h1>
                 {article.tags.length > 0 ? (
-                  <ul className="mt-6 flex flex-wrap gap-3">
+                  <ul className="chip-row mt-6">
                     {article.tags.map((tag) => (
-                      <li
-                        key={tag}
-                        className="font-mono text-[10px] uppercase tracking-wider text-muted md:text-xs"
-                      >
+                      <li key={tag} className="chip">
                         {tag}
                       </li>
                     ))}
@@ -45,14 +38,14 @@ export function MiscArticleView({ article }: MiscArticleViewProps) {
               </header>
             </FadeIn>
 
-            <FadeIn delay={0.1}>
+            <FadeIn delay={0.1} blur={false}>
               <div className="max-w-3xl pt-10 md:pt-12">
                 <ArticleBody content={article.content} />
               </div>
             </FadeIn>
           </article>
         </SiteContainer>
-      </HomeSection>
+      </section>
     </main>
   );
 }

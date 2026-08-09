@@ -11,19 +11,17 @@ export function PageIntro({ label, title, description }: PageIntroProps) {
   return (
     <div>
       <FadeIn immediate blur={false}>
-        <Link href="/" className="link-slide font-mono text-xs text-muted md:text-sm">
+        <Link href="/" className="page-intro__back link-slide">
           ← home
         </Link>
-        <p className="mt-10 font-mono text-sm text-accent md:text-base">{label}</p>
+        <p className="page-intro__label">{label}</p>
       </FadeIn>
 
-      <h1 className="contact-headline mt-6 font-normal tracking-tight">{title}</h1>
+      <h1 className="page-intro__title">{title}</h1>
 
       {description ? (
-        <FadeIn delay={0.18}>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-            {description}
-          </p>
+        <FadeIn blur={false} delay={0.14}>
+          <p className="page-intro__description">{description}</p>
         </FadeIn>
       ) : null}
     </div>

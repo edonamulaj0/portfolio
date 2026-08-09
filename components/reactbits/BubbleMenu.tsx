@@ -70,7 +70,6 @@ export default function BubbleMenu({
   const overlayRef = useRef<HTMLDivElement>(null);
   const bubblesRef = useRef<HTMLAnchorElement[]>([]);
   const labelRefs = useRef<HTMLSpanElement[]>([]);
-  const scrollYRef = useRef(0);
 
   const menuItems = items?.length ? items : DEFAULT_ITEMS;
 
@@ -183,32 +182,11 @@ export default function BubbleMenu({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [isMenuOpen, closeMenu]);
 
-  useEffect(() => {
-    if (!isMenuOpen) return;
-
-    scrollYRef.current = window.scrollY;
-    const { style } = document.body;
-    const html = document.documentElement;
-
-    style.position = "fixed";
-    style.top = `-${scrollYRef.current}px`;
-    style.left = "0";
-    style.right = "0";
-    style.width = "100%";
-    style.overflow = "hidden";
-    html.style.overflow = "hidden";
-
-    return () => {
-      style.position = "";
-      style.top = "";
-      style.left = "";
-      style.right = "";
-      style.width = "";
-      style.overflow = "";
-      html.style.overflow = "";
-      window.scrollTo(0, scrollYRef.current);
-    };
-  }, [isMenuOpen]);
+  /*
+   * Scroll locking is owned by the smooth-scroll provider via onMenuClick —
+   * pinning `body` to `position: fixed` here would fight it and reset scroll
+   * position on close.
+   */
 
   return (
     <>

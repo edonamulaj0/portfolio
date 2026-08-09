@@ -1,5 +1,8 @@
+/** Hook line used as the large statement on the homepage about band */
+export const aboutStatement = "I build software that people actually use.";
+
 export const aboutParagraphs = [
-  "I build software that people actually use — study platforms, learning management systems, and open-source tools that reach thousands of students. My approach is simple: take on challenging projects, learn whatever needs to be learned, and ship results.",
+  "Study platforms, learning management systems, and open-source tools that reach thousands of students. My approach is simple: take on challenging projects, learn whatever needs to be learned, and ship results.",
 ];
 
 export const aboutExtended = [

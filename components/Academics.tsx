@@ -1,56 +1,46 @@
 import { academics } from "@/lib/academics";
 import { CircleArrowLink } from "./CircleArrowLink";
 import { FadeIn } from "./FadeIn";
-import { HomeSection, type HomeSectionTheme } from "./HomeSection";
-import { SectionFooter } from "./SectionFooter";
-import { SectionTag } from "./SectionTag";
-import { SiteContainer } from "./SiteContainer";
+import { Section } from "./Section";
 
-type AcademicsProps = {
-  theme?: HomeSectionTheme;
-};
-
-export function Academics({ theme = "dark" }: AcademicsProps) {
+export function Academics() {
   return (
-    <HomeSection
+    <Section
       id="academics"
-      theme={theme}
-      curveDivider={theme === "dark"}
-      heading="Academics, research and awards"
+      index="03"
+      label="academics"
+      title="research, degrees, and wins."
+      intro="Two first-place finishes, a published MIPRO paper, and a semester abroad researching polarization in online discourse."
+      tone="raised"
     >
-      <SiteContainer>
-        <div className="section-layout section-layout--stacked">
-          <SectionTag index="03" label="academics" />
+      <ol className="timeline">
+        {academics.map((item, index) => (
+          <FadeIn
+            as="li"
+            key={`${item.year}-${item.title}`}
+            className="timeline__item"
+            blur={false}
+            delay={index * 0.05}
+          >
+            <span className="timeline__dot" aria-hidden="true" />
+            <span className="timeline__year">{item.year}</span>
+            <div>
+              <h3 className="timeline__title">
+                {item.title}
+                <span className="timeline__org">
+                  <span aria-hidden="true"> — </span>
+                  {item.institution}
+                </span>
+              </h3>
+              <p className="timeline__description">{item.description}</p>
+            </div>
+          </FadeIn>
+        ))}
+      </ol>
 
-          <ul className="experience-list mt-10 border-t border-divider md:mt-14">
-            {academics.map((item, index) => (
-              <FadeIn
-                as="li"
-                key={`${item.year}-${item.title}`}
-                delay={index * 0.05}
-                blur={false}
-                className="experience-row"
-              >
-                <span className="experience-row__year">{item.year}</span>
-                <div className="experience-row__body">
-                  <h3 className="experience-row__title">
-                    {item.title}
-                    <span className="experience-row__sep" aria-hidden="true">
-                      {" — "}
-                    </span>
-                    <span className="experience-row__org">{item.institution}</span>
-                  </h3>
-                  <p className="experience-row__description">{item.description}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </ul>
-
-          <SectionFooter>
-            <CircleArrowLink href="/about#background" label="view full background" />
-          </SectionFooter>
-        </div>
-      </SiteContainer>
-    </HomeSection>
+      <div className="section-foot">
+        <CircleArrowLink href="/about#background" label="view full background" />
+      </div>
+    </Section>
   );
 }

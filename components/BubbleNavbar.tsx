@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { useCallback } from "react";
 import { useMounted } from "@/lib/useMounted";
+import { useSmoothScroll } from "./SmoothScroll";
 import { socialLinks } from "@/lib/social";
 import { SocialIcon } from "./SocialIcon";
 import { SocialLinks } from "./SocialLinks";
@@ -51,6 +53,16 @@ function NavSocials() {
 
 export function BubbleNavbar() {
   const mounted = useMounted();
+  const { stop, start } = useSmoothScroll();
+
+  // The menu overlay owns the viewport while open, so pause the smooth scroller
+  const onMenuClick = useCallback(
+    (open: boolean) => {
+      if (open) stop();
+      else start();
+    },
+    [start, stop],
+  );
 
   if (!mounted) {
     return (
@@ -61,6 +73,7 @@ export function BubbleNavbar() {
   return (
     <BubbleMenu
       useFixedPosition
+      onMenuClick={onMenuClick}
       logo={
         <Link
           href="/"
