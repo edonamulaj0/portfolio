@@ -4,12 +4,12 @@ import { About } from "@/components/About";
 export const metadata: Metadata = {
   title: "about",
   description:
-    "About Edona S. Mulaj — Founder & CEO @ Cyphera, Software Engineer, and ICT & Network Engineering Student @ University of Prishtina.",
+    "About Edona S. Mulaj — experience, education, awards, publications, certifications, and the technologies she builds with.",
 };
 
 export default function AboutPage() {
   return (
-    <main>
+    <main id="main">
       <About mode="full" />
     </main>
   );

@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { useCallback } from "react";
 import { useMounted } from "@/lib/useMounted";
+import { useSmoothScroll } from "./SmoothScroll";
+import { socialLinks } from "@/lib/social";
+import { SocialIcon } from "./SocialIcon";
+import { SocialLinks } from "./SocialLinks";
 import {
   BUBBLE_HOVER_STYLES,
   BUBBLE_MENU_BG,
@@ -24,8 +29,40 @@ const navLinks = [
   { label: "contact", href: "/contact", ariaLabel: "Contact", rotation: -6 },
 ] as const;
 
+/** Icon-only social cluster that sits in the top bar next to the menu toggle */
+function NavSocials() {
+  return (
+    <ul className="nav-socials" aria-label="Social links">
+      {socialLinks.map((link) => (
+        <li key={link.id}>
+          <a
+            href={link.href}
+            className="nav-socials__link"
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noopener noreferrer" : undefined}
+            aria-label={link.ariaLabel}
+            title={link.label}
+          >
+            <SocialIcon id={link.id} className="h-[1.05rem] w-[1.05rem]" />
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function BubbleNavbar() {
   const mounted = useMounted();
+  const { stop, start } = useSmoothScroll();
+
+  // The menu overlay owns the viewport while open, so pause the smooth scroller
+  const onMenuClick = useCallback(
+    (open: boolean) => {
+      if (open) stop();
+      else start();
+    },
+    [start, stop],
+  );
 
   if (!mounted) {
     return (
@@ -36,14 +73,20 @@ export function BubbleNavbar() {
   return (
     <BubbleMenu
       useFixedPosition
+      onMenuClick={onMenuClick}
       logo={
         <Link
           href="/"
           className="font-mono text-sm tracking-wide text-black"
+          aria-label="Edona Mulaj — home"
           onClick={(e) => e.stopPropagation()}
         >
           dona.
         </Link>
+      }
+      trailing={<NavSocials />}
+      overlayFooter={
+        <SocialLinks variant="labelled" className="bubble-menu-socials" />
       }
       menuBg={BUBBLE_MENU_BG}
       menuContentColor={BUBBLE_MENU_FG}

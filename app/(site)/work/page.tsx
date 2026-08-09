@@ -4,12 +4,12 @@ import { Work } from "@/components/Work";
 export const metadata: Metadata = {
   title: "work",
   description:
-    "Selected projects by Edona S. Mulaj — Atheneum, Literas, and E-Studenti.",
+    "Selected projects by Edona S. Mulaj — Atheneum, Literas, E-Studenti, and Drit'.",
 };
 
 export default function WorkPage() {
   return (
-    <main>
+    <main id="main">
       <Work mode="full" />
     </main>
   );

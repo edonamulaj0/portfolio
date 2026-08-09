@@ -1,11 +1,15 @@
+/** Hook line used as the large statement on the homepage about band */
+export const aboutStatement = "I build software that people actually use.";
+
 export const aboutParagraphs = [
-  "My approach is simple: take on challenging projects, learn whatever needs to be learned, and deliver results while building meaningful connections along the way. Always excited about meaningful projects that combine technical growth with real-world impact.",
+  "Study platforms, learning management systems, and open-source tools that reach thousands of students. My approach is simple: take on challenging projects, learn whatever needs to be learned, and ship results.",
 ];
 
 export const aboutExtended = [
-  "Cyphera — Founder & CEO (June 2025–present). Founded company specializing in software services, internal products, and high-end web development solutions for small and medium businesses. Leading technical direction, client relationships, and high-standard delivery from architectural scoping to final interactive polish.",
-  "Hack&Stack (HNS) — Founder & Community Lead. Established a scaling community platform of 130+ active developers and tech enthusiasts focusing on project collaboration, knowledge sharing, and networking.",
+  "I founded Cyphera in June 2025 to do that work properly: web platforms and internal products for small and medium businesses, from architectural scoping through to the final interactive polish. Three of those platforms are live in production today.",
+  "Alongside the company I study ICT at the University of Prishtina, with an Erasmus+ semester at Saxion in the Netherlands researching polarization in online discourse, and a published MIPRO paper on AI-based prediction of low-frequency magnetic field exposure. Cybersecurity is the other half of my training — six months of penetration testing, incident response, and forensics through the Girls in Cybersecurity program.",
+  "I also run Hack&Stack, a community of 130+ developers built around project collaboration and knowledge sharing.",
 ];
 
 export const aboutCurrently =
-  "Founder & CEO @ Cyphera · Software Engineer · ICT & Network Engineering Student @ University of Prishtina";
+  "Founder & CEO @ Cyphera · Software Engineer · MSc ICT @ University of Prishtina";

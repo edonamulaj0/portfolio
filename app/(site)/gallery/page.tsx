@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function GalleryPage() {
   return (
-    <main>
+    <main id="main">
       <Gallery mode="full" />
     </main>
   );

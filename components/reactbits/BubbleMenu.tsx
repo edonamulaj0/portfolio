@@ -17,6 +17,10 @@ type MenuItem = {
 
 export type BubbleMenuProps = {
   logo: ReactNode | string;
+  /** Rendered in the top bar, before the toggle button (e.g. social icons) */
+  trailing?: ReactNode;
+  /** Rendered at the bottom of the open overlay */
+  overlayFooter?: ReactNode;
   onMenuClick?: (open: boolean) => void;
   className?: string;
   style?: CSSProperties;
@@ -43,6 +47,8 @@ const DEFAULT_ITEMS: MenuItem[] = [
 
 export default function BubbleMenu({
   logo,
+  trailing,
+  overlayFooter,
   onMenuClick,
   className,
   style,
@@ -64,7 +70,6 @@ export default function BubbleMenu({
   const overlayRef = useRef<HTMLDivElement>(null);
   const bubblesRef = useRef<HTMLAnchorElement[]>([]);
   const labelRefs = useRef<HTMLSpanElement[]>([]);
-  const scrollYRef = useRef(0);
 
   const menuItems = items?.length ? items : DEFAULT_ITEMS;
 
@@ -177,32 +182,11 @@ export default function BubbleMenu({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [isMenuOpen, closeMenu]);
 
-  useEffect(() => {
-    if (!isMenuOpen) return;
-
-    scrollYRef.current = window.scrollY;
-    const { style } = document.body;
-    const html = document.documentElement;
-
-    style.position = "fixed";
-    style.top = `-${scrollYRef.current}px`;
-    style.left = "0";
-    style.right = "0";
-    style.width = "100%";
-    style.overflow = "hidden";
-    html.style.overflow = "hidden";
-
-    return () => {
-      style.position = "";
-      style.top = "";
-      style.left = "";
-      style.right = "";
-      style.width = "";
-      style.overflow = "";
-      html.style.overflow = "";
-      window.scrollTo(0, scrollYRef.current);
-    };
-  }, [isMenuOpen]);
+  /*
+   * Scroll locking is owned by the smooth-scroll provider via onMenuClick —
+   * pinning `body` to `position: fixed` here would fight it and reset scroll
+   * position on close.
+   */
 
   return (
     <>
@@ -231,6 +215,15 @@ export default function BubbleMenu({
           align-items: center;
           justify-content: center;
           pointer-events: none;
+        }
+        .bubble-menu-footer {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: max(1.75rem, env(safe-area-inset-bottom));
+          display: flex;
+          justify-content: center;
+          pointer-events: auto;
         }
         .bubble-menu-items .pill-list {
           list-style: none;
@@ -341,37 +334,41 @@ export default function BubbleMenu({
           </span>
         </div>
 
-        <button
-          type="button"
-          className={[
-            "bubble toggle-bubble menu-btn pointer-events-auto inline-flex h-12 w-12 cursor-pointer flex-col items-center justify-center rounded-full border-0 p-0 shadow-[0_4px_16px_rgba(0,0,0,0.35)] will-change-transform md:h-14 md:w-14",
-            isMenuOpen ? "open" : "",
-          ].join(" ")}
-          onClick={handleToggle}
-          aria-label={menuAriaLabel}
-          aria-pressed={isMenuOpen}
-          aria-expanded={isMenuOpen}
-          style={{ background: menuBg }}
-        >
-          <span
-            className="menu-line block rounded-[2px]"
-            style={{
-              width: 26,
-              height: 2,
-              background: menuContentColor,
-              transform: isMenuOpen ? "translateY(4px) rotate(45deg)" : "none",
-            }}
-          />
-          <span
-            className="menu-line short mt-1.5 block rounded-[2px]"
-            style={{
-              width: 26,
-              height: 2,
-              background: menuContentColor,
-              transform: isMenuOpen ? "translateY(-4px) rotate(-45deg)" : "none",
-            }}
-          />
-        </button>
+        <div className="pointer-events-auto flex items-center gap-2 md:gap-3">
+          {trailing}
+
+          <button
+            type="button"
+            className={[
+              "bubble toggle-bubble menu-btn pointer-events-auto inline-flex h-12 w-12 cursor-pointer flex-col items-center justify-center rounded-full border-0 p-0 shadow-[0_4px_16px_rgba(0,0,0,0.35)] will-change-transform md:h-14 md:w-14",
+              isMenuOpen ? "open" : "",
+            ].join(" ")}
+            onClick={handleToggle}
+            aria-label={menuAriaLabel}
+            aria-pressed={isMenuOpen}
+            aria-expanded={isMenuOpen}
+            style={{ background: menuBg }}
+          >
+            <span
+              className="menu-line block rounded-[2px]"
+              style={{
+                width: 26,
+                height: 2,
+                background: menuContentColor,
+                transform: isMenuOpen ? "translateY(4px) rotate(45deg)" : "none",
+              }}
+            />
+            <span
+              className="menu-line short mt-1.5 block rounded-[2px]"
+              style={{
+                width: 26,
+                height: 2,
+                background: menuContentColor,
+                transform: isMenuOpen ? "translateY(-4px) rotate(-45deg)" : "none",
+              }}
+            />
+          </button>
+        </div>
       </nav>
 
       {showOverlay ? (
@@ -426,6 +423,10 @@ export default function BubbleMenu({
                 </li>
               ))}
             </ul>
+
+            {overlayFooter ? (
+              <div className="bubble-menu-footer">{overlayFooter}</div>
+            ) : null}
           </div>
         </div>
       ) : null}

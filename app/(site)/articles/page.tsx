@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 /** Legacy /articles route — same content as /misc */
 export default function ArticlesPage() {
   return (
-    <main>
+    <main id="main">
       <Misc mode="full" />
     </main>
   );

@@ -1,63 +1,48 @@
 import { getAllMiscItems, getLatestMiscItems } from "@/lib/misc";
 import { CircleArrowLink } from "./CircleArrowLink";
-import { FadeIn } from "./FadeIn";
-import { HomeSection, type HomeSectionTheme } from "./HomeSection";
 import { MiscFeed } from "./MiscFeed";
 import { PageIntro } from "./PageIntro";
-import { SectionFooter } from "./SectionFooter";
-import { SectionTag } from "./SectionTag";
+import { Section } from "./Section";
 import { SiteContainer } from "./SiteContainer";
 
 type MiscProps = {
   mode?: "preview" | "full";
-  theme?: HomeSectionTheme;
 };
 
-export function Misc({ mode = "preview", theme = "dark" }: MiscProps) {
+export function Misc({ mode = "preview" }: MiscProps) {
   if (mode === "full") {
-    const items = getAllMiscItems();
-
     return (
-      <HomeSection theme="hologram" className="home-section--page-first">
-        <SiteContainer>
-          <PageIntro
-            label="(05) misc"
-            title="misc."
-            description="Writing, notes, and standalone images — technical articles alongside personal posts and photos."
-          />
+      <>
+        <section className="section" aria-label="Introduction">
+          <SiteContainer>
+            <PageIntro
+              label="(05) misc"
+              title="misc."
+              description="Writing, notes, and standalone images — technical articles alongside personal posts and photos."
+            />
+          </SiteContainer>
+        </section>
 
-          <div className="mt-14 md:mt-16">
-            <MiscFeed items={items} />
-          </div>
-        </SiteContainer>
-      </HomeSection>
+        <Section label="feed" index="05" tone="raised">
+          <MiscFeed items={getAllMiscItems()} />
+        </Section>
+      </>
     );
   }
 
-  const items = getLatestMiscItems(3);
-
   return (
-    <HomeSection id="misc" theme={theme} curveDivider={theme === "dark"}>
-      <SiteContainer>
-        <div className="section-layout section-layout--stacked">
-          <SectionTag index="05" label="misc" />
+    <Section
+      id="misc"
+      index="05"
+      label="misc"
+      title="notes and images."
+      intro="Writing on tech and security, plus personal notes and photos."
+    >
+      <MiscFeed items={getLatestMiscItems(3)} />
 
-          <FadeIn delay={0.06} blur={false}>
-            <p className="max-w-xl text-sm leading-relaxed text-muted md:text-base">
-              Articles and standalone images — writing on tech and security, plus personal
-              notes and photos.
-            </p>
-          </FadeIn>
-
-          <div className="mt-10 md:mt-14">
-            <MiscFeed items={items} />
-          </div>
-
-          <SectionFooter>
-            <CircleArrowLink href="/misc" label="view all misc" />
-          </SectionFooter>
-        </div>
-      </SiteContainer>
-    </HomeSection>
+      <div className="section-foot">
+        <CircleArrowLink href="/misc" label="view all misc" />
+      </div>
+    </Section>
   );
 }

@@ -1,127 +1,221 @@
-import { aboutCurrently, aboutExtended, aboutParagraphs } from "@/lib/about";
+import {
+  aboutCurrently,
+  aboutExtended,
+  aboutParagraphs,
+  aboutStatement,
+} from "@/lib/about";
+import { experience } from "@/lib/experience";
+import { education } from "@/lib/education";
+import { awards, certifications, publications } from "@/lib/credentials";
+import { techStack } from "@/lib/background";
 import { Portrait } from "./Portrait";
 import { CircleArrowLink } from "./CircleArrowLink";
 import { FadeIn } from "./FadeIn";
-import { HomeSection, type HomeSectionTheme } from "./HomeSection";
 import { PageIntro } from "./PageIntro";
-import { SectionFooter } from "./SectionFooter";
-import { SectionTag } from "./SectionTag";
+import { ResumeRow } from "./ResumeRow";
+import { Section } from "./Section";
 import { SiteContainer } from "./SiteContainer";
-import { skills, timeline } from "@/lib/background";
-import { SkillBars } from "./SkillBars";
+import { SocialLinks } from "./SocialLinks";
+import { TechStack } from "./TechStack";
 
 type AboutProps = {
   mode?: "preview" | "full";
-  theme?: HomeSectionTheme;
 };
 
-export function About({ mode = "preview", theme = "dark" }: AboutProps) {
+function ResumeBlock({
+  id,
+  title,
+  children,
+}: {
+  id: string;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="resume-block" aria-labelledby={id}>
+      <FadeIn blur={false}>
+        <h2 id={id} className="resume-block__title">
+          {title}
+        </h2>
+      </FadeIn>
+      {children}
+    </section>
+  );
+}
+
+export function About({ mode = "preview" }: AboutProps) {
   if (mode === "full") {
     return (
       <>
-        <HomeSection theme="hologram" className="home-section--page-first">
+        <section className="section" aria-label="Introduction">
           <SiteContainer>
             <PageIntro
               label="(01) about"
               title="about me."
-              description="Founder & CEO @ Cyphera · Software Engineer · ICT & Network Engineering Student @ University of Prishtina."
+              description="Founder & CEO @ Cyphera · Software Engineer · ICT @ University of Prishtina."
             />
 
-            <div className="mt-14 grid gap-10 md:mt-16 md:grid-cols-[minmax(0,1fr)_minmax(0,300px)] md:items-end md:gap-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)] lg:gap-24">
-              <FadeIn delay={0.08} className="order-1 shrink-0 md:order-2 md:justify-self-end">
+            <div className="about-grid mt-16 md:mt-20">
+              <div>
+                <div className="about-body !mt-0">
+                  {[...aboutParagraphs, ...aboutExtended].map((paragraph, index) => (
+                    <FadeIn key={index} blur={false} delay={0.06 + index * 0.05}>
+                      <p>{paragraph}</p>
+                    </FadeIn>
+                  ))}
+                </div>
+
+                <FadeIn blur={false} delay={0.3}>
+                  <p className="about-currently">{aboutCurrently}</p>
+                  <SocialLinks variant="labelled" className="mt-4" />
+                </FadeIn>
+              </div>
+
+              <FadeIn delay={0.1} className="about-portrait">
                 <Portrait
-                  className="aspect-[4/5] w-full max-w-[260px] sm:max-w-[280px] md:max-w-[320px]"
-                  sizes="(max-width: 768px) 65vw, 320px"
+                  className="aspect-[4/5] w-full"
+                  sizes="(max-width: 900px) 80vw, 384px"
                   priority
                 />
               </FadeIn>
-
-              <div className="order-2 space-y-8 md:order-1 md:space-y-10">
-                {[...aboutParagraphs, ...aboutExtended].map((paragraph, index) => (
-                  <FadeIn key={index} delay={0.1 + index * 0.06}>
-                    <p
-                      className={`max-w-2xl text-lg leading-relaxed md:text-xl ${
-                        index < aboutParagraphs.length ? "text-text" : "text-muted"
-                      }`}
-                    >
-                      {paragraph}
-                    </p>
-                  </FadeIn>
-                ))}
-
-                <FadeIn delay={0.34}>
-                  <p className="max-w-2xl font-mono text-xs leading-relaxed text-muted md:text-sm">
-                    {aboutCurrently}
-                  </p>
-                </FadeIn>
-              </div>
             </div>
           </SiteContainer>
-        </HomeSection>
+        </section>
 
-        <HomeSection id="background" theme="dark" className="scroll-mt-24">
-          <SiteContainer>
-            <FadeIn>
-              <p className="font-mono text-sm text-accent md:text-base">background</p>
-            </FadeIn>
+        <Section
+          id="background"
+          index="01"
+          label="background"
+          title="the long version."
+          tone="raised"
+        >
+          <div className="resume-stack">
+            <ResumeBlock id="resume-experience" title="Experience">
+              <ul className="resume-list">
+                {experience.map((item, index) => (
+                  <ResumeRow
+                    key={`${item.company}-${item.role}`}
+                    meta={item.period}
+                    location={item.location}
+                    title={item.role}
+                    subtitle={item.company}
+                    description={item.summary}
+                    bullets={item.highlights}
+                    href={item.href}
+                    delay={index * 0.04}
+                  />
+                ))}
+              </ul>
+            </ResumeBlock>
 
-            <ul className="mt-10 space-y-6 border-t border-divider pt-10 md:mt-12 md:space-y-8 md:pt-12">
-              {timeline.map((item, index) => (
-                <FadeIn key={`${item.year}-${index}`} delay={index * 0.04}>
-                  <li className="grid gap-3 md:grid-cols-[4.5rem_1fr] md:gap-10">
-                    <span className="font-mono text-sm text-accent">{item.year}</span>
-                    <span className="leading-relaxed text-text md:text-lg">{item.text}</span>
-                  </li>
-                </FadeIn>
-              ))}
-            </ul>
+            <ResumeBlock id="resume-education" title="Education">
+              <ul className="resume-list">
+                {education.map((item, index) => (
+                  <ResumeRow
+                    key={`${item.institution}-${item.degree}`}
+                    meta={item.period}
+                    location={item.location}
+                    title={item.degree}
+                    subtitle={item.institution}
+                    description={item.description}
+                    bullets={item.highlights}
+                    delay={index * 0.04}
+                  />
+                ))}
+              </ul>
+            </ResumeBlock>
 
-            <FadeIn delay={0.2}>
-              <SkillBars groups={skills} />
-            </FadeIn>
-          </SiteContainer>
-        </HomeSection>
+            <ResumeBlock id="resume-awards" title="Awards & achievements">
+              <ul className="resume-list">
+                {awards.map((item, index) => (
+                  <ResumeRow
+                    key={item.title}
+                    meta={item.date}
+                    title={item.title}
+                    subtitle={item.event}
+                    bullets={item.highlights}
+                    href={item.href}
+                    delay={index * 0.04}
+                  />
+                ))}
+              </ul>
+            </ResumeBlock>
+
+            <ResumeBlock id="resume-publications" title="Publications">
+              <ul className="resume-list">
+                {publications.map((item, index) => (
+                  <ResumeRow
+                    key={item.title}
+                    meta={item.date}
+                    title={item.title}
+                    subtitle={item.venue}
+                    delay={index * 0.04}
+                  />
+                ))}
+              </ul>
+            </ResumeBlock>
+
+            <ResumeBlock id="resume-certifications" title="Certifications & training">
+              <ul className="resume-list resume-list--compact">
+                {certifications.map((item, index) => (
+                  <ResumeRow
+                    key={`${item.title}-${item.issuer}`}
+                    meta={item.period}
+                    title={item.title}
+                    subtitle={item.issuer}
+                    description={item.description}
+                    delay={index * 0.03}
+                  />
+                ))}
+              </ul>
+            </ResumeBlock>
+
+            <ResumeBlock id="resume-technologies" title="Technologies">
+              <TechStack groups={techStack} />
+            </ResumeBlock>
+          </div>
+
+          <div className="section-foot">
+            <CircleArrowLink href="/work" label="see the work" />
+          </div>
+        </Section>
       </>
     );
   }
 
   return (
-    <HomeSection id="about" theme={theme} curveDivider={theme === "dark"}>
-      <SiteContainer>
-        <div className="section-layout">
-          <aside className="section-layout__aside">
-            <SectionTag index="01" label="about" />
-          </aside>
+    <Section id="about" index="01" label="about">
+      <div className="about-grid">
+        <div>
+          <FadeIn blur={false}>
+            <p className="about-statement">{aboutStatement}</p>
+          </FadeIn>
 
-          <div className="section-layout__content">
-            <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between md:gap-12 lg:gap-16">
-              <div className="order-2 flex min-w-0 flex-1 flex-col gap-8 md:order-1 md:max-w-2xl">
-                <FadeIn blur={false}>
-                  <p className="text-lg leading-relaxed md:text-xl">
-                    {aboutParagraphs[0]}
-                  </p>
-                </FadeIn>
-
-                <SectionFooter>
-                  <CircleArrowLink href="/about" label="more about me" />
-                </SectionFooter>
-              </div>
-
-              <FadeIn
-                delay={0.06}
-                blur={false}
-                className="order-1 w-full max-w-[220px] shrink-0 sm:max-w-[260px] md:order-2 md:max-w-[300px]"
-              >
-                <Portrait
-                  className="aspect-[4/5] w-full"
-                  sizes="(max-width: 768px) 70vw, 300px"
-                  priority
-                />
+          <div className="about-body">
+            {aboutParagraphs.map((paragraph, index) => (
+              <FadeIn key={index} blur={false} delay={0.06 + index * 0.05}>
+                <p>{paragraph}</p>
               </FadeIn>
-            </div>
+            ))}
+          </div>
+
+          <FadeIn blur={false} delay={0.2}>
+            <p className="about-currently">{aboutCurrently}</p>
+          </FadeIn>
+
+          <div className="section-foot !justify-start">
+            <CircleArrowLink href="/about" label="more about me" />
           </div>
         </div>
-      </SiteContainer>
-    </HomeSection>
+
+        <FadeIn delay={0.08} className="about-portrait">
+          <Portrait
+            className="aspect-[4/5] w-full"
+            sizes="(max-width: 900px) 80vw, 384px"
+            priority
+          />
+        </FadeIn>
+      </div>
+    </Section>
   );
 }
