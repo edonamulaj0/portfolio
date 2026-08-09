@@ -10,8 +10,6 @@ export type EtherSection =
   | "about"
   | "work"
   | "background"
-  | "articles"
-  | "misc"
   | "contact"
   | "default";
 
@@ -21,8 +19,6 @@ export const ETHER_PALETTES: Record<EtherSection, string[]> = {
   about: ["#ddd6fe", "#f5d0fe", "#a5f3fc", "#e9d5ff"],
   work: ["#c4b5fd", "#bae6fd", "#e9d5ff", "#fbcfe8"],
   background: ["#a5f3fc", "#ddd6fe", "#fbcfe8", "#e9d5ff"],
-  articles: ["#f5d0fe", "#e9d5ff", "#bae6fd", "#ddd6fe"],
-  misc: ["#fbcfe8", "#ddd6fe", "#bae6fd", "#e9d5ff"],
   contact: ["#bae6fd", "#e9d5ff", "#ddd6fe", "#f5d0fe"],
   default: ["#e9d5ff", "#bae6fd", "#fbcfe8", "#ddd6fe"],
 };

@@ -1,2 +1,5 @@
-/articles /misc 301
-/articles/* /misc/:splat 301
+# Retired sections — misc and the legacy writing feed
+/misc / 301
+/misc/* / 301
+/articles / 301
+/articles/* / 301

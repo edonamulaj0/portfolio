@@ -7,7 +7,6 @@ const siteLinks = [
   { label: "about", href: "/about" },
   { label: "work", href: "/work" },
   { label: "gallery", href: "/gallery" },
-  { label: "misc", href: "/misc" },
   { label: "contact", href: "/contact" },
 ];
 

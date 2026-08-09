@@ -4,7 +4,7 @@ export type GalleryItem = {
 };
 
 export const GALLERY_COUNT = 12;
-export const GALLERY_PREVIEW_COUNT = 3;
+export const GALLERY_PREVIEW_COUNT = 6;
 
 /** Academics & work — public/gallery/1.jpeg … 12.jpeg */
 export const galleryItems: GalleryItem[] = [

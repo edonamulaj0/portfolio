@@ -16,7 +16,7 @@ export function Contact({ mode = "full" }: ContactProps) {
       <>
         <section className="section" aria-label="Introduction">
           <SiteContainer>
-            <PageIntro label="(06) contact" title="let's talk." description={contactIntro} />
+            <PageIntro label="(05) contact" title="let's talk." description={contactIntro} />
 
             <FadeIn blur={false} delay={0.16}>
               <p className="page-intro__description">{contactExtended}</p>
@@ -24,7 +24,7 @@ export function Contact({ mode = "full" }: ContactProps) {
           </SiteContainer>
         </section>
 
-        <Section label="channels" index="06" tone="raised">
+        <Section label="channels" index="05" tone="raised">
           <StaggerGroup as="ul" className="contact-list" stagger={0.06}>
             {contactLinks.map((link) => (
               <StaggerItem as="li" key={link.href}>
@@ -42,7 +42,7 @@ export function Contact({ mode = "full" }: ContactProps) {
   }
 
   return (
-    <Section id="contact" index="06" label="contact">
+    <Section id="contact" index="05" label="contact">
       <div className="contact-cta">
         <FadeIn blur={false}>
           <h2 className="contact-cta__title">

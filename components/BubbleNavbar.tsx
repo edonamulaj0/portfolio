@@ -25,7 +25,6 @@ const navLinks = [
   { label: "about", href: "/about", ariaLabel: "About", rotation: -8 },
   { label: "work", href: "/work", ariaLabel: "Work", rotation: 6 },
   { label: "gallery", href: "/gallery", ariaLabel: "Gallery", rotation: -5 },
-  { label: "misc", href: "/misc", ariaLabel: "Misc", rotation: 7 },
   { label: "contact", href: "/contact", ariaLabel: "Contact", rotation: -6 },
 ] as const;
 

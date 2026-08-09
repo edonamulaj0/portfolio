@@ -83,8 +83,11 @@ The homepage is an overview. Each section links to a dedicated page with full co
 | About + full résumé | `/about` (`/about#background`) |
 | Work | `/work` |
 | Gallery | `/gallery` |
-| Misc | `/misc` (legacy `/articles` redirects here) |
 | Contact | `/contact` |
+
+The misc/writing section was retired — it needed continuous upkeep to stay
+worth showing. `/misc/*` and `/articles/*` 301 to the homepage via
+`public/_redirects`, so old links don't 404.
 
 ```
 app/(site)/       Home + section pages
@@ -109,28 +112,19 @@ All résumé and contact content is plain TypeScript in `lib/` — edit these to
 | `lib/background.ts` | Technology groups rendered as chips on `/about#background` |
 | `lib/about.ts` | Intro copy for the homepage and about page |
 | `lib/highlights.ts` | Stat band numbers and the hero ticker words |
+| `lib/gallery.ts` | Gallery photos and captions |
 
-## Adding articles
+## Gallery
 
-1. Open `lib/misc.ts`
-2. Add a new entry to the `articles` array with `slug`, `title`, `date`, `excerpt`, `tags`, and `content`
-3. Use `## Heading` for section headings in content
-4. Rebuild — the sitemap and static article pages update automatically
+Photos live in `public/gallery/`. To add one:
 
-Articles appear in the `(05) misc` section on the homepage and at `/misc`.
-
-## Gallery & misc section
-
-Personal photos and artwork live in `public/gallery/`. To add images:
-
-1. Drop `.jpg`, `.png`, or `.webp` files into `public/gallery/`
-2. Add an entry in `lib/gallery.ts` with `src`, `alt`, `caption`, `category`, and layout:
-   - `aspect`: `square`, `portrait`, or `landscape`
-   - `cols`: `1`, `2`, or `3` (spans on the 3-column grid)
-   - `rows`: `1` or `2` (taller cells for portraits)
+1. Drop a `.jpg`, `.png`, or `.webp` file into `public/gallery/`
+2. Add an entry in `lib/gallery.ts` with `src` and a descriptive `alt` — the
+   alt doubles as the visible caption, so write it for a reader
 3. Rebuild
 
-Example layouts: a portrait (`cols: 1, rows: 2`) beside a landscape (`cols: 2, rows: 1`), two squares on one row, or a full-width image (`cols: 3, rows: 1`).
+`GALLERY_PREVIEW_COUNT` in `lib/gallery.ts` controls how many appear on the
+homepage; the rest show on `/gallery`.
 
 ## License
 
