@@ -24,7 +24,7 @@ export const projects: Project[] = [
       "AI-powered study platform pairing an AI tutor with spaced repetition and a customizable module system, running on Cloudflare's edge stack.",
     highlights: [
       "Co-developing an AI study platform: an AI tutor grounded in students' own files, spaced repetition, and a customizable module system.",
-      "Launched publicly in November 2026 at DokuTech DIY Fair, with a free plan and paid tiers.",
+      "Launched publicly in October 2026 with a free plan and paid tiers, then presented at DokuTech DIY Fair in November 2026.",
       "Runs entirely on Cloudflare's edge stack — Workers for compute and Workers AI for generation — for low-latency delivery without a managed server.",
     ],
     stack: ["Remix", "TypeScript", "Cloudflare Workers", "Workers AI", "Tailwind CSS"],

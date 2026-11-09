@@ -1,5 +1,6 @@
 import { academics } from "@/lib/academics";
 import { CircleArrowLink } from "./CircleArrowLink";
+import { LinkList } from "./LinkList";
 import { FadeIn } from "./FadeIn";
 import { Section } from "./Section";
 
@@ -33,6 +34,7 @@ export function Academics() {
                 </span>
               </h3>
               <p className="timeline__description">{item.description}</p>
+              {item.links ? <LinkList items={item.links} className="mt-3" /> : null}
             </div>
           </FadeIn>
         ))}

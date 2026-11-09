@@ -1,4 +1,6 @@
+import type { ExternalLink } from "@/lib/links";
 import { FadeIn } from "./FadeIn";
+import { LinkList } from "./LinkList";
 
 type ResumeRowProps = {
   /** Left rail — period or year */
@@ -10,6 +12,7 @@ type ResumeRowProps = {
   bullets?: string[];
   href?: string;
   hrefLabel?: string;
+  links?: ExternalLink[];
   delay?: number;
 };
 
@@ -22,6 +25,7 @@ export function ResumeRow({
   bullets,
   href,
   hrefLabel,
+  links = [],
   delay = 0,
 }: ResumeRowProps) {
   return (
@@ -55,17 +59,14 @@ export function ResumeRow({
             </ul>
           ) : null}
 
-          {href ? (
-            <a
-              href={href}
-              className="resume-row__link link-slide"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {hrefLabel ?? href.replace(/^https?:\/\//, "").replace(/\/$/, "")}
-              <span aria-hidden="true"> ↗</span>
-            </a>
-          ) : null}
+          <LinkList
+            items={[
+              ...(href
+                ? [{ href, label: hrefLabel ?? href.replace(/^https?:\/\//, "").replace(/\/$/, "") }]
+                : []),
+              ...links,
+            ]}
+          />
         </div>
       </>
     </FadeIn>

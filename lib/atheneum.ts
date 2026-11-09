@@ -3,7 +3,8 @@
 export const atheneum = {
   name: "Atheneum",
   url: "https://atheneum.app",
-  period: "Launched November 2026",
+  discord: "https://discord.gg/WPTXYRH6Qw",
+  period: "Launched October 2026",
   tagline: "Study the whole way through.",
   summary:
     "An AI study platform that turns your lecture files into summaries, flashcards, and quizzes, then tells you what's due each day. Every answer comes from your own material.",
@@ -53,7 +54,7 @@ export const atheneumCaseStudy = {
   pricing:
     "A free plan alongside paid tiers, priced for students. Unused AI credits roll over for one additional month instead of expiring.",
   launch:
-    "We presented Atheneum at our own booth at DokuTech DIY Fair (November 5–6, 2026), with a live quiz demo, printed materials, and branded notebooks for new sign-ups.",
+    "Atheneum launched publicly in October 2026. In November we presented it at our own booth at DokuTech DIY Fair (November 5–6, 2026), with a live quiz demo, printed materials, and branded notebooks for new sign-ups.",
   outcome:
     "The result I value most is consistency: steady, sustained development until the product was ready for a public launch.",
   images: [

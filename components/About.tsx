@@ -99,6 +99,7 @@ export function About({ mode = "preview" }: AboutProps) {
                     description={item.summary}
                     bullets={item.highlights}
                     href={item.href}
+                    links={item.links}
                     delay={index * 0.04}
                   />
                 ))}
@@ -114,6 +115,7 @@ export function About({ mode = "preview" }: AboutProps) {
                     title={item.title}
                     subtitle={item.org}
                     description={item.description}
+                    links={item.links}
                     delay={index * 0.04}
                   />
                 ))}
@@ -131,6 +133,7 @@ export function About({ mode = "preview" }: AboutProps) {
                     subtitle={item.institution}
                     description={item.description}
                     bullets={item.highlights}
+                    links={item.links}
                     delay={index * 0.04}
                   />
                 ))}
@@ -146,7 +149,7 @@ export function About({ mode = "preview" }: AboutProps) {
                     title={item.title}
                     subtitle={item.event}
                     bullets={item.highlights}
-                    href={item.href}
+                    links={item.links}
                     delay={index * 0.04}
                   />
                 ))}

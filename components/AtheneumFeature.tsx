@@ -38,6 +38,15 @@ export function AtheneumFeature({ headingLevel = 3 }: { headingLevel?: 2 | 3 }) 
           >
             atheneum.app<span aria-hidden="true"> ↗</span>
           </a>
+          <a
+            href={atheneum.discord}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="work-card__link link-slide"
+            aria-label="Join the Atheneum Discord (opens in a new tab)"
+          >
+            Discord<span aria-hidden="true"> ↗</span>
+          </a>
         </div>
       </div>
 

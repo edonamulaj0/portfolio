@@ -1,4 +1,8 @@
+import type { ExternalLink } from "./links";
+import { links as l } from "./links";
+
 export type SecurityItem = {
+  links?: ExternalLink[];
   title: string;
   org: string;
   period: string;
@@ -10,6 +14,7 @@ export const security: SecurityItem[] = [
   {
     title: "Associate Project Manager",
     org: "Certus Cybersecurity",
+    links: [l.certus],
     period: "Oct 2026 — Present",
     description:
       "Coordinating penetration tests and security assessments for enterprise clients, including Fortune 100 companies.",
@@ -17,6 +22,7 @@ export const security: SecurityItem[] = [
   {
     title: "Hackathon & CTF organizer",
     org: "Hack&Stack",
+    links: [l.hacknstack, l.hacknstackDiscord],
     period: "Sep 2026",
     description: "Organized a combined hackathon and capture-the-flag event for the community.",
   },
