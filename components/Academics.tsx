@@ -8,9 +8,9 @@ export function Academics() {
     <Section
       id="academics"
       index="03"
-      label="timeline"
-      title="security, research, and wins."
-      intro="Running a CTF, two first-place finishes, a published MIPRO paper, and a semester abroad researching polarization in online discourse."
+      label="highlights"
+      title="Security, research, and recognition"
+      intro="Organizing a CTF, two first-place finishes, a published MIPRO paper, and an Erasmus+ semester researching polarization in online discourse."
       tone="raised"
     >
       <ol className="timeline">
@@ -39,7 +39,7 @@ export function Academics() {
       </ol>
 
       <div className="section-foot">
-        <CircleArrowLink href="/about#background" label="view full background" />
+        <CircleArrowLink href="/about#background" label="Full background" />
       </div>
     </Section>
   );

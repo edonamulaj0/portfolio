@@ -12,7 +12,7 @@ export function PageIntro({ label, title, description }: PageIntroProps) {
     <div>
       <FadeIn immediate blur={false}>
         <Link href="/" className="page-intro__back link-slide">
-          ← home
+          ← Home
         </Link>
         <p className="page-intro__label">{label}</p>
       </FadeIn>

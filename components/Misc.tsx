@@ -16,9 +16,9 @@ export function Misc({ mode = "preview" }: MiscProps) {
         <section className="section" aria-label="Introduction">
           <SiteContainer>
             <PageIntro
-              label="(05) misc"
-              title="misc."
-              description="Writing, notes, and standalone images — technical articles alongside personal posts and photos."
+              label="(05) writing"
+              title="Writing & notes"
+              description="Articles on projects, security, and competitions, alongside photos from events."
             />
           </SiteContainer>
         </section>
@@ -34,14 +34,14 @@ export function Misc({ mode = "preview" }: MiscProps) {
     <Section
       id="misc"
       index="05"
-      label="misc"
-      title="writing."
-      intro="Notes on tech, security, and the things I build. Photos live on the misc page."
+      label="writing"
+      title="Writing"
+      intro="Articles on the projects I build, security, and competitions."
     >
       <MiscFeed items={getAllMiscArticles().slice(0, 3)} />
 
       <div className="section-foot">
-        <CircleArrowLink href="/misc" label="view all misc" />
+        <CircleArrowLink href="/misc" label="All writing" />
       </div>
     </Section>
   );

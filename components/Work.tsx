@@ -75,17 +75,17 @@ export function Work({ mode = "preview" }: WorkProps) {
           <SiteContainer>
             <PageIntro
               label="(02) work"
-              title="selected work."
-              description="Atheneum is what I'm building now. Below it, the platforms that came before: open-source education, civic intelligence, and public health."
+              title="Selected work"
+              description="Atheneum is my current focus. Below it are earlier platforms in open-source education, civic technology, and public health."
             />
           </SiteContainer>
         </section>
 
-        <Section label="now building" index="02" tone="raised">
+        <Section label="current project" index="02" tone="raised">
           <AtheneumFeature headingLevel={2} />
         </Section>
 
-        <Section label="archive" index="02">
+        <Section label="earlier projects" index="02">
           <StaggerGroup as="ul" className="work-list" stagger={0.08}>
             {archive.map((project) => (
               <StaggerItem as="li" key={project.name} className="work-card">
@@ -156,8 +156,8 @@ export function Work({ mode = "preview" }: WorkProps) {
       id="work"
       index="02"
       label="work"
-      title="what I'm building."
-      intro="Atheneum is my main project, live and in active development. Before it: open-source education, civic intelligence, and a hackathon-winning child health record."
+      title="Current work"
+      intro="Atheneum is my main project, live and in active development. Earlier work spans open-source education, civic technology, and an award-winning child health record."
     >
       <AtheneumFeature />
 
@@ -170,7 +170,7 @@ export function Work({ mode = "preview" }: WorkProps) {
       </StaggerGroup>
 
       <div className="section-foot">
-        <CircleArrowLink href="/work" label="view all projects" />
+        <CircleArrowLink href="/work" label="All projects" />
       </div>
     </Section>
   );

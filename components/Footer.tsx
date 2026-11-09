@@ -4,11 +4,11 @@ import { SiteContainer } from "./SiteContainer";
 import { SocialLinks } from "./SocialLinks";
 
 const siteLinks = [
-  { label: "about", href: "/about" },
-  { label: "work", href: "/work" },
-  { label: "gallery", href: "/gallery" },
-  { label: "misc", href: "/misc" },
-  { label: "contact", href: "/contact" },
+  { label: "About", href: "/about" },
+  { label: "Work", href: "/work" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Writing", href: "/misc" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Footer() {
@@ -23,7 +23,7 @@ export function Footer() {
 
         <div className="site-footer__top">
           <div className="site-footer__intro">
-            <p className="site-footer__prompt">have something in mind?</p>
+            <p className="site-footer__prompt">Get in touch</p>
             <a href={email.href} className="site-footer__email link-slide">
               {email.handle}
             </a>
@@ -34,7 +34,7 @@ export function Footer() {
 
         <div className="site-footer__bottom">
           <p className="site-footer__meta">
-            © {new Date().getFullYear()} Edona S. Mulaj — all rights reserved.
+            © {new Date().getFullYear()} Edona S. Mulaj. All rights reserved.
           </p>
 
           <nav aria-label="Footer">

@@ -23,23 +23,44 @@ const articles: MiscArticle[] = [
   {
     type: "article",
     slug: "drit-junctionx-regional-hackathon",
-    title: "Drit' in JunctionX Regional Hackathon",
+    title: "Drit': First Place at the JunctionX Regional Hackathon",
     date: "2026-05-26",
-    excerpt: "My team and I won first place at JunctionX Regional Hackathon, DigiCamp & Digital Skills Festival 2026",
-    tags: ["hackathon", "regional", "award"],
+    excerpt:
+      "How our team built a digital child health record in 48 hours and took first place at JunctionX, DigiCamp & Digital Skills Festival 2026.",
+    tags: ["hackathon", "health tech", "award"],
     coverImage: "/gallery/6.jpeg",
-    content: "My team and I won first place at JunctionX Regional Hackathon, DigiCamp & Digital Skills Festival 2026",
+    content: `In May 2026 our team took first place at the JunctionX Regional Hackathon, held during the DigiCamp & Digital Skills Festival at ITP Prizren. We had 48 hours to go from an idea to a working product.
+
+## The problem
+
+A child's health history from birth to age 18, including vaccinations, growth measurements, and developmental milestones, is often spread across paper booklets and separate clinic records. That makes it easy for parents to miss an appointment and hard for public health teams to see the full picture.
+
+## What we built
+
+Drit' (Ditari i Rritjes dhe Imunizimit Tim) is a digital child health record that connects three groups in one platform:
+
+Parents see their child's vaccination schedule, upcoming appointments, and growth milestones in one place.
+
+Pediatricians record visits, vaccinations, and measurements, and see each child's history at a glance.
+
+Public health administrators get an aggregate view of vaccination coverage and schedules across their region.
+
+The platform includes real-time data updates, smart vaccine scheduling, growth and milestone tracking from birth to age 18, and role-based dashboards for each of the three user types.
+
+## The result
+
+We presented a working demo to the jury at the end of the 48 hours and were awarded first place. The project is still online as a live demo.`,
   },
 ];
 
-/** Standalone images — add files under public/misc/ */
+/** Standalone images shown in the writing & notes feed */
 const images: MiscImage[] = [
   {
     type: "image",
-    id: "bestest-friends",
-    date: "2026-01-25",
+    id: "junctionx-team",
+    date: "2026-05-26",
     src: "/gallery/5.jpeg",
-    alt: "My bestest friends",
+    alt: "With my colleagues at DigiCamp & Digital Skills Festival 2026, after winning first place at JunctionX with Drit'",
   },
 ];
 

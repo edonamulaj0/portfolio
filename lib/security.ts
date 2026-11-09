@@ -31,7 +31,7 @@ export const security: SecurityItem[] = [
     org: "Girls in ICT Conference, AAB College",
     period: "Talk",
     description:
-      "Spoke about my path into tech and showed what I build, including Atheneum and the Hack&Stack community.",
+      "Spoke about my path into technology and presented my work, including Atheneum and the Hack&Stack community.",
   },
   {
     title: "Girls in Cybersecurity",

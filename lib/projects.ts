@@ -23,7 +23,7 @@ export const projects: Project[] = [
     description:
       "AI-powered study platform pairing an AI tutor with spaced repetition and a customizable module system, running on Cloudflare's edge stack.",
     highlights: [
-      "Building an AI study platform with my partner: an AI tutor grounded in students' own files, spaced repetition, and a customizable module system.",
+      "Co-developing an AI study platform: an AI tutor grounded in students' own files, spaced repetition, and a customizable module system.",
       "Around 160 users as of November 2026, with Free, Pro, Max, and Exam Pass plans.",
       "Runs entirely on Cloudflare's edge stack — Workers for compute and Workers AI for generation — for low-latency delivery without a managed server.",
     ],
@@ -74,7 +74,7 @@ export const projects: Project[] = [
     highlights: [
       "Built Drit' — Ditari i Rritjes dhe Imunizimit Tim — a digital child health record linking parents, pediatricians, and public health administrators with real-time data.",
       "Shipped smart vaccine scheduling and growth milestone tracking covering birth to age 18 across 3 distinct user roles.",
-      "Developed in 48 hours at the JunctionX Regional Hackathon — first place, engineering.",
+      "Developed in 48 hours at the JunctionX Regional Hackathon and awarded first place.",
     ],
     stack: ["Next.js", "Real-time data", "Role-based access"],
     link: "https://junctionx-ecru.vercel.app/",

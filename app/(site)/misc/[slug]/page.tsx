@@ -18,7 +18,7 @@ export async function generateMetadata({
   const article = getMiscArticle(slug);
 
   if (!article) {
-    return { title: "post not found" };
+    return { title: "Article not found" };
   }
 
   return {

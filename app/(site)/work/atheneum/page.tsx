@@ -9,7 +9,7 @@ import { atheneum, atheneumCaseStudy as cs, type CaseStudyImage } from "@/lib/at
 export const metadata: Metadata = {
   title: "Atheneum: case study",
   description:
-    "How Edona Mulaj and her partner built Atheneum, an AI study platform that turns lecture files into summaries, flashcards, and quizzes, on Cloudflare's edge.",
+    "How Edona Mulaj and her co-developer built Atheneum, an AI study platform that turns lecture files into summaries, flashcards, and quizzes, on Cloudflare's edge.",
 };
 
 function Block({ label, children }: { label: string; children: ReactNode }) {
@@ -47,13 +47,13 @@ export default function AtheneumCaseStudy() {
         <SiteContainer>
           <FadeIn immediate blur={false}>
             <Link href="/work" className="page-intro__back link-slide">
-              ← work
+              ← Work
             </Link>
 
             <header className="mt-10 max-w-3xl border-b border-line pb-10 md:mt-12 md:pb-12">
               <p className="feature__eyebrow">
                 <span className="feature__pulse" aria-hidden="true" />
-                case study · {atheneum.period}
+                Case study · {atheneum.period}
               </p>
               <h1 className="mt-4 text-4xl font-light tracking-tight md:text-6xl md:leading-tight">
                 {atheneum.name}
@@ -81,7 +81,7 @@ export default function AtheneumCaseStudy() {
                   className="feature__cta"
                   aria-label="Visit atheneum.app (opens in a new tab)"
                 >
-                  visit atheneum.app <span aria-hidden="true">↗</span>
+                  Visit atheneum.app <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </header>
@@ -154,9 +154,9 @@ export default function AtheneumCaseStudy() {
               <Figure image={cs.booth} />
             </Block>
 
-            <Block label="what I'm proud of">
+            <Block label="outcome">
               <div className="case__prose">
-                <p>{cs.proud}</p>
+                <p>{cs.outcome}</p>
               </div>
             </Block>
           </div>

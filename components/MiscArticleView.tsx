@@ -16,7 +16,7 @@ export function MiscArticleView({ article }: MiscArticleViewProps) {
           <article>
             <FadeIn immediate blur={false}>
               <Link href="/misc" className="page-intro__back link-slide">
-                ← misc
+                ← Writing
               </Link>
 
               <header className="mt-10 max-w-3xl border-b border-line pb-10 md:mt-12 md:pb-12">

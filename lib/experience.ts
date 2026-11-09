@@ -49,7 +49,7 @@ export const experience: ExperienceItem[] = [
       "Developer community built around project collaboration, knowledge sharing, and networking.",
     highlights: [
       "Grew a developer community to 220+ members through recurring build sessions and project collaborations.",
-      "Organized a combined hackathon and capture-the-flag (CTF) event in September 2026, with challenges, winners, and a lot of socializing.",
+      "Organized a combined hackathon and capture-the-flag (CTF) competition in September 2026, including security challenges, judging, and awards.",
       "Curate programming and pair engineers with real projects, turning a meetup into a working collaboration network.",
     ],
   },
