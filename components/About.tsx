@@ -52,7 +52,7 @@ export function About({ mode = "preview" }: AboutProps) {
             <PageIntro
               label="(01) about"
               title="about me."
-              description="Founder & CEO @ Cyphera · Software Engineer · ICT @ University of Prishtina."
+              description="Associate PM @ Certus Cybersecurity · Founder of Cyphera · MSc ICT @ University of Prishtina."
             />
 
             <div className="about-grid mt-16 md:mt-20">

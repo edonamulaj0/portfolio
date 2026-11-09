@@ -12,17 +12,28 @@ export type ExperienceItem = {
 
 export const experience: ExperienceItem[] = [
   {
+    role: "Associate Project Manager",
+    company: "Certus Cybersecurity",
+    period: "Oct 2026 — Present",
+    year: "2026",
+    summary: "Project management at a cybersecurity firm.",
+    highlights: [
+      "Coordinate projects end to end — scope, deadlines, and status reporting.",
+      "Act as a point of contact for clients, keeping engagements on schedule and stakeholders informed.",
+    ],
+  },
+  {
     role: "Founder & CEO",
     company: "Cyphera",
-    period: "Jun 2025 — Present",
+    period: "Jun 2025 — Sep 2026",
     year: "2025",
     location: "Prishtina, Kosovo",
     summary:
       "Software and web development company building digital products for small and medium businesses.",
     highlights: [
-      "Founded and lead a software company delivering web platforms and internal products end to end — product direction, client scoping, architecture, and release.",
-      "Ship client work across three live platforms in production (Atheneum, Literas, E-Studenti), covering education, learning management, and open-source study tooling.",
-      "Own the full delivery cycle: technical scoping, pricing, engineering, and post-launch support, keeping design quality and performance non-negotiable.",
+      "Founded and led a software company delivering web platforms and internal products end to end — product direction, client scoping, architecture, and release.",
+      "Shipped client work across three live platforms in production (Atheneum, Literas, E-Studenti), covering education, learning management, and open-source study tooling.",
+      "Owned the full delivery cycle: technical scoping, pricing, engineering, and post-launch support, keeping design quality and performance non-negotiable.",
     ],
     href: "https://cyphera.tech",
   },

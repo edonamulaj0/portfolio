@@ -7,7 +7,7 @@ export type TechGroup = {
 export const techStack: TechGroup[] = [
   {
     label: "Languages",
-    items: ["JavaScript", "TypeScript", "PHP", "C++", "Python", "SQL", "Bash"],
+    items: ["JavaScript", "TypeScript", "PHP", "Java", "C++", "Python", "SQL", "Bash"],
   },
   {
     label: "Web",

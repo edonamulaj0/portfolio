@@ -9,7 +9,7 @@ import { SiteContainer } from "./SiteContainer";
 const NAME = "Edona S. Mulaj";
 const HEADLINE = "dona.";
 const SUBTITLE =
-  "Founder & CEO @ Cyphera | Software Engineer | MSc ICT @ University of Prishtina";
+  "Associate PM @ Certus Cybersecurity | Founder of Cyphera | MSc ICT @ University of Prishtina";
 const LETTER_STAGGER = 0.06;
 const TYPEWRITER_MS = 35;
 

@@ -3,10 +3,10 @@ export type GalleryItem = {
   alt: string;
 };
 
-export const GALLERY_COUNT = 12;
+export const GALLERY_COUNT = 13;
 export const GALLERY_PREVIEW_COUNT = 3;
 
-/** Academics & work — public/gallery/1.jpeg … 12.jpeg */
+/** Academics & work — public/gallery/1.jpeg … 13.jpeg */
 export const galleryItems: GalleryItem[] = [
   {
     src: "/gallery/1.jpeg",
@@ -55,5 +55,9 @@ export const galleryItems: GalleryItem[] = [
   {
     src: "/gallery/12.jpeg",
     alt: "Presenting our IoT medical room simulation at Sofia University, Bulgaria",
+  },
+  {
+    src: "/gallery/13.jpeg",
+    alt: "Running the Atheneum booth — live quiz demo, flyers, and notebooks",
   },
 ];
