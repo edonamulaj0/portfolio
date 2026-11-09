@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Contact } from "@/components/Contact";
 
 export const metadata: Metadata = {
-  title: "contact",
-  description: "Get in touch with Edona S. Mulaj — projects, collaborations, and opportunities.",
+  title: "Contact",
+  description: "Contact Edona S. Mulaj about security, product, education technology, and speaking or community events.",
 };
 
 export default function ContactPage() {

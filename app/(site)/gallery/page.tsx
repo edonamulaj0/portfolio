@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Gallery } from "@/components/Gallery";
 
 export const metadata: Metadata = {
-  title: "gallery",
+  title: "Gallery",
   description:
     "Photo gallery of academics, hackathons, research, and project work by Edona S. Mulaj.",
 };

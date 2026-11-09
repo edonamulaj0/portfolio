@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Misc } from "@/components/Misc";
 
 export const metadata: Metadata = {
-  title: "misc",
+  title: "Writing & notes",
   description: "Redirected to misc — articles and images live here.",
 };
 

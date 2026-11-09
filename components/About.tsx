@@ -52,8 +52,8 @@ export function About({ mode = "preview" }: AboutProps) {
           <SiteContainer>
             <PageIntro
               label="(01) about"
-              title="about me."
-              description="Associate PM @ Certus Cybersecurity · Building Atheneum · MSc ICT @ University of Prishtina."
+              title="About"
+              description="Associate Project Manager, Certus Cybersecurity · Co-developer, Atheneum · MSc ICT, University of Prishtina"
             />
 
             <div className="about-grid mt-16 md:mt-20">
@@ -83,7 +83,7 @@ export function About({ mode = "preview" }: AboutProps) {
           id="background"
           index="01"
           label="background"
-          title="the long version."
+          title="Background"
           tone="raised"
         >
           <div className="resume-stack">
@@ -190,7 +190,7 @@ export function About({ mode = "preview" }: AboutProps) {
           </div>
 
           <div className="section-foot">
-            <CircleArrowLink href="/work" label="see the work" />
+            <CircleArrowLink href="/work" label="View my work" />
           </div>
         </Section>
       </>
@@ -218,7 +218,7 @@ export function About({ mode = "preview" }: AboutProps) {
           </FadeIn>
 
           <div className="section-foot !justify-start">
-            <CircleArrowLink href="/about" label="more about me" />
+            <CircleArrowLink href="/about" label="More about me" />
           </div>
         </div>
 

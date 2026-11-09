@@ -11,7 +11,7 @@ export function AtheneumFeature({ headingLevel = 3 }: { headingLevel?: 2 | 3 }) 
       <div className="feature__body">
         <p className="feature__eyebrow">
           <span className="feature__pulse" aria-hidden="true" />
-          now building · {atheneum.status}
+          current project · {atheneum.status}
         </p>
         <Heading className="feature__title">{atheneum.name}</Heading>
         <p className="feature__tagline">{atheneum.tagline}</p>
@@ -39,7 +39,7 @@ export function AtheneumFeature({ headingLevel = 3 }: { headingLevel?: 2 | 3 }) 
 
         <div className="feature__actions">
           <Link href="/work/atheneum" className="feature__cta">
-            read the case study <span aria-hidden="true">→</span>
+            Read the case study <span aria-hidden="true">→</span>
           </Link>
           <a
             href={atheneum.url}

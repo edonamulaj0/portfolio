@@ -16,7 +16,7 @@ export function Contact({ mode = "full" }: ContactProps) {
       <>
         <section className="section" aria-label="Introduction">
           <SiteContainer>
-            <PageIntro label="(06) contact" title="let's talk." description={contactIntro} />
+            <PageIntro label="(06) contact" title="Contact" description={contactIntro} />
 
             <FadeIn blur={false} delay={0.16}>
               <p className="page-intro__description">{contactExtended}</p>
@@ -46,17 +46,17 @@ export function Contact({ mode = "full" }: ContactProps) {
       <div className="contact-cta">
         <FadeIn blur={false}>
           <h2 className="contact-cta__title">
-            let&apos;s talk.
+            Get in touch
           </h2>
         </FadeIn>
 
         <FadeIn blur={false} delay={0.1}>
           <p className="contact-cta__note">
-            Open to conversations about security, product, and student tech. Not
-            taking freelance work.
+            Open to conversations about security, product, and education
+            technology. Not available for freelance work.
           </p>
           <div className="mt-6">
-            <CircleArrowLink href="/contact" label="say hello" />
+            <CircleArrowLink href="/contact" label="Contact details" />
           </div>
         </FadeIn>
       </div>

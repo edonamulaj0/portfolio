@@ -6,11 +6,11 @@ import { useEffect, useRef, useState } from "react";
 import { SiteContainer } from "./SiteContainer";
 
 const navLinks = [
-  { label: "about", href: "/about" },
-  { label: "work", href: "/work" },
-  { label: "gallery", href: "/gallery" },
-  { label: "misc", href: "/misc" },
-  { label: "contact", href: "/contact" },
+  { label: "About", href: "/about" },
+  { label: "Work", href: "/work" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Writing", href: "/misc" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 function isCurrent(pathname: string, href: string) {
@@ -81,7 +81,7 @@ export function SiteHeader() {
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? "close" : "menu"}
+          {open ? "Close" : "Menu"}
         </button>
       </SiteContainer>
 

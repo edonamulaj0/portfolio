@@ -18,8 +18,8 @@ export function Gallery({ mode = "preview" }: GalleryProps) {
           <SiteContainer>
             <PageIntro
               label="(04) gallery"
-              title="proof of work."
-              description="Photos from academics, competitions, research, and shipped projects — the evidence behind the résumé."
+              title="Gallery"
+              description="Conferences, competitions, research exchanges, and project launches."
             />
           </SiteContainer>
         </section>
@@ -38,15 +38,15 @@ export function Gallery({ mode = "preview" }: GalleryProps) {
       id="gallery"
       index="04"
       label="gallery"
-      title="proof of work."
-      intro="Conferences, hackathons, research trips, and award ceremonies."
+      title="Gallery"
+      intro="Conferences, competitions, research exchanges, and project launches."
     >
       <FadeIn blur={false}>
         <GalleryGrid limit={GALLERY_PREVIEW_COUNT} />
       </FadeIn>
 
       <div className="section-foot">
-        <CircleArrowLink href="/gallery" label="view full gallery" />
+        <CircleArrowLink href="/gallery" label="Full gallery" />
       </div>
     </Section>
   );
