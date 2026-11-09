@@ -22,11 +22,20 @@ export function Hero() {
           Edona Mulaj
         </h1>
         <p className="hero__lede">
-          Associate Project Manager at Certus Cybersecurity. I also build{" "}
+          Associate Project Manager at{" "}
+          <a
+            href="https://www.certuscyber.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero__inline-link"
+          >
+            Certus Cybersecurity
+          </a>
+          . I also build{" "}
           <Link href="/work/atheneum" className="hero__inline-link">
             Atheneum
           </Link>
-          , an AI study platform with around 160 users.
+          , an AI study platform for students.
         </p>
 
         <div className="hero__actions">

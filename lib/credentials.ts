@@ -1,10 +1,13 @@
+import type { ExternalLink } from "./links";
+import { links as l } from "./links";
+
 export type Award = {
+  links?: ExternalLink[];
   title: string;
   event: string;
   date: string;
   year: string;
   highlights: string[];
-  href?: string;
 };
 
 export type Publication = {
@@ -33,7 +36,7 @@ export const awards: Award[] = [
       "Built Drit' — a digital child health record platform connecting parents, pediatricians, and public health administrators — in 48 hours.",
       "Shipped real-time vaccine scheduling, growth milestone tracking, and role-based dashboards for 3 user types.",
     ],
-    href: "https://junctionx-ecru.vercel.app/",
+    links: [l.drit],
   },
   {
     title: "1st Place — Engineering Category",

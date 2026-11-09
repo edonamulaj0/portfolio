@@ -24,7 +24,7 @@ export const projects: Project[] = [
       "AI-powered study platform pairing an AI tutor with spaced repetition and a customizable module system, running on Cloudflare's edge stack.",
     highlights: [
       "Co-developing an AI study platform: an AI tutor grounded in students' own files, spaced repetition, and a customizable module system.",
-      "Around 160 users as of November 2026, with Free, Pro, Max, and Exam Pass plans.",
+      "Launched publicly in October 2026 with a free plan and paid tiers, then presented at DokuTech DIY Fair in November 2026.",
       "Runs entirely on Cloudflare's edge stack — Workers for compute and Workers AI for generation — for low-latency delivery without a managed server.",
     ],
     stack: ["Remix", "TypeScript", "Cloudflare Workers", "Workers AI", "Tailwind CSS"],
@@ -37,10 +37,10 @@ export const projects: Project[] = [
     year: "2025",
     category: "open source",
     description:
-      "Free, open-source platform serving university materials for every faculty at the University of Prishtina — 8,000+ monthly active users.",
+      "Free, open-source platform serving university materials for every faculty at the University of Prishtina.",
     highlights: [
       "Built a free, open-source platform providing university materials across all faculties at the University of Prishtina.",
-      "Reaches 8,000+ monthly active users, with community submissions feeding the resource index.",
+      "Accepts community submissions to expand the resource index.",
     ],
     stack: ["Next.js", "Tailwind CSS", "Open source"],
     link: "https://e-studenti.com",

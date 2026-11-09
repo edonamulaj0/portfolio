@@ -3,18 +3,13 @@
 export const atheneum = {
   name: "Atheneum",
   url: "https://atheneum.app",
-  status: "live",
-  period: "Mar 2026 — present",
+  discord: "https://discord.gg/WPTXYRH6Qw",
+  period: "Launched October 2026",
   tagline: "Study the whole way through.",
   summary:
     "An AI study platform that turns your lecture files into summaries, flashcards, and quizzes, then tells you what's due each day. Every answer comes from your own material.",
   team: "Built and maintained by a two-person team: myself and a co-developer.",
   stack: ["Remix", "TypeScript", "Cloudflare Workers", "Workers AI", "Tailwind CSS"],
-  metrics: [
-    { value: "~160", label: "users as of Nov 2026" },
-    { value: "39", label: "study guides published" },
-    { value: "4", label: "plans, from free to €10/mo" },
-  ],
   cover: { src: "/atheneum/home.webp", alt: "Atheneum landing page: a lecture PDF turned into a quiz, with 8 flashcards due tomorrow", caption: "Upload a file, get a quiz, and see what is due tomorrow." },
 } as const;
 
@@ -48,7 +43,7 @@ export const atheneumCaseStudy = {
     },
     {
       title: "Guides for self-learners",
-      body: "39 practical guides on memory, focus, exams, and understanding, from active recall to the blurting method.",
+      body: "A library of practical guides on memory, focus, exams, and understanding, from active recall to the blurting method.",
     },
   ],
   architecture: [
@@ -56,25 +51,17 @@ export const atheneumCaseStudy = {
     "AI responses are grounded in the user's uploaded files and cite their source, which keeps answers verifiable and tied to the course material.",
     "A metered AI-credit system sits behind every plan, so the free tier runs on a lighter model while Pro and Max use the strongest one.",
   ],
-  pricing: {
-    intro:
-      "Affordable, transparent pricing designed for students. Unused AI credits roll over for one additional month.",
-    plans: [
-      { name: "Free", price: "€0", note: "Core study tools on a lighter model" },
-      { name: "Pro", price: "€6/mo", note: "Strongest model, more AI credits" },
-      { name: "Max", price: "€10/mo", note: "The most AI credits" },
-      { name: "Exam Pass", price: "€5 / 2 weeks", note: "Half of Max, one-time, for exam season" },
-    ],
-  },
+  pricing:
+    "A free plan alongside paid tiers, priced for students. Unused AI credits roll over for one additional month instead of expiring.",
   launch:
-    "We presented Atheneum at our own booth at DokuTech DIY Fair (November 5–6, 2026), with a live quiz demo, printed materials, and branded notebooks for new sign-ups.",
+    "Atheneum launched publicly in October 2026. In November we presented it at our own booth at DokuTech DIY Fair (November 5–6, 2026), with a live quiz demo, printed materials, and branded notebooks for new sign-ups.",
   outcome:
-    "The result I value most is consistency: steady development until the product was ready for a public launch, followed by weekly improvements since.",
+    "The result I value most is consistency: steady, sustained development until the product was ready for a public launch.",
   images: [
     { src: "/atheneum/athena.webp", alt: "Athena tutor answering a networking question and citing OSI Model.pdf page 4", caption: "Athena answers from your files and cites the page." },
     { src: "/atheneum/review.webp", alt: "Review page showing a 71% quiz score, weak topics, and 24 flashcards with 6 due", caption: "Review: scores, weak topics, and what's due." },
     { src: "/atheneum/badges.webp", alt: "Heméra consistency badge with five ranks from 7 to 365 study days", caption: "Badges reward consistent study days." },
-    { src: "/atheneum/guides.webp", alt: "Guides library with 39 study guides filtered by memory, focus, and exams", caption: "39 study guides for self-learners." },
+    { src: "/atheneum/guides.webp", alt: "Guides library with study guides filtered by memory, focus, and exams", caption: "Study guides for self-learners." },
   ] satisfies CaseStudyImage[],
   booth: { src: "/atheneum/booth.webp", alt: "Edona and her co-developer at the Atheneum booth at DokuTech DIY Fair, with a live quiz demo on screen", caption: "Our booth at DokuTech DIY Fair, November 2026." } satisfies CaseStudyImage,
 };

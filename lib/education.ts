@@ -1,4 +1,8 @@
+import type { ExternalLink } from "./links";
+import { links as l } from "./links";
+
 export type EducationItem = {
+  links?: ExternalLink[];
   degree: string;
   institution: string;
   period: string;
@@ -22,6 +26,7 @@ export const education: EducationItem[] = [
   {
     degree: "Erasmus+ Mobility",
     institution: "Saxion University of Applied Sciences",
+    links: [l.polaris, l.polarisSource],
     period: "Feb 2026 — Jun 2026",
     year: "2026",
     location: "The Netherlands",

@@ -3,31 +3,19 @@ import Link from "next/link";
 import { atheneum } from "@/lib/atheneum";
 import { FadeIn } from "./FadeIn";
 
-/** Full-width "now building" block for the flagship project */
+/** Full-width featured block for the flagship project */
 export function AtheneumFeature({ headingLevel = 3 }: { headingLevel?: 2 | 3 }) {
   const Heading = headingLevel === 2 ? "h2" : "h3";
   return (
     <FadeIn blur={false} className="feature">
       <div className="feature__body">
         <p className="feature__eyebrow">
-          <span className="feature__pulse" aria-hidden="true" />
-          current project · {atheneum.status}
+          featured project · {atheneum.period}
         </p>
         <Heading className="feature__title">{atheneum.name}</Heading>
         <p className="feature__tagline">{atheneum.tagline}</p>
         <p className="feature__summary">{atheneum.summary}</p>
 
-        <dl className="feature__metrics">
-          {atheneum.metrics.map((metric) => (
-            <div key={metric.label}>
-              <dt className="sr-only">{metric.label}</dt>
-              <dd>
-                <span className="feature__metric-value">{metric.value}</span>
-                <span className="feature__metric-label">{metric.label}</span>
-              </dd>
-            </div>
-          ))}
-        </dl>
 
         <ul className="chip-row" aria-label="Atheneum tech stack">
           {atheneum.stack.map((tech) => (
@@ -49,6 +37,15 @@ export function AtheneumFeature({ headingLevel = 3 }: { headingLevel?: 2 | 3 }) 
             aria-label="Visit atheneum.app (opens in a new tab)"
           >
             atheneum.app<span aria-hidden="true"> ↗</span>
+          </a>
+          <a
+            href={atheneum.discord}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="work-card__link link-slide"
+            aria-label="Join the Atheneum Discord (opens in a new tab)"
+          >
+            Discord<span aria-hidden="true"> ↗</span>
           </a>
         </div>
       </div>

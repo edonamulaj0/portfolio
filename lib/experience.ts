@@ -1,4 +1,8 @@
+import type { ExternalLink } from "./links";
+import { links as l } from "./links";
+
 export type ExperienceItem = {
+  links?: ExternalLink[];
   role: string;
   company: string;
   period: string;
@@ -15,6 +19,7 @@ export const experience: ExperienceItem[] = [
     role: "Associate Project Manager",
     company: "Certus Cybersecurity",
     period: "Oct 2026 — Present",
+    links: [l.certus],
     year: "2026",
     summary:
       "Project management for penetration testing and security assessment engagements, with clients including Fortune 100 companies.",
@@ -42,6 +47,7 @@ export const experience: ExperienceItem[] = [
   {
     role: "Founder & Community Lead",
     company: "Hack&Stack (HNS)",
+    links: [l.hacknstack, l.hacknstackDiscord],
     period: "2025 — Present",
     year: "2025",
     location: "Prishtina, Kosovo",
