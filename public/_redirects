@@ -1,2 +1,4 @@
-/articles /misc 301
-/articles/* /misc/:splat 301
+/misc / 301
+/misc/* / 301
+/articles / 301
+/articles/* / 301

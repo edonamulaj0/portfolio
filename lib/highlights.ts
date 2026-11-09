@@ -3,11 +3,10 @@ export type Stat = {
   label: string;
 };
 
-/** Headline numbers, each traceable to a project or award */
+/** Headline numbers. Keep these to facts that stay true without updates. */
 export const stats: Stat[] = [
-  { value: "8,000+", label: "monthly active users on E-Studenti" },
-  { value: "~160", label: "Atheneum users" },
-  { value: "220+", label: "developers in the Hack&Stack community" },
+  { value: "4", label: "platforms shipped" },
   { value: "2×", label: "first place, national & regional" },
+  { value: "1", label: "IEEE-published paper (MIPRO 2026)" },
+  { value: "220+", label: "members in the Hack&Stack community" },
 ];
-

@@ -52,7 +52,6 @@ export default function AtheneumCaseStudy() {
 
             <header className="mt-10 max-w-3xl border-b border-line pb-10 md:mt-12 md:pb-12">
               <p className="feature__eyebrow">
-                <span className="feature__pulse" aria-hidden="true" />
                 Case study · {atheneum.period}
               </p>
               <h1 className="mt-4 text-4xl font-light tracking-tight md:text-6xl md:leading-tight">
@@ -61,19 +60,8 @@ export default function AtheneumCaseStudy() {
               <p className="mt-4 text-lg text-muted">{atheneum.summary}</p>
               <p className="mt-3 text-muted">{atheneum.team}</p>
 
-              <dl className="feature__metrics">
-                {atheneum.metrics.map((metric) => (
-                  <div key={metric.label}>
-                    <dt className="sr-only">{metric.label}</dt>
-                    <dd>
-                      <span className="feature__metric-value">{metric.value}</span>
-                      <span className="feature__metric-label">{metric.label}</span>
-                    </dd>
-                  </div>
-                ))}
-              </dl>
 
-              <div className="feature__actions !mt-0">
+              <div className="feature__actions">
                 <a
                   href={atheneum.url}
                   target="_blank"
@@ -133,18 +121,9 @@ export default function AtheneumCaseStudy() {
             </Block>
 
             <Block label="pricing">
-              <p className="case__prose mb-6">{cs.pricing.intro}</p>
-              <ul className="case__grid">
-                {cs.pricing.plans.map((plan) => (
-                  <li key={plan.name} className="case__card">
-                    <h3>
-                      {plan.name}
-                      <span className="case__plan-price">{plan.price}</span>
-                    </h3>
-                    <p>{plan.note}</p>
-                  </li>
-                ))}
-              </ul>
+              <div className="case__prose">
+                <p>{cs.pricing}</p>
+              </div>
             </Block>
 
             <Block label="launch">

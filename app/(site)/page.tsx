@@ -4,7 +4,6 @@ import { Academics } from "@/components/Academics";
 import { Contact } from "@/components/Contact";
 import { Gallery } from "@/components/Gallery";
 import { Hero } from "@/components/Hero";
-import { Misc } from "@/components/Misc";
 import { SiteContainer } from "@/components/SiteContainer";
 import { Stats } from "@/components/Stats";
 import { Work } from "@/components/Work";
@@ -30,7 +29,6 @@ export default function Home() {
       <Work />
       <Academics />
       <Gallery />
-      <Misc />
       <Contact mode="preview" />
     </main>
   );

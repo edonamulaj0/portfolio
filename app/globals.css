@@ -1206,77 +1206,6 @@ summary {
   border-radius: 0.75rem;
 }
 
-/* ——— Feed rows (misc / articles) ——— */
-
-.article-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.article-row {
-  border-bottom: 1px solid var(--color-line);
-}
-
-.article-row__link {
-  display: grid;
-  gap: 1.25rem;
-  padding: 1.5rem 0;
-  text-decoration: none;
-  color: inherit;
-  transition: opacity 0.45s var(--ease-premium);
-}
-
-@media (min-width: 768px) {
-  .article-row__link {
-    grid-template-columns: 5rem 1fr auto;
-    align-items: center;
-    gap: 2rem;
-    padding: 1.75rem 0;
-  }
-}
-
-.article-row__link:hover {
-  opacity: 0.85;
-}
-
-.article-row__thumb {
-  width: 4.5rem;
-  height: 4.5rem;
-  border-radius: 0.6rem;
-}
-
-.article-row__title {
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  transition: color 0.45s var(--ease-premium);
-}
-
-.article-row__link:hover .article-row__title {
-  color: var(--color-accent);
-}
-
-.article-row__excerpt {
-  margin-top: 0.5rem;
-  max-width: 52ch;
-  font-size: 0.9375rem;
-  line-height: 1.7;
-  color: var(--color-muted);
-}
-
-.article-row__date {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  color: var(--color-faint);
-}
-
-.article-row__thumb--empty {
-  border: 1px solid var(--color-line-strong);
-  background: var(--color-surface-2);
-}
-
 /* ——— Contact ——— */
 
 .contact-cta {
@@ -1712,15 +1641,6 @@ summary {
   color: var(--color-accent);
 }
 
-.feature__pulse {
-  flex-shrink: 0;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 999px;
-  background: #4ade80;
-  box-shadow: 0 0 0 3px color-mix(in srgb, #4ade80 25%, transparent);
-}
-
 .feature__title {
   margin-top: 1rem;
   font-size: clamp(2.25rem, 5vw, 3.5rem);
@@ -1740,34 +1660,6 @@ summary {
   max-width: 52ch;
   line-height: 1.7;
   color: color-mix(in srgb, var(--color-text) 85%, transparent);
-}
-
-.feature__metrics {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  margin: 1.75rem 0;
-  padding: 1.25rem 0;
-  border-block: 1px solid var(--color-line);
-}
-
-.feature__metrics dd {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.feature__metric-value {
-  font-size: 1.75rem;
-  font-weight: 300;
-}
-
-.feature__metric-label {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--color-muted);
-  line-height: 1.4;
 }
 
 .feature__actions {
@@ -1869,14 +1761,6 @@ summary {
   color: var(--color-muted);
   line-height: 1.65;
   font-size: 0.9375rem;
-}
-
-.case__plan-price {
-  display: block;
-  margin-top: 0.35rem;
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: var(--color-text);
 }
 
 .case__figure figcaption {

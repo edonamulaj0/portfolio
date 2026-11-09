@@ -76,12 +76,12 @@ export function Work({ mode = "preview" }: WorkProps) {
             <PageIntro
               label="(02) work"
               title="Selected work"
-              description="Atheneum is my current focus. Below it are earlier platforms in open-source education, civic technology, and public health."
+              description="Atheneum is my main project. Below it are earlier platforms in open-source education, civic technology, and public health."
             />
           </SiteContainer>
         </section>
 
-        <Section label="current project" index="02" tone="raised">
+        <Section label="featured project" index="02" tone="raised">
           <AtheneumFeature headingLevel={2} />
         </Section>
 
@@ -156,8 +156,8 @@ export function Work({ mode = "preview" }: WorkProps) {
       id="work"
       index="02"
       label="work"
-      title="Current work"
-      intro="Atheneum is my main project, live and in active development. Earlier work spans open-source education, civic technology, and an award-winning child health record."
+      title="Selected work"
+      intro="Atheneum is my main project. Earlier work spans open-source education, civic technology, and an award-winning child health record."
     >
       <AtheneumFeature />
 

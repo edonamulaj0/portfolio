@@ -26,7 +26,7 @@ export function Hero() {
           <Link href="/work/atheneum" className="hero__inline-link">
             Atheneum
           </Link>
-          , an AI study platform with around 160 users.
+          , an AI study platform for students.
         </p>
 
         <div className="hero__actions">
