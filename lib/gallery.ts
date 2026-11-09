@@ -58,6 +58,6 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     src: "/gallery/13.jpeg",
-    alt: "Running the Atheneum booth — live quiz demo, flyers, and notebooks",
+    alt: "Me and my partner at the Atheneum booth, DokuTech DIY Fair, Nov 2026",
   },
 ];

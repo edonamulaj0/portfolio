@@ -16,10 +16,12 @@ export const experience: ExperienceItem[] = [
     company: "Certus Cybersecurity",
     period: "Oct 2026 — Present",
     year: "2026",
-    summary: "Project management at a cybersecurity firm.",
+    summary:
+      "Project management for penetration testing and security assessment engagements, with clients including Fortune 100 companies.",
     highlights: [
-      "Coordinate projects end to end — scope, deadlines, and status reporting.",
-      "Act as a point of contact for clients, keeping engagements on schedule and stakeholders informed.",
+      "Coordinate penetration tests and security assessments end to end: scoping, scheduling, deadlines, and handoff.",
+      "Own client communication and status reporting through delivery, keeping engagements on schedule and stakeholders informed.",
+      "Bring a hands-on security background (pentesting, incident response, forensics) to planning conversations with testers and clients.",
     ],
   },
   {
@@ -29,7 +31,7 @@ export const experience: ExperienceItem[] = [
     year: "2025",
     location: "Prishtina, Kosovo",
     summary:
-      "Software and web development company building digital products for small and medium businesses.",
+      "Software and web development company that built digital products for small and medium businesses. Wound down in September 2026.",
     highlights: [
       "Founded and led a software company delivering web platforms and internal products end to end — product direction, client scoping, architecture, and release.",
       "Shipped web platforms and internal products for clients, from first scoping call to production.",
@@ -47,6 +49,7 @@ export const experience: ExperienceItem[] = [
       "Developer community built around project collaboration, knowledge sharing, and networking.",
     highlights: [
       "Grew a developer community to 220+ members through recurring build sessions and project collaborations.",
+      "Organized a combined hackathon and capture-the-flag (CTF) event in September 2026, with challenges, winners, and a lot of socializing.",
       "Curate programming and pair engineers with real projects, turning a meetup into a working collaboration network.",
     ],
   },

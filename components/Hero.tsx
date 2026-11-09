@@ -9,7 +9,7 @@ import { SiteContainer } from "./SiteContainer";
 const NAME = "Edona S. Mulaj";
 const HEADLINE = "dona.";
 const SUBTITLE =
-  "Associate PM @ Certus Cybersecurity | Founder of Cyphera | MSc ICT @ University of Prishtina";
+  "Associate Project Manager @ Certus Cybersecurity · building Atheneum, an AI study platform";
 const LETTER_STAGGER = 0.06;
 const TYPEWRITER_MS = 35;
 

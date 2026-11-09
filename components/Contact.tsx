@@ -34,7 +34,7 @@ export function Contact({ mode = "full" }: ContactProps) {
           </StaggerGroup>
 
           <FadeIn blur={false} delay={0.3}>
-            <p className="contact-location">Prishtina, Kosovo · open to remote work</p>
+            <p className="contact-location">Prishtina, Kosovo</p>
           </FadeIn>
         </Section>
       </>
@@ -46,15 +46,14 @@ export function Contact({ mode = "full" }: ContactProps) {
       <div className="contact-cta">
         <FadeIn blur={false}>
           <h2 className="contact-cta__title">
-            let&apos;s create something{" "}
-            <span className="text-gradient">amazing.</span>
+            let&apos;s <span className="text-gradient">talk.</span>
           </h2>
         </FadeIn>
 
         <FadeIn blur={false} delay={0.1}>
           <p className="contact-cta__note">
-            Currently open to freelance projects, collaborations, and interesting
-            opportunities.
+            Open to conversations about security, product, and student tech. Not
+            taking freelance work.
           </p>
           <div className="mt-6">
             <CircleArrowLink href="/contact" label="say hello" />

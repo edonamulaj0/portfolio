@@ -5,7 +5,7 @@ export const dynamic = "force-static";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://edonamulaj.com";
 
-const staticPages = ["/about", "/work", "/gallery", "/misc", "/contact"];
+const staticPages = ["/about", "/work", "/work/atheneum", "/gallery", "/misc", "/contact"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const slugs = getMiscArticleSlugs();

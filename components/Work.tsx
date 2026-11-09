@@ -1,9 +1,13 @@
 import { projects, type Project } from "@/lib/projects";
+import { AtheneumFeature } from "./AtheneumFeature";
 import { CircleArrowLink } from "./CircleArrowLink";
 import { StaggerGroup, StaggerItem } from "./FadeIn";
 import { PageIntro } from "./PageIntro";
 import { Section } from "./Section";
 import { SiteContainer } from "./SiteContainer";
+
+/** Atheneum gets the featured block; everything else is the archive */
+const archive = projects.filter((project) => project.name !== "Atheneum");
 
 type WorkProps = {
   mode?: "preview" | "full";
@@ -72,14 +76,18 @@ export function Work({ mode = "preview" }: WorkProps) {
             <PageIntro
               label="(02) work"
               title="selected work."
-              description="Platforms in production — AI study tooling, open-source education, civic intelligence, and public health."
+              description="Atheneum is what I'm building now. Below it, the platforms that came before: open-source education, civic intelligence, and public health."
             />
           </SiteContainer>
         </section>
 
-        <Section label="projects" index="02" tone="raised">
+        <Section label="now building" index="02" tone="raised">
+          <AtheneumFeature />
+        </Section>
+
+        <Section label="archive" index="02">
           <StaggerGroup as="ul" className="work-list" stagger={0.08}>
-            {projects.map((project) => (
+            {archive.map((project) => (
               <StaggerItem as="li" key={project.name} className="work-card">
                 <div className="work-card__header">
                   <div className="work-card__heading">
@@ -148,13 +156,15 @@ export function Work({ mode = "preview" }: WorkProps) {
       id="work"
       index="02"
       label="work"
-      title="things I've shipped."
-      intro="Four platforms in production — AI study tooling, open-source education, civic intelligence, and a hackathon-winning child health record."
+      title="what I'm building."
+      intro="Atheneum is my main project, live and in active development. Before it: open-source education, civic intelligence, and a hackathon-winning child health record."
     >
+      <AtheneumFeature />
+
       <StaggerGroup as="ul" className="project-grid" stagger={0.08}>
-        {projects.map((project, index) => (
+        {archive.map((project, index) => (
           <StaggerItem as="li" key={project.name}>
-            <ProjectCard project={project} index={index} />
+            <ProjectCard project={project} index={index + 1} />
           </StaggerItem>
         ))}
       </StaggerGroup>

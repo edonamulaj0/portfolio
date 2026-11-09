@@ -1,4 +1,4 @@
-import { getAllMiscItems, getLatestMiscItems } from "@/lib/misc";
+import { getAllMiscArticles, getAllMiscItems } from "@/lib/misc";
 import { CircleArrowLink } from "./CircleArrowLink";
 import { MiscFeed } from "./MiscFeed";
 import { PageIntro } from "./PageIntro";
@@ -35,10 +35,10 @@ export function Misc({ mode = "preview" }: MiscProps) {
       id="misc"
       index="05"
       label="misc"
-      title="notes and images."
-      intro="Writing on tech and security, plus personal notes and photos."
+      title="writing."
+      intro="Notes on tech, security, and the things I build. Photos live on the misc page."
     >
-      <MiscFeed items={getLatestMiscItems(3)} />
+      <MiscFeed items={getAllMiscArticles().slice(0, 3)} />
 
       <div className="section-foot">
         <CircleArrowLink href="/misc" label="view all misc" />
