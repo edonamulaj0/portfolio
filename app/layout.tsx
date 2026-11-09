@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://edonamulaj.com";
 
 const description =
-  "Edona S. Mulaj — Founder & CEO at Cyphera, software engineer, and ICT graduate of the University of Prishtina. Building study platforms, learning management systems, and open-source education tools.";
+  "Edona S. Mulaj — Associate Project Manager at Certus Cybersecurity and co-builder of Atheneum, an AI study platform. Software engineer with a background in penetration testing and incident response; MSc ICT student at the University of Prishtina.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -34,7 +34,9 @@ export const metadata: Metadata = {
   description,
   keywords: [
     "Edona Mulaj",
-    "Cyphera",
+    "Certus Cybersecurity",
+    "Atheneum",
+    "project manager",
     "software engineer",
     "Kosovo",
     "Prishtina",
@@ -77,8 +79,8 @@ const personSchema = {
   alternateName: "dona",
   url: siteUrl,
   email: "edonaamulaj@gmail.com",
-  jobTitle: "Founder & CEO, Software Engineer",
-  worksFor: { "@type": "Organization", name: "Cyphera", url: "https://cyphera.tech" },
+  jobTitle: "Associate Project Manager",
+  worksFor: { "@type": "Organization", name: "Certus Cybersecurity" },
   alumniOf: [
     { "@type": "CollegeOrUniversity", name: "University of Prishtina" },
     { "@type": "CollegeOrUniversity", name: "Saxion University of Applied Sciences" },

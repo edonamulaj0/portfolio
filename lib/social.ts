@@ -1,4 +1,4 @@
-export type SocialId = "email" | "linkedin" | "github" | "cyphera";
+export type SocialId = "email" | "linkedin" | "github";
 
 export type SocialLink = {
   id: SocialId;
@@ -35,14 +35,6 @@ export const socialLinks: SocialLink[] = [
     handle: "github.com/edonamulaj0",
     href: "https://github.com/edonamulaj0",
     ariaLabel: "Edona Mulaj on GitHub (opens in a new tab)",
-    external: true,
-  },
-  {
-    id: "cyphera",
-    label: "cyphera",
-    handle: "cyphera.tech",
-    href: "https://cyphera.tech",
-    ariaLabel: "Cyphera — company website (opens in a new tab)",
     external: true,
   },
 ];

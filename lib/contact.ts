@@ -5,7 +5,7 @@ export type ContactLink = SocialLink;
 export const contactLinks: ContactLink[] = socialLinks;
 
 export const contactIntro =
-  "whether it's a project, a research conversation, or just something interesting — reach out.";
+  "open to conversations about security, product, and student tech.";
 
 export const contactExtended =
-  "I'm based in Prishtina and usually reply within a day or two. Happy to talk about software, security research, collaborations, or opportunities in Kosovo and beyond.";
+  "I'm based in Prishtina and usually reply within a day or two. I'm not taking freelance work, but I'm always happy to talk security, Atheneum, Hack&Stack, or speaking and community events.";

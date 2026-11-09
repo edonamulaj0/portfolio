@@ -27,6 +27,7 @@ const articles: MiscArticle[] = [
     date: "2026-05-26",
     excerpt: "My team and I won first place at JunctionX Regional Hackathon, DigiCamp & Digital Skills Festival 2026",
     tags: ["hackathon", "regional", "award"],
+    coverImage: "/gallery/6.jpeg",
     content: "My team and I won first place at JunctionX Regional Hackathon, DigiCamp & Digital Skills Festival 2026",
   },
 ];

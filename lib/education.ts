@@ -13,11 +13,11 @@ export const education: EducationItem[] = [
   {
     degree: "MSc in Information and Communication Technologies",
     institution: "University of Prishtina",
-    period: "From Sep 2026",
+    period: "Sep 2026 — Present",
     year: "2026",
     location: "Prishtina, Kosovo",
     kind: "degree",
-    description: "Starting September 2026.",
+    description: "In progress.",
   },
   {
     degree: "Erasmus+ Mobility",

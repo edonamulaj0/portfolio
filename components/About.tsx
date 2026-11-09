@@ -8,6 +8,7 @@ import { experience } from "@/lib/experience";
 import { education } from "@/lib/education";
 import { awards, certifications, publications } from "@/lib/credentials";
 import { techStack } from "@/lib/background";
+import { security } from "@/lib/security";
 import { Portrait } from "./Portrait";
 import { CircleArrowLink } from "./CircleArrowLink";
 import { FadeIn } from "./FadeIn";
@@ -52,7 +53,7 @@ export function About({ mode = "preview" }: AboutProps) {
             <PageIntro
               label="(01) about"
               title="about me."
-              description="Founder & CEO @ Cyphera · Software Engineer · ICT @ University of Prishtina."
+              description="Associate PM @ Certus Cybersecurity · Building Atheneum · MSc ICT @ University of Prishtina."
             />
 
             <div className="about-grid mt-16 md:mt-20">
@@ -72,11 +73,7 @@ export function About({ mode = "preview" }: AboutProps) {
               </div>
 
               <FadeIn delay={0.1} className="about-portrait">
-                <Portrait
-                  className="aspect-[4/5] w-full"
-                  sizes="(max-width: 900px) 80vw, 384px"
-                  priority
-                />
+                <Portrait className="aspect-[4/5] w-full" />
               </FadeIn>
             </div>
           </SiteContainer>
@@ -102,6 +99,21 @@ export function About({ mode = "preview" }: AboutProps) {
                     description={item.summary}
                     bullets={item.highlights}
                     href={item.href}
+                    delay={index * 0.04}
+                  />
+                ))}
+              </ul>
+            </ResumeBlock>
+
+            <ResumeBlock id="resume-security" title="Security & community">
+              <ul className="resume-list">
+                {security.map((item, index) => (
+                  <ResumeRow
+                    key={`${item.org}-${item.title}`}
+                    meta={item.period}
+                    title={item.title}
+                    subtitle={item.org}
+                    description={item.description}
                     delay={index * 0.04}
                   />
                 ))}
@@ -149,6 +161,8 @@ export function About({ mode = "preview" }: AboutProps) {
                     meta={item.date}
                     title={item.title}
                     subtitle={item.venue}
+                    href={item.doi ? `https://doi.org/${item.doi}` : undefined}
+                    hrefLabel={item.doi ? `doi: ${item.doi}` : undefined}
                     delay={index * 0.04}
                   />
                 ))}
@@ -209,11 +223,7 @@ export function About({ mode = "preview" }: AboutProps) {
         </div>
 
         <FadeIn delay={0.08} className="about-portrait">
-          <Portrait
-            className="aspect-[4/5] w-full"
-            sizes="(max-width: 900px) 80vw, 384px"
-            priority
-          />
+          <Portrait className="aspect-[4/5] w-full" />
         </FadeIn>
       </div>
     </Section>

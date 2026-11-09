@@ -12,6 +12,7 @@ export type Publication = {
   venue: string;
   date: string;
   year: string;
+  doi?: string;
 };
 
 export type Certification = {
@@ -63,6 +64,7 @@ export const publications: Publication[] = [
     venue: "MIPRO — 48th ICT and Electronics Convention",
     date: "May 2026",
     year: "2026",
+    doi: "10.1109/MIPRO70003.2026.11591995",
   },
 ];
 

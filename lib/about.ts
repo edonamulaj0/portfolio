@@ -2,14 +2,15 @@
 export const aboutStatement = "I build software that people actually use.";
 
 export const aboutParagraphs = [
-  "Study platforms, learning management systems, and open-source tools that reach thousands of students. My approach is simple: take on challenging projects, learn whatever needs to be learned, and ship results.",
+  "I'm an Associate Project Manager at Certus Cybersecurity, coordinating penetration tests and security assessments for enterprise clients. Outside work I build Atheneum, an AI study platform, with my partner.",
 ];
 
 export const aboutExtended = [
-  "I founded Cyphera in June 2025 to do that work properly: web platforms and internal products for small and medium businesses, from architectural scoping through to the final interactive polish. Three of those platforms are live in production today.",
-  "Alongside the company I study ICT at the University of Prishtina, with an Erasmus+ semester at Saxion in the Netherlands researching polarization in online discourse, and a published MIPRO paper on AI-based prediction of low-frequency magnetic field exposure. Cybersecurity is the other half of my training — six months of penetration testing, incident response, and forensics through the Girls in Cybersecurity program.",
-  "I also run Hack&Stack, a community of 130+ developers built around project collaboration and knowledge sharing.",
+  "Security is where I started taking things seriously: six months of penetration testing, incident response, and forensics through the Girls in Cybersecurity program, the SHEcurity 2026 hackathon, and now day-to-day delivery of security engagements at Certus.",
+  "Atheneum is the thing I keep coming back to. Students juggle a timer in one tab, flashcards in another, and a chatbot that has never seen their slides. Atheneum puts Pomodoro, spaced repetition, and an AI tutor that has read your material into one place. It's live, around 160 people use it, and we ship improvements every week.",
+  "Before that I founded Cyphera (2025–2026), a small software studio, and built E-Studenti, an open-source library of university materials used by 8,000+ students a month. I hold a BSc in ICT from the University of Prishtina, where I'm now doing my MSc, with an Erasmus+ semester at Saxion researching polarization in online discourse and a published MIPRO paper on AI-based prediction of magnetic field exposure.",
+  "I also run Hack&Stack, a community of 220+ developers. Our last event, in September 2026, was a hackathon and CTF.",
 ];
 
 export const aboutCurrently =
-  "Founder & CEO @ Cyphera · Software Engineer · MSc ICT @ University of Prishtina";
+  "Associate PM @ Certus Cybersecurity · Building Atheneum · MSc ICT @ University of Prishtina";

@@ -3,10 +3,10 @@ export type GalleryItem = {
   alt: string;
 };
 
-export const GALLERY_COUNT = 12;
+export const GALLERY_COUNT = 13;
 export const GALLERY_PREVIEW_COUNT = 3;
 
-/** Academics & work — public/gallery/1.jpeg … 12.jpeg */
+/** Academics & work — public/gallery/1.jpeg … 13.jpeg. The first GALLERY_PREVIEW_COUNT show on the homepage. */
 export const galleryItems: GalleryItem[] = [
   {
     src: "/gallery/1.jpeg",
@@ -15,6 +15,10 @@ export const galleryItems: GalleryItem[] = [
   {
     src: "/gallery/2.jpeg",
     alt: "Me at SHEcurity 2026 Hackathon, in FIEK, Prishtina",
+  },
+  {
+    src: "/gallery/13.jpeg",
+    alt: "Me and my partner at the Atheneum booth, DokuTech DIY Fair, Nov 2026",
   },
   {
     src: "/gallery/3.jpeg",

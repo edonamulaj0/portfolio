@@ -8,9 +8,9 @@ export function Academics() {
     <Section
       id="academics"
       index="03"
-      label="academics"
-      title="research, degrees, and wins."
-      intro="Two first-place finishes, a published MIPRO paper, and a semester abroad researching polarization in online discourse."
+      label="timeline"
+      title="security, research, and wins."
+      intro="Running a CTF, two first-place finishes, a published MIPRO paper, and a semester abroad researching polarization in online discourse."
       tone="raised"
     >
       <ol className="timeline">

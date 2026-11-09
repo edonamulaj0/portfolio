@@ -3,10 +3,10 @@ export const easePremium = [0.25, 1, 0.5, 1] as const;
 
 export const easePremiumCss = "cubic-bezier(0.25, 1, 0.5, 1)";
 
-export const revealY = 30;
+export const revealY = 12;
 
 export const transitionReveal = {
-  duration: 0.9,
+  duration: 0.5,
   ease: easePremium,
 } as const;
 

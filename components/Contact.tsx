@@ -1,7 +1,7 @@
 import { contactExtended, contactIntro, contactLinks } from "@/lib/contact";
 import { CircleArrowLink } from "./CircleArrowLink";
 import { FadeIn, StaggerGroup, StaggerItem } from "./FadeIn";
-import { MagneticContactLink } from "./MagneticContactLink";
+import { ContactLink } from "./ContactLink";
 import { PageIntro } from "./PageIntro";
 import { Section } from "./Section";
 import { SiteContainer } from "./SiteContainer";
@@ -28,13 +28,13 @@ export function Contact({ mode = "full" }: ContactProps) {
           <StaggerGroup as="ul" className="contact-list" stagger={0.06}>
             {contactLinks.map((link) => (
               <StaggerItem as="li" key={link.href}>
-                <MagneticContactLink link={link} />
+                <ContactLink link={link} />
               </StaggerItem>
             ))}
           </StaggerGroup>
 
           <FadeIn blur={false} delay={0.3}>
-            <p className="contact-location">Prishtina, Kosovo · open to remote work</p>
+            <p className="contact-location">Prishtina, Kosovo</p>
           </FadeIn>
         </Section>
       </>
@@ -46,15 +46,14 @@ export function Contact({ mode = "full" }: ContactProps) {
       <div className="contact-cta">
         <FadeIn blur={false}>
           <h2 className="contact-cta__title">
-            let&apos;s create something{" "}
-            <span className="text-gradient">amazing.</span>
+            let&apos;s talk.
           </h2>
         </FadeIn>
 
         <FadeIn blur={false} delay={0.1}>
           <p className="contact-cta__note">
-            Currently open to freelance projects, collaborations, and interesting
-            opportunities.
+            Open to conversations about security, product, and student tech. Not
+            taking freelance work.
           </p>
           <div className="mt-6">
             <CircleArrowLink href="/contact" label="say hello" />
