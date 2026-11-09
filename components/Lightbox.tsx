@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { imageVariant } from "@/lib/images";
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import type { GalleryItem } from "@/lib/gallery";
@@ -124,7 +125,7 @@ export function Lightbox({ items, index, onClose, onNavigate }: LightboxProps) {
           >
             <div className="relative h-[min(75vh,800px)] w-full">
               <Image
-                src={item.src}
+                src={imageVariant(item.src, "lg")}
                 alt={item.alt}
                 fill
                 sizes="100vw"

@@ -73,11 +73,7 @@ export function About({ mode = "preview" }: AboutProps) {
               </div>
 
               <FadeIn delay={0.1} className="about-portrait">
-                <Portrait
-                  className="aspect-[4/5] w-full"
-                  sizes="(max-width: 900px) 80vw, 384px"
-                  priority
-                />
+                <Portrait className="aspect-[4/5] w-full" />
               </FadeIn>
             </div>
           </SiteContainer>
@@ -227,11 +223,7 @@ export function About({ mode = "preview" }: AboutProps) {
         </div>
 
         <FadeIn delay={0.08} className="about-portrait">
-          <Portrait
-            className="aspect-[4/5] w-full"
-            sizes="(max-width: 900px) 80vw, 384px"
-            priority
-          />
+          <Portrait className="aspect-[4/5] w-full" />
         </FadeIn>
       </div>
     </Section>

@@ -11,13 +11,3 @@ export const stats: Stat[] = [
   { value: "2×", label: "first place, national & regional" },
 ];
 
-/** Ticker strip under the hero */
-export const disciplines = [
-  "security project management",
-  "penetration testing",
-  "building Atheneum",
-  "AI study tools",
-  "incident response",
-  "community & CTFs",
-  "applied research",
-];

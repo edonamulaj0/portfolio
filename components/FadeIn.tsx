@@ -19,7 +19,7 @@ export function FadeIn({
   className,
   delay = 0,
   immediate = false,
-  blur = true,
+  blur = false,
   as = "div",
 }: FadeInProps) {
   const prefersReducedMotion = useReducedMotion();
@@ -128,11 +128,10 @@ export function StaggerItem({ children, className, as = "div" }: StaggerItemProp
     <MotionTag
       className={className}
       variants={{
-        hidden: { opacity: 0, y: revealY, filter: "blur(8px)" },
+        hidden: { opacity: 0, y: revealY },
         visible: {
           opacity: 1,
           y: 0,
-          filter: "blur(0px)",
           transition: transitionReveal,
         },
       }}

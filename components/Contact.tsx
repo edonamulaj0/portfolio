@@ -1,7 +1,7 @@
 import { contactExtended, contactIntro, contactLinks } from "@/lib/contact";
 import { CircleArrowLink } from "./CircleArrowLink";
 import { FadeIn, StaggerGroup, StaggerItem } from "./FadeIn";
-import { MagneticContactLink } from "./MagneticContactLink";
+import { ContactLink } from "./ContactLink";
 import { PageIntro } from "./PageIntro";
 import { Section } from "./Section";
 import { SiteContainer } from "./SiteContainer";
@@ -28,7 +28,7 @@ export function Contact({ mode = "full" }: ContactProps) {
           <StaggerGroup as="ul" className="contact-list" stagger={0.06}>
             {contactLinks.map((link) => (
               <StaggerItem as="li" key={link.href}>
-                <MagneticContactLink link={link} />
+                <ContactLink link={link} />
               </StaggerItem>
             ))}
           </StaggerGroup>
@@ -46,7 +46,7 @@ export function Contact({ mode = "full" }: ContactProps) {
       <div className="contact-cta">
         <FadeIn blur={false}>
           <h2 className="contact-cta__title">
-            let&apos;s <span className="text-gradient">talk.</span>
+            let&apos;s talk.
           </h2>
         </FadeIn>
 

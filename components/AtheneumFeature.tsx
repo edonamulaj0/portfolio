@@ -4,7 +4,8 @@ import { atheneum } from "@/lib/atheneum";
 import { FadeIn } from "./FadeIn";
 
 /** Full-width "now building" block for the flagship project */
-export function AtheneumFeature() {
+export function AtheneumFeature({ headingLevel = 3 }: { headingLevel?: 2 | 3 }) {
+  const Heading = headingLevel === 2 ? "h2" : "h3";
   return (
     <FadeIn blur={false} className="feature">
       <div className="feature__body">
@@ -12,7 +13,7 @@ export function AtheneumFeature() {
           <span className="feature__pulse" aria-hidden="true" />
           now building · {atheneum.status}
         </p>
-        <h3 className="feature__title">{atheneum.name}</h3>
+        <Heading className="feature__title">{atheneum.name}</Heading>
         <p className="feature__tagline">{atheneum.tagline}</p>
         <p className="feature__summary">{atheneum.summary}</p>
 

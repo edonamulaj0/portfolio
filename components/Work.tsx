@@ -82,7 +82,7 @@ export function Work({ mode = "preview" }: WorkProps) {
         </section>
 
         <Section label="now building" index="02" tone="raised">
-          <AtheneumFeature />
+          <AtheneumFeature headingLevel={2} />
         </Section>
 
         <Section label="archive" index="02">

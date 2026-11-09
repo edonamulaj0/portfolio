@@ -11,7 +11,7 @@ import {
   type MiscItem,
 } from "@/lib/misc";
 import { FadeIn } from "./FadeIn";
-import { IridescentThumb } from "./IridescentThumb";
+import { imageVariant } from "@/lib/images";
 import { Lightbox } from "./Lightbox";
 
 type MiscFeedProps = {
@@ -62,13 +62,12 @@ export function MiscFeed({ items }: MiscFeedProps) {
 
 function ArticleRow({ article, index }: { article: MiscArticle; index: number }) {
   return (
-    <FadeIn delay={index * 0.06} blur={false}>
-      <li className="article-row">
+    <FadeIn as="li" delay={index * 0.06} className="article-row">
         <Link href={`/misc/${article.slug}`} className="article-row__link group">
           {article.coverImage ? (
             <div className="article-row__thumb image-frame relative overflow-hidden">
               <Image
-                src={article.coverImage}
+                src={imageVariant(article.coverImage, "sm")}
                 alt=""
                 fill
                 sizes="80px"
@@ -76,10 +75,10 @@ function ArticleRow({ article, index }: { article: MiscArticle; index: number })
               />
             </div>
           ) : (
-            <IridescentThumb className="article-row__thumb" variant={index + 1} />
+            <div className="article-row__thumb article-row__thumb--empty" aria-hidden="true" />
           )}
           <div className="article-row__body">
-            <p className="mb-1 font-mono text-[10px] uppercase tracking-wider text-accent">
+            <p className="mb-1 font-mono text-xs uppercase tracking-wider text-accent">
               article
             </p>
             <h2 className="article-row__title">{article.title}</h2>
@@ -89,7 +88,6 @@ function ArticleRow({ article, index }: { article: MiscArticle; index: number })
             {formatMiscDate(article.date).toUpperCase()}
           </time>
         </Link>
-      </li>
     </FadeIn>
   );
 }
@@ -104,8 +102,7 @@ function ImageRow({
   onOpen: () => void;
 }) {
   return (
-    <FadeIn delay={index * 0.06} blur={false}>
-      <li className="article-row">
+    <FadeIn as="li" delay={index * 0.06} className="article-row">
         <button
           type="button"
           className="article-row__link group w-full cursor-pointer text-left"
@@ -113,15 +110,15 @@ function ImageRow({
         >
           <div className="article-row__thumb image-frame relative overflow-hidden">
             <Image
-              src={image.src}
-              alt={image.alt}
+              src={imageVariant(image.src, "sm")}
+              alt=""
               fill
               sizes="80px"
               className="object-cover"
             />
           </div>
           <div className="article-row__body">
-            <p className="mb-1 font-mono text-[10px] uppercase tracking-wider text-accent">
+            <p className="mb-1 font-mono text-xs uppercase tracking-wider text-accent">
               image
             </p>
             <h2 className="article-row__title">{image.alt}</h2>
@@ -130,7 +127,6 @@ function ImageRow({
             {formatMiscDate(image.date).toUpperCase()}
           </time>
         </button>
-      </li>
     </FadeIn>
   );
 }
