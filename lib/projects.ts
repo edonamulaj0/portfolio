@@ -10,6 +10,8 @@ export type Project = {
   stack?: string[];
   link?: string;
   linkLabel?: string;
+  /** Source code, shown as a secondary link on the work page */
+  repo?: string;
 };
 
 export const projects: Project[] = [
@@ -29,22 +31,6 @@ export const projects: Project[] = [
     linkLabel: "atheneum.app",
   },
   {
-    name: "Literas",
-    period: "Aug 2025 — present",
-    year: "2025",
-    category: "learning management",
-    description:
-      "Full-featured LMS with separate student and admin portals, deployed across bachelor's and master's programs at a university in France.",
-    highlights: [
-      "Developing a full-featured learning management system with separate student and administrator portals.",
-      "Deployed across bachelor's and master's programs at a university in France.",
-      "Handles authenticated coursework flows, role-based access, and API-driven content delivery.",
-    ],
-    stack: ["Next.js", "Tailwind CSS", "REST APIs", "Authentication"],
-    link: "https://literas.app",
-    linkLabel: "literas.app",
-  },
-  {
     name: "E-Studenti",
     period: "Jul 2025 — present",
     year: "2025",
@@ -58,6 +44,24 @@ export const projects: Project[] = [
     stack: ["Next.js", "Tailwind CSS", "Open source"],
     link: "https://e-studenti.com",
     linkLabel: "e-studenti.com",
+  },
+  {
+    name: "Polaris",
+    period: "Feb 2026 — Jun 2026",
+    year: "2026",
+    category: "civic intelligence",
+    description:
+      "Civic-intelligence platform that surfaces polarized debates, explains each side, and lets people take a stance under editorial and AI moderation.",
+    highlights: [
+      "Built during an Erasmus+ semester at Saxion University of Applied Sciences with an international team, alongside an algorithm that identifies polarized discussions across news and social sources.",
+      "Ingests news every 6 hours from the Guardian, Hacker News, and GDELT, then uses AI to synthesize structured both-sides write-ups across nine subject areas.",
+      "Members vote on stances and comment; submissions go through editor review, AI moderation, and tiered penalties before anything is published.",
+      "React SPA on Cloudflare Pages backed by a Hono Worker with D1, KV rate limiting, Workers AI, and Google sign-in.",
+    ],
+    stack: ["React", "TypeScript", "Hono", "Cloudflare Workers", "D1", "Workers AI"],
+    link: "https://polaris-a4m.pages.dev/",
+    linkLabel: "live app",
+    repo: "https://github.com/edonamulaj0/polaris",
   },
   {
     name: "Drit'",

@@ -1266,6 +1266,11 @@ summary,
   border-top: 1px solid var(--color-line);
 }
 
+.work-card__links {
+  display: flex;
+  gap: 1.25rem;
+}
+
 .work-card__link {
   font-family: var(--font-mono);
   font-size: 0.75rem;

@@ -7,7 +7,7 @@ export type Stat = {
 export const stats: Stat[] = [
   { value: "8,000+", label: "monthly active users on E-Studenti" },
   { value: "4", label: "platforms shipped and live" },
-  { value: "130+", label: "developers in the Hack&Stack community" },
+  { value: "220+", label: "developers in the Hack&Stack community" },
   { value: "2×", label: "first place, national & regional" },
 ];
 

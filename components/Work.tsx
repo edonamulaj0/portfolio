@@ -72,7 +72,7 @@ export function Work({ mode = "preview" }: WorkProps) {
             <PageIntro
               label="(02) work"
               title="selected work."
-              description="Platforms in production — study tooling, learning management, open-source education, and public health."
+              description="Platforms in production — AI study tooling, open-source education, civic intelligence, and public health."
             />
           </SiteContainer>
         </section>
@@ -108,18 +108,32 @@ export function Work({ mode = "preview" }: WorkProps) {
                     <span />
                   )}
 
-                  {project.link ? (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="work-card__link link-slide"
-                      aria-label={`Visit ${project.name} (opens in a new tab)`}
-                    >
-                      {project.linkLabel ?? project.link}
-                      <span aria-hidden="true"> ↗</span>
-                    </a>
-                  ) : null}
+                  <div className="work-card__links">
+                    {project.link ? (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="work-card__link link-slide"
+                        aria-label={`Visit ${project.name} (opens in a new tab)`}
+                      >
+                        {project.linkLabel ?? project.link}
+                        <span aria-hidden="true"> ↗</span>
+                      </a>
+                    ) : null}
+                    {project.repo ? (
+                      <a
+                        href={project.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="work-card__link link-slide"
+                        aria-label={`${project.name} source code on GitHub (opens in a new tab)`}
+                      >
+                        source
+                        <span aria-hidden="true"> ↗</span>
+                      </a>
+                    ) : null}
+                  </div>
                 </div>
               </StaggerItem>
             ))}
@@ -135,7 +149,7 @@ export function Work({ mode = "preview" }: WorkProps) {
       index="02"
       label="work"
       title="things I've shipped."
-      intro="Four platforms in production — study tooling, learning management, open-source education, and a hackathon-winning child health record."
+      intro="Four platforms in production — AI study tooling, open-source education, civic intelligence, and a hackathon-winning child health record."
     >
       <StaggerGroup as="ul" className="project-grid" stagger={0.08}>
         {projects.map((project, index) => (

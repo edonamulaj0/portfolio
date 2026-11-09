@@ -32,7 +32,7 @@ export const experience: ExperienceItem[] = [
       "Software and web development company building digital products for small and medium businesses.",
     highlights: [
       "Founded and led a software company delivering web platforms and internal products end to end — product direction, client scoping, architecture, and release.",
-      "Shipped client work across three live platforms in production (Atheneum, Literas, E-Studenti), covering education, learning management, and open-source study tooling.",
+      "Shipped web platforms and internal products for clients, from first scoping call to production.",
       "Owned the full delivery cycle: technical scoping, pricing, engineering, and post-launch support, keeping design quality and performance non-negotiable.",
     ],
     href: "https://cyphera.tech",
@@ -46,7 +46,7 @@ export const experience: ExperienceItem[] = [
     summary:
       "Developer community built around project collaboration, knowledge sharing, and networking.",
     highlights: [
-      "Grew a developer community to 130+ active members through recurring build sessions and project collaborations.",
+      "Grew a developer community to 220+ members through recurring build sessions and project collaborations.",
       "Curate programming and pair engineers with real projects, turning a meetup into a working collaboration network.",
     ],
   },

@@ -149,6 +149,8 @@ export function About({ mode = "preview" }: AboutProps) {
                     meta={item.date}
                     title={item.title}
                     subtitle={item.venue}
+                    href={item.doi ? `https://doi.org/${item.doi}` : undefined}
+                    hrefLabel={item.doi ? `doi: ${item.doi}` : undefined}
                     delay={index * 0.04}
                   />
                 ))}

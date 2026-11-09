@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://edonamulaj.com";
 
 const description =
-  "Edona S. Mulaj — Associate Project Manager at Certus Cybersecurity, founder of Cyphera, software engineer, and MSc ICT student at the University of Prishtina. Building study platforms, learning management systems, and open-source education tools.";
+  "Edona S. Mulaj — Associate Project Manager at Certus Cybersecurity, founder of Cyphera, software engineer, and MSc ICT student at the University of Prishtina. Building AI study platforms, open-source education tools, and civic tech.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

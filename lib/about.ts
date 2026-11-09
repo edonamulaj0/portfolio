@@ -6,9 +6,9 @@ export const aboutParagraphs = [
 ];
 
 export const aboutExtended = [
-  "I founded Cyphera in June 2025 to do that work properly: web platforms and internal products for small and medium businesses, from architectural scoping through to the final interactive polish. Three of those platforms are live in production today. Since October 2026 I've been an Associate Project Manager at Certus Cybersecurity, coordinating projects, deadlines, and client communication.",
+  "I founded Cyphera in June 2025 to do that work properly: web platforms and internal products for small and medium businesses, from architectural scoping through to the final interactive polish. Since October 2026 I've been an Associate Project Manager at Certus Cybersecurity, coordinating projects, deadlines, and client communication.",
   "I hold a BSc in ICT from the University of Prishtina and am now doing my MSc there, with an Erasmus+ semester at Saxion in the Netherlands researching polarization in online discourse, and a published MIPRO paper on AI-based prediction of low-frequency magnetic field exposure. Cybersecurity is the other half of my training — six months of penetration testing, incident response, and forensics through the Girls in Cybersecurity program.",
-  "I also run Hack&Stack, a community of 130+ developers built around project collaboration and knowledge sharing.",
+  "I also run Hack&Stack, a community of 220+ developers built around project collaboration and knowledge sharing.",
 ];
 
 export const aboutCurrently =
